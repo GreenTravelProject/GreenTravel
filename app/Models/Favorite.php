@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     use HasFactory;
+
+    // Obtener el usuario propietario de la lista favoritos
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

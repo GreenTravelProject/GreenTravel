@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
+            $table->double('total');
             $table->timestamps();
         });
     }
