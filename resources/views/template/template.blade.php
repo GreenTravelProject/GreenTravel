@@ -15,6 +15,7 @@
     @yield('category')
     @yield('shoppingcart')
     @yield('user')
+    @yield('login')
     @yield('admin')
     @yield('footer')
 </body>
