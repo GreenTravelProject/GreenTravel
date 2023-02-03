@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+     // Obtener productos de la categoría
+     public function products(){
+        return $this->belongsToMany(Product::class)->withTimestamps();
+    }
 }

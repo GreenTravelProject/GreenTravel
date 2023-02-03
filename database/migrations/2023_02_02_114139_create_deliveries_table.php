@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
+            $table->boolean('state');
             $table->timestamps();
         });
     }
