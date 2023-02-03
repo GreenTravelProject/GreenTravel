@@ -1,0 +1,33 @@
+:root {
+    --green1: #198754;
+    --green2: #91c788;
+    --green3: #ddffbc;
+    --green4: #feffde;
+}
+
+.bg1 {
+    background-color: var(--green1);
+}
+
+.bg2 {
+    background-color: var(--green2);
+}
+
+.bg3 {
+    background-color: var(--green3);
+}
+
+.bg4 {
+    background-color: var(--green4);
+}
+
+.categorias p {
+    font-size: 5rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.categorias .overlay{
+    background-color: #198754;
+}
