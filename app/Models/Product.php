@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    // Obtener carritos en los que está el producto
+    public function shopping_carts(){
+        return $this->belongsToMany(Shopping_cart::class)->withTimestamps();
+    }
+    // Obtener lista de favorito en las que se encuentra el producto
+    public function favorites(){
+        return $this->belongsToMany(Favorite::class)->withTimestamps();
+    }
+
+    // Obtener categorías en las que se encuentra el producto
+    public function categories(){
+        return $this->belongsToMany(Category::class)->withTimestamps();
+    }
 }

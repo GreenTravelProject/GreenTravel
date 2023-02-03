@@ -26,6 +26,10 @@ class User extends Authenticatable
         return $this->hasMany(Adress::class);
     }
 
+    public function delivery(){
+        return $this->hasMany(Delivery::class);
+    }
+
     // * --- DEFAULT ---
     use HasApiTokens, HasFactory, Notifiable;
 

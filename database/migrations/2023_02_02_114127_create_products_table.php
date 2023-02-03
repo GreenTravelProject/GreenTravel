@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('price');
             $table->date('date');
             $table->boolean('state');
+            $table->string('img');
             $table->timestamps();
         });
     }
