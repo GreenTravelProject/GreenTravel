@@ -1,5 +1,12 @@
 @extends('template.general')
 @section('category')
+    <!--descripción de la categoría-->
+    <div class="description d-flex flex-column justify-content-center p-5">
+        <h1 class="display-4 fw-bolder ">DEPORTES</h1>
+        <p class="lead fw-normal">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
+            aliquam. Exercitationem inventore reiciendis praesentium aut error distinctio, nihil odio ipsam quidem
+            debitis est accusantium dignissimos adipisci tempore commodi? Ratione, eos.</p>
+    </div>
     <!-- Product section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
