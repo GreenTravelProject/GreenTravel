@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@400;600&display=swap");
 
 :root {
     --green1: #198754;
@@ -6,6 +6,7 @@
     --green3: #ddffbc;
     --green4: #feffde;
     --font: "Signika", sans-serif;
+    --bs-navbar-toggler-icon-bg: url("./img/LOGO_NAV.png");
 }
 
 body {
@@ -48,6 +49,21 @@ body {
     z-index: 10;
 }
 
+.casilla {
+    cursor: pointer;
+}
+
+.casilla:hover p {
+    font-size: 6rem;
+    transition: font-size 0.5s ease-in-out;
+    -webkit-text-stroke: 0.1rem black;
+}
+
+.casilla:hover .overlay {
+    background-color: rgba(27, 213, 6, 0);
+    transition: background-color 1s ease-in-out;
+}
+
 .deportes {
     background-color: rgba(27, 213, 6, 0.116);
 }
@@ -65,6 +81,6 @@ body {
 }
 
 .description {
-    background-color: rgba(226, 146, 26, 0.29);
+    background-color: rgba(27, 213, 6, 0.116);
     height: 50vh;
 }

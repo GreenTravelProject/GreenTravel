@@ -265,31 +265,31 @@
         <h2 class="display-4 text-center">CATEGORÍAS</h2>
         <div class="d-grid p-5">
             <div class="row">
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative">
-                    <p class="position-absolute">DEPORTES</p>
+                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
+                    <p class="position-absolute text-category">DEPORTES</p>
                     <div class="overlay deportes"></div>
                     <img src="./img/deportes.jpg" class="img-fluid p-0 m-0" alt="animales">
                 </div>
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative">
+                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
                     <p class="position-absolute">CAMPING</p>
                     <div class="overlay camping"></div>
                     <img src="./img/camping.jpg" class="img-fluid" alt="camping">
                 </div>
             </div>
             <div class="row">
-                <div class="col-12  p-0 m-0 position-relative">
+                <div class="col-12  p-0 m-0 position-relative casilla">
                     <p class="position-absolute">EXTRANJERO</p>
                     <div class="overlay extranjero"></div>
                     <img src="./img/extranjero.jpg" class="img-fluid" alt="camping">
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative">
+                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
                     <p class="position-absolute">ACUÁTICO</p>
                     <div class="overlay acuatico"></div>
                     <img src="./img/acuatico.jpg" class="img-fluid" alt="animales">
                 </div>
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative">
+                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
                     <p class="position-absolute">ANIMALES</p>
                     <div class="overlay animales"></div>
                     <img src="./img/animales.jpg" class="img-fluid" alt="camping">
