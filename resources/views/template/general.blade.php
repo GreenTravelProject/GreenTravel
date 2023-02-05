@@ -16,8 +16,8 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <a class="navbar-brand" href="{{ route('index') }}">LOGO</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
+                    <a class="navbar-brand" href="{{ route('index') }}"><img src="./img/LOGO_NAV.png" alt=""></a>
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#!">Deportes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Camping</a></li>
