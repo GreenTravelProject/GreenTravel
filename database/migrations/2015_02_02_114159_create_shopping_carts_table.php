@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
             $table->double('total');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
