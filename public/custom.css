@@ -81,6 +81,10 @@ body {
 }
 
 .description {
-    background-color: rgba(27, 213, 6, 0.116);
+    background: url("./img/deportesCategory.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 50vh;
+    
+    color: white;
 }
