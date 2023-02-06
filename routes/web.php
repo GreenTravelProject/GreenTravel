@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,5 @@ Route::get('/user', function () {
 Route::get('/shoppingCart', function () {
     return view('/shoppingCart');
 })->name('shoppingCart');
+
+Route::get('/category', [CategoryController::class, "deportes"])->name('deportes');
