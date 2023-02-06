@@ -19,13 +19,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->integer('phone'); //!Restringir min-max
+            $table->integer('phone');
             $table->date('birth_date')->nullable();
             $table->enum('genre',['M','F','O'])->nullable();
             $table->boolean('admin')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('state')->default(1); // Estado de la cuenta: 1 activa, 0 inactiva.
             // $table->foreignId('shopping_cart_id')->references('id')->on('shopping_carts');
             // $table->foreignId('favorite_id')->references('id')->on('favorites');
             $table->rememberToken();

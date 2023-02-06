@@ -14,13 +14,13 @@
     </div>
 </header>
 <body>
-    <div class=" bg-danger p-1">
-        <div class="row text-center">
-            <div class="col border-end">Column</div>
-            <div class="col border-end">Column</div>
-            <div class="col border-end">Column</div>
-            <div class="col border-end">Column</div>
-            <div class="col">Column</div>
+    <div class="container">
+        <div class="row bg-danger text-center">
+            <div class="col border-end">col</div>
+            <div class="col border-end">col</div>
+            <div class="col border-end">col</div>
+            <div class="col border-end">col</div>
+            <div class="col">col</div>
         </div>
     </div>
     <div class="container mt-5">
