@@ -82,35 +82,56 @@ body {
 }
 
 .description {
+    height: 50vh;
+    color: white;
+}
+
+.bgDeportes {
     background: url("./img/deportesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 50vh;
-    
-    color: white;
+}
+.bgAcuatico {
+    background: url("./img/acuaticoCategory.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgExtranjero {
+    background: url("./img/extranjeroCategory.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgAnimales {
+    background: url("./img/animalesCategory.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgCamping {
+    background: url("./img/campingCategory.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /*GRID MENU USER*/
 
-.menu{
+.menu {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-areas: 
-    "aside article";
+    grid-template-areas: "aside article";
 }
 
-aside{
+aside {
     background-color: var(--greymenu);
 }
 
-article{
+article {
     background-color: #198754;
     margin: 5em;
 }
 
 /*LOG-IN*/
 
-#login{
+#login {
     display: flex;
     justify-content: center;
     align-items: center;

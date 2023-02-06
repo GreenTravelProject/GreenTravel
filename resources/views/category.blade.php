@@ -2,7 +2,8 @@
 @section('category')
     <!--descripción de la categoría-->
 
-    <div class="description d-flex justify-content-center align-items-start flex-column p-5">
+    <!--Insertar según bbdd el bg de cada categoría-->
+    <div class="description bgDeportes d-flex justify-content-center align-items-start flex-column p-5">
         <h1 class="display-4 fw-bolder">DEPORTES</h1>
         <p class="lead fw-normal">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
             aliquam. Exercitationem inventore reiciendis praesentium aut error distinctio, nihil odio ipsam quidem
