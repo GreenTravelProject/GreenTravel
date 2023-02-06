@@ -44,7 +44,7 @@
 @endsection
 
 @section('footer')
-<div class="container">
+<div class="container bg-danger">
     <section style="height:80px;"></section>
 	<div class="row" style="text-align:center;">
 		<h2>Bootstrap Dark Footer UI</h2>

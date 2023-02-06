@@ -42,11 +42,11 @@
                     </div>
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
-                            <li class="mt-md-3 mt-4">Our Solution</li>
-                            <li>Intergrated Security Platform</li>
-                            <li>Core Features</li>
-                            <li>Product Features</li>
-                            <li>Pricing</li>
+                            <li class="mt-md-3 mt-4"><a class="text-white" href="{{ url('/') }}">Deportes</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Camping</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Acuáticos</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Animales</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Extranjero</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
