@@ -16,7 +16,7 @@
             <div class="col">
                 <div class="card border-0">
                     <div class="card-body text-center bg-success">
-                        <h2><b>Suscribete</b></h2>
+                        <h2><b>Suscríbete</b></h2>
                         <p class="mb-3">Escribe tu correo electrónico para estar atento</p>
                         <div class="row text-center justify-content-center">
                             <div class="col-auto">
