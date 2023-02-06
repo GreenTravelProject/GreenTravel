@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('favorite_product', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->references('id')->on('products');
+            $table->foreignId('favorite_id')->references('id')->on('favorites');
             $table->timestamps();
         });
     }

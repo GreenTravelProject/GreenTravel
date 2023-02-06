@@ -33,7 +33,7 @@ Route::get('/login', function () {
 Route::get('/user', function () {
     return view('user');
 });
-=======
+
 Route::get('/shoppingCart', function () {
     return view('/shoppingCart');
 })->name('shoppingCart');
