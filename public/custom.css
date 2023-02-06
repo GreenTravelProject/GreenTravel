@@ -5,6 +5,7 @@
     --green2: #91c788;
     --green3: #ddffbc;
     --green4: #feffde;
+    --greymenu: #f8f9fa;
     --font: "Signika", sans-serif;
     --bs-navbar-toggler-icon-bg: url("./img/LOGO_NAV.png");
 }
@@ -83,4 +84,31 @@ body {
 .description {
     background-color: rgba(27, 213, 6, 0.116);
     height: 50vh;
+}
+
+/*GRID MENU USER*/
+
+.menu{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: 
+    "aside article";
+}
+
+aside{
+    background-color: var(--greymenu);
+}
+
+article{
+    background-color: #198754;
+    margin: 5em;
+}
+
+/*LOG-IN*/
+
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7%;
 }
