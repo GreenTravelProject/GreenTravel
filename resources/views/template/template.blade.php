@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Green Travel</title>
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../custom.css">
 </head>
 
 <body>
@@ -13,7 +15,7 @@
     @yield('nav')
     @yield('index')
     @yield('category')
-    @yield('shoppingcart')
+    @yield('shoppingCart')
     @yield('user')
     @yield('login')
     @yield('admin')

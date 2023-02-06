@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('surname');
+            $table->integer('phone'); //!Restringir min-max
+            $table->date('birth_date')->nullable();
+            $table->enum('genre',['M','F','O'])->nullable();
+            $table->boolean('admin')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

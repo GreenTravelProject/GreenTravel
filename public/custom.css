@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@400;600&display=swap");
+
+:root {
+    --green1: #198754;
+    --green2: #91c788;
+    --green3: #ddffbc;
+    --green4: #feffde;
+    --font: "Signika", sans-serif;
+    --bs-navbar-toggler-icon-bg: url("./img/LOGO_NAV.png");
+}
+
+body {
+    font-family: var(--font);
+    font-weight: 400;
+}
+
+.bg1 {
+    background-color: var(--green1);
+}
+
+.bg2 {
+    background-color: var(--green2);
+}
+
+.bg3 {
+    background-color: var(--green3);
+}
+
+.bg4 {
+    background-color: var(--green4);
+}
+
+.categorias p {
+    font-size: 5rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 20;
+    text-shadow: 1px 1px 20px black;
+}
+
+.categorias .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.casilla {
+    cursor: pointer;
+}
+
+.casilla:hover p {
+    font-size: 6rem;
+    transition: font-size 0.5s ease-in-out;
+    -webkit-text-stroke: 0.1rem black;
+}
+
+.casilla:hover .overlay {
+    background-color: rgba(27, 213, 6, 0);
+    transition: background-color 1s ease-in-out;
+}
+
+.deportes {
+    background-color: rgba(27, 213, 6, 0.116);
+}
+.camping {
+    background-color: rgba(213, 6, 168, 0.116);
+}
+.extranjero {
+    background-color: rgba(7, 5, 111, 0.365);
+}
+.acuatico {
+    background-color: rgba(47, 235, 204, 0.319);
+}
+.animales {
+    background-color: rgba(226, 146, 26, 0.29);
+}
+
+.description {
+    background-color: rgba(27, 213, 6, 0.116);
+    height: 50vh;
+}
