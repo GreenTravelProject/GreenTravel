@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->integer('phone'); //!Restringir min-max
+            $table->integer('phone');
             $table->date('birth_date')->nullable();
             $table->enum('genre',['M','F','O'])->nullable();
             $table->boolean('admin')->default(0);
