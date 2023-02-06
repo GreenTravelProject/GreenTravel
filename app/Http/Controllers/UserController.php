@@ -25,12 +25,13 @@ class UserController extends Controller
         $crearUsuario = new User;
 
         $crearUsuario->name = $request->name;
-        $crearUsuario->sername = $request->surname;
-        $crearUsuario->birth_date = $request->birth_date;
+        $crearUsuario->surname = $request->surname;
         $crearUsuario->phone = $request->phone;
+        $crearUsuario->birth_date = $request->birth_date;
+        $crearUsuario->genre = $request->genre ?? 'O'; //? Si no elije género será O(otro).
+        $crearUsuario->admin = 0;
         $crearUsuario->email = $request->email;
         $crearUsuario->password = $request->password;
-        $crearUsuario->genre = $request->genre;
 
         $crearUsuario->save();
 
@@ -50,10 +51,44 @@ class UserController extends Controller
         }
     }
 
+    public function actualizar_usuario(Request $request){
+        $request->validate([
+            'name' => 'required|min:4|max:255',
+            'surname' => 'required|min:4|max:255',
+            'birth_date' => 'required|date',
+            'phone' => 'required|numeric|max:9|min:9',
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|min:8|max:255',
+            'genre' => Rule::in(['F','M','O']),
+        ]);
+
+        $usuario = User::findOrFail(Auth::id());
+        $usuario->name = $request->name;
+        $usuario->surname = $request->surname;
+        $usuario->phone = $request->phone;
+        $usuario->birth_date = $request->birth_date;
+        $usuario->genre = $request->genre ?? 'O';
+        $usuario->admin = 0;
+        $usuario->email = $request->email;
+        $usuario->password = $request->password;
+
+        $usuario->save();
+
+        return back()->with('mensaje', 'Los datos han sido modificados.');
+
+    }
+
     public function eliminar_usuario($id){
-        //todo Solo lo podrá hacer el admin, el usuario solo deshabilitara la cuenta
-        $usuario = User::findOrFail($id);
-        $usuario->delete();
+        
+        $user = User::findOrFail(Auth::id());
+
+        if($user->admin === 1){ // Borra la cuenta (ADMIN)
+            $usuario = User::findOrFail($id);
+            $usuario->delete();
+        }else{ //Deshabilita la cuenta (Usuario)
+            $user->state = 0;
+            $user->save();
+        }
 
         return back()->with('mensaje', 'El usuario ha sido eliminado.');
     }
