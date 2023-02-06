@@ -14,6 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->id();
             $table->string('name');
             $table->string('surname');
@@ -24,6 +26,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            // $table->foreignId('shopping_cart_id')->references('id')->on('shopping_carts');
+            // $table->foreignId('favorite_id')->references('id')->on('favorites');
             $table->rememberToken();
             $table->timestamps();
         });

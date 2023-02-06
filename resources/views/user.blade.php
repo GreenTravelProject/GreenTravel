@@ -1,23 +1,24 @@
 @extends('template.general')
 
 @section('user')
-    <aside class="sidebar w-25 bg-danger">
-        <nav class="sidebar-nav">
-            <ul class="nav-flyout p-0">
-                <h1 class="text-center p-5 border-bottom">Menú</h1>
-                <li class="list-group-item p-3 border-bottom">
-                    <h4>Hola</h4>
-                </li>
-                <li class="list-group-item p-3 border-bottom">
-                    <h4>Hola</h4>
-                </li>
-                <li class="list-group-item p-3 border-bottom">
-                    <h4>Hola</h4>
-                </li>
-                <li class="list-group-item p-3">
-                    <h4>Hola</h4>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+    <div class="menu">
+        <aside>
+            <h1 class="text-center p-5">MENÚ</h1><hr>
+            <div class="container p-3">
+                <h3 class="m-0">hola</h3>
+            </div><hr>
+            <div class="container p-3">
+                <h3 class="m-0">hola</h3>
+            </div><hr>
+            <div class="container p-3">
+                <h3 class="m-0">hola</h3>
+            </div><hr>
+            <div class="container p-3">
+                <h3 class="m-0">hola</h3>
+            </div><hr class="mb-0">
+        </aside>
+        <article>
+            sd
+        </article>
+    </div>
 @endsection

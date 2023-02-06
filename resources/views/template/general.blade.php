@@ -30,7 +30,7 @@
             <div class="d-flex gap-3">
                 <button class="btn btn-outline-dark">
                     <i class="bi bi-person-fill"></i>
-                    <span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span>
+                    <a href="{{route("login")}}"><span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span></a>
                 </button>
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1 " data-bs-toggle="collapse"></i>
@@ -42,61 +42,64 @@
 @endsection
 
 @section('footer')
-
-<div class="container bg-danger">
-    <section style="height:80px;"></section>
-	<div class="row" style="text-align:center;">
-		<h2>Bootstrap Dark Footer UI</h2>
-	</div>
-    <!----------- Footer ------------>
-    <footer class="footer-bs">
-        <div class="row">
-        	<div class="col-md-3 footer-brand animated fadeInLeft">
-            	<h2>Logo</h2>
-                <p>Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
-                <p>© 2014 BS3 UI Kit, All rights reserved</p>
-            </div>
-        	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Menu —</h4>
-            	<div class="col-md-6">
-                    <ul class="pages">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Nature</a></li>
-                        <li><a href="#">Explores</a></li>
-                        <li><a href="#">Science</a></li>
-                        <li><a href="#">Advice</a></li>
-                    </ul>
-                </div>
-            	<div class="col-md-6">
-                    <ul class="list">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
+    <div class="container-fluid justify-content-center bg-success text-light">
+        <div class="row py-5">
+            <div class="col">
+                <div class="card border-0">
+                    <div class="card-body text-center bg-success">
+                        <h2><b>Suscríbete</b></h2>
+                        <p class="mb-3">Escribe tu correo electrónico para estar atento</p>
+                        <div class="row text-center justify-content-center">
+                            <div class="col-auto">
+                                <div class="input-group-lg input-group">
+                                    <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <button class="btn btn-dark" type="button" id="button-addon2"><b>Enviar</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        	<div class="col-md-2 footer-social animated fadeInDown">
-            	<h4>Follow Us</h4>
-            	<ul>
-                	<li><a href="#">Facebook</a></li>
-                	<li><a href="#">Twitter</a></li>
-                	<li><a href="#">Instagram</a></li>
-                	<li><a href="#">RSS</a></li>
-                </ul>
+        </div>
+        <hr>
+        <div class="row justify-content-around">
+            <div class="col-11">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 col-12 font-italic align-items-center mt-md-3 mt-3">
+                        <h5><span><img src="" class="img-fluid mb-1 "></span><b class="text-white">GREEN <span
+                                    class="text-white"> TRAVEL</span></b></h5>
+                        <small class="copy-rights cursor-pointer">&#9400;2023 Ilerna Daw</small><br>
+                        <small>Copyright. All Rights Reserved.</small>
+                    </div>
+                    <div class="col-md-3 col-12 my-sm-0 mt-5">
+                        <ul class="list-unstyled">
+                            <li class="mt-md-3 mt-4"><a class="text-white" href="{{ url('/') }}">Deportes</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Camping</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Acuáticos</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Animales</a></li>
+                            <li><a class="text-white" href="{{ url('/') }}">Extranjero</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-12 my-sm-0 mt-5">
+                        <ul class="list-unstyled">
+                            <li class="mt-md-3 mt-4">Your needs</li>
+                            <li>Intergrated Security Platform</li>
+                            <li>Core Features</li>
+                            <li>Product Features</li>
+                            <li>Pricing</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-auto col-md-3 col-12 my-sm-0 mt-5">
+                        <ul class="list-unstyled">
+                            <li class="mt-md-3 mt-4">Offer</li>
+                            <li>Intergrated Security Platform</li>
+                            <li>Core Features</li>
+                            <li>Product Features</li>
+                            <li>Pricing</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        	<div class="col-md-3 footer-ns animated fadeInRight">
-            	<h4>Newsletter</h4>
-                <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
-                <p>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
-                      </span>
-                    </div><!-- /input-group -->
-                 </p>
-            </div>
-
-</div>
+        </div>
+    </div>
 @endsection
