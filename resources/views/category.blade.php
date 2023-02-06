@@ -1,19 +1,22 @@
 @extends('template.general')
 @section('category')
     <!--descripción de la categoría-->
-    <div class="description d-flex flex-column justify-content-center p-5">
-        <h1 class="display-4 fw-bolder ">DEPORTES</h1>
+
+    <!--Insertar según bbdd el bg de cada categoría-->
+    <div class="description bgDeportes d-flex justify-content-center align-items-start flex-column p-5">
+        <h1 class="display-4 fw-bolder">DEPORTES</h1>
         <p class="lead fw-normal">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
             aliquam. Exercitationem inventore reiciendis praesentium aut error distinctio, nihil odio ipsam quidem
             debitis est accusantium dignissimos adipisci tempore commodi? Ratione, eos.</p>
+        <div class="overlay"></div>
+    </div>
     </div>
     <!-- Product section-->
     <!--Desde la BBDD hay que imprimir los datos de cada producto-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
-                        src="./img/deportes.jpg" alt="..." /></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="./img/deportes.jpg" alt="..." /></div>
                 <div class="col-md-6">
                     <h1 class="display-5 fw-bolder">Shop item template</h1>
                     <div class="fs-5 mb-5">
