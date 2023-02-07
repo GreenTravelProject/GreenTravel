@@ -17,7 +17,8 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
-                    <a class="navbar-brand" href="{{ route('index') }}"><img src="./img/LOGO_NAV.png" alt=""></a>
+                    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"
+                            alt=""></a>
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#!">Deportes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Camping</a></li>
@@ -30,7 +31,7 @@
             <div class="d-flex gap-3">
                 <button id="btn-session" class="btn btn-outline-dark">
                     <i class="bi bi-person-fill"></i>
-                    <a href="{{route("login")}}"><span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span></a>
+                    <a href="{{ route('login') }}"><span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span></a>
                 </button>
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1 " data-bs-toggle="collapse"></i>
@@ -52,7 +53,8 @@
                         <div class="row text-center justify-content-center">
                             <div class="col-auto">
                                 <div class="input-group-lg input-group">
-                                    <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control" placeholder="Email"
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <button class="btn btn-dark" type="button" id="button-addon2"><b>Enviar</b></button>
                                 </div>
                             </div>
