@@ -20,9 +20,9 @@ class CategoryController extends BaseController
         $category = Category::findOrFail($categoryId);
 
         //Buscamos los productos de la categoría. Por parámetro le pasamos la categoría y el nº de productos por pantalla(paginar)
-        //$products = Product::findByCategory($categoryId, 5);
+        $products = $category->products();
 
         //Devolvemos a la vista los datos de la categoría seleccionada
-        return view('category', @compact("category"));
+        return view('category', @compact("category", "products"));
     }
 }
