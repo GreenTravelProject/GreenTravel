@@ -87,27 +87,27 @@ body {
 }
 
 .bgDeportes {
-    background: url("./img/deportesCategory.png");
+    background: url("../../public/img/deportesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bgAcuatico {
-    background: url("./img/acuaticoCategory.png");
+    background: url("../../public/img/acuaticoCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bgExtranjero {
-    background: url("./img/extranjeroCategory.png");
+    background: url("../../public/img/extranjeroCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bgAnimales {
-    background: url("./img/animalesCategory.png");
+    background: url("../../public/img/animalesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bgCamping {
-    background: url("./img/campingCategory.png");
+    background: url("../../public/img/campingCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -138,6 +138,6 @@ article {
     padding: 7% 0 2em;
 }
 
-#p-login{
+#p-login {
     padding-bottom: 7%;
 }
