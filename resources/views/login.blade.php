@@ -1,8 +1,11 @@
 @extends('template.general2')
 @section('login')
     <div id="login">
-        <form action="post" class="text-center">
+        <form method="post" action="{{route('verify')}}" class="text-center">
             <h1>INICIAR SESIÓN</h1><br>
+            @error('email')
+
+            @enderror
             <h1><i class="bi bi-person-circle fs-1"></i></h1>
             <input class="form-control" type="text" name="name" placeholder="Email o user" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>
             <input class="form-control" type="password" name="password" placeholder="Contraseña" required><br>
