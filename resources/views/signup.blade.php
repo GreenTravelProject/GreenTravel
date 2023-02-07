@@ -29,7 +29,7 @@
             <div class="row m-3">
                 <div class="col-sm-12">
                     <label>Correo electrónico</label><div class="input-group">
-                    <div class="input-group-text">@</div><input class="form-control" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="*" required></div><br>
+                    <div class="input-group-text">@</div><input class="form-control" type="email" name="email" placeholder="*" required></div><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label>Contraseña</label><input class="form-control" type="password" name="password" placeholder="*" required><br>
