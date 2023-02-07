@@ -28,7 +28,7 @@
                 </ul>
             </div>
             <div class="d-flex gap-3">
-                <button class="btn btn-outline-dark">
+                <button id="btn-session" class="btn btn-outline-dark">
                     <i class="bi bi-person-fill"></i>
                     <a href="{{route("login")}}"><span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span></a>
                 </button>
@@ -82,11 +82,10 @@
                     </div>
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
-                            <li class="mt-md-3 mt-4">Your needs</li>
-                            <li>Intergrated Security Platform</li>
-                            <li>Core Features</li>
-                            <li>Product Features</li>
-                            <li>Pricing</li>
+                            <li class="mt-md-3 mt-4"></li>
+                            <li><a class="text-white" href="https://github.com/lauravcruz" target=_blank>Laura</a></li>
+                            <li><a class="text-white" href="https://github.com/neumanv" target=_blank>Guillermo</a></li>
+                            <li><a class="text-white" href="https://github.com/jgTrue" target=_blank>Jairo</a></li>
                         </ul>
                     </div>
                     <div class="col-xl-auto col-md-3 col-12 my-sm-0 mt-5">
