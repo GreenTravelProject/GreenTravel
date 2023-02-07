@@ -11,18 +11,16 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-
+    //todo redirigir al completar un registro
     public function crear_usuario(Request $request){
-        //* ya funciona
-        //todo password same
-        //todo mejorar mensajes de error
+
         $request->validate([
-            'name' => 'required|min:4|max:255',
-            'surname' => 'required|min:4|max:255',
+            'name' => 'required|alpha|min:3|max:255',
+            'surname' => 'required|alpha|min:3|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|integer|max:9|min:9',
+            'phone' => 'required|numeric|digits:9',
             'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|min:8|max:255',
+            'password' => 'required|min:8|max:255|same:password_verify',
             'genre' => Rule::in(['F','M','O']),
         ]);
 
@@ -51,7 +49,7 @@ class UserController extends Controller
         $crearFavorito->user_id = $crearUsuario->id;
         $crearFavorito->save();
 
-        return back()->with('mensaje', 'Usuario ha sido creado exitosamente');
+        return back()->with('mensaje', 'El suario ha sido creado exitosamente');
     }
 
     public function mostrar_usuario(){
