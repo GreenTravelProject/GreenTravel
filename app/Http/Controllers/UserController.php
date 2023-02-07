@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Favorite;
-use App\Models\Shopping_cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,18 +34,6 @@ class UserController extends Controller
         $crearUsuario->password = $request->password;
 
         $crearUsuario->save();
-
-        //Crear carrito en el momento de crear el usuario
-        //? No sé si valdrá hacerlo así
-        $crearCarrito = new Shopping_cart;
-        $crearCarrito->user_id = $crearUsuario->id;
-        $crearCarrito->save();
-
-        //Crear favorito en el momento de crear el usuario
-        //? No sé si valdrá hacerlo así
-        $crearFavorito = new Favorite;
-        $crearFavorito->user_id = $crearUsuario->id;
-        $crearFavorito->save();
 
         return back()->with('mensaje', 'Usuario ha sido creado exitosamente');
     }
@@ -93,7 +79,7 @@ class UserController extends Controller
     }
 
     public function eliminar_usuario($id){
-
+        
         $user = User::findOrFail(Auth::id());
 
         if($user->admin === 1){ // Borra la cuenta (ADMIN)
@@ -106,9 +92,6 @@ class UserController extends Controller
 
         return back()->with('mensaje', 'El usuario ha sido eliminado.');
     }
-
-   
-
 
 
 }
