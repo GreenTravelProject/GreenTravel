@@ -30,6 +30,6 @@ class Product extends Model
     public static function findByCategory(int $categoryId, int $paginate)
     {
 
-        return Product::intersect(Category::whereIn($categoryId))->paginate($paginate);
+        return Product::intersect(Category::whereIn('category_id', [1]))->paginate($paginate);
     }
 }
