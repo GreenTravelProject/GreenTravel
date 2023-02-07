@@ -2,11 +2,9 @@
 @section('category')
     <!--descripción de la categoría-->
     <!--Insertar según bbdd el bg de cada categoría-->
-    <div class="description bgDeportes d-flex justify-content-center align-items-start flex-column p-5">
+    <div class="bg{{ $category->name }} description d-flex justify-content-center align-items-start flex-column p-5">
         <h1 class="display-4 fw-bolder">{{ $category->name }}</h1>
-        <p class="lead fw-normal">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis,
-            aliquam. Exercitationem inventore reiciendis praesentium aut error distinctio, nihil odio ipsam quidem
-            debitis est accusantium dignissimos adipisci tempore commodi? Ratione, eos.</p>
+        <p class="lead fw-normal">{{$category->description}}</p>
         <div class="overlay"></div>
     </div>
     </div>
@@ -14,33 +12,32 @@
     <!--Desde la BBDD hay que imprimir los datos de cada producto-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
+
             @foreach ($products as $product)
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="" alt="..." />
                     </div>
                     <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">{{ $product }}</h1>
+                        <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
                         <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$40.00</span>
+                            <span>{{$product->price}}</span>
                         </div>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem
-                            quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis
-                            delectusddd ipsam minima ea iste laborum vero?</p>
+                        <p class="lead">{{$product->description}}</p>
                         <div class="d-flex gap-3 justify-content-end">
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi bi-heart-fill"></i>
                             </button>
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1"></i>
-                                Add to cart
+                                Añadir al carrito
                             </button>
                         </div>
                     </div>
                 </div>
-            @endsection
-    </div>
-</section>
+            @endforeach
+        </div>
+    </section>
+@endsection
 @section('top')
     <!-- Related items section-->
     <section class="py-5 bg-light">
@@ -154,5 +151,4 @@
             </div>
         </div>
     </section>
-    @endforeach
 @endsection
