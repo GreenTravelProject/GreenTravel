@@ -17,7 +17,7 @@ class LogInController extends Controller
         if(Auth::attempt([$credentials, 'state' => 1])){
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('index');
         }
 
         return back()->withErrors([
