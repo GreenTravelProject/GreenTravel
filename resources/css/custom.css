@@ -15,6 +15,10 @@ body {
     font-weight: 400;
 }
 
+#title{
+    text-decoration: none;
+}
+
 .bg1 {
     background-color: var(--green1);
 }
@@ -131,12 +135,22 @@ body {
 }
 
 aside {
+    grid-area: aside;
     background-color: var(--greymenu);
 }
 
+#title-user{
+    margin-top: 1rem;
+}
+
+.apartado{
+    padding: 0 1rem;
+}
+
 article {
+    grid-area: article;
     background-color: #198754;
-    margin: 5em;
+    margin: 1em;
 }
 
 /*LOG-IN*/
@@ -150,4 +164,39 @@ article {
 
 #p-login {
     padding-bottom: 7%;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    /* INDEX */
+    .categorias p{
+        font-size: 3em;
+    }
+
+    .categorias p:hover{
+        font-size: 4em;
+    }
+
+    #btn-carrousel{
+        padding: 6px 7px;
+    }
+
+    /* SIGNUP */
+
+    #btn-signup{
+        width: 40%;
+        margin-left: 30%;
+    }
+
+    /* GRID MENU USER */
+    .menu {
+        display: grid;
+        grid-template-rows: 30% 70%;
+        grid-template-areas: 
+        "aside aside"
+        "article";
+        width: 100%;
+    }
 }
