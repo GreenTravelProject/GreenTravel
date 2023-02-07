@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    {{$products->links()}}
+                   
                 </div>
             </div>
             <div class="col-lg-6 py-5 px-3">

@@ -43,4 +43,5 @@ Route::get('/shoppingCart', function () {
     return view('/shoppingCart');
 })->name('shoppingCart');
 
-Route::get('/category', [CategoryController::class, "deportes"])->name('deportes');
+//Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
+Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');

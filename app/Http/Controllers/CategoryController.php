@@ -14,18 +14,15 @@ class CategoryController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function categories( int $categoryId)
+    public function category(int $categoryId)
     {
-        $category = Category::findOrFail($categoryId);//1=Deportes
-        $products = Product::findByCategory($categoryId, 5);
+        //Guardamos la categoría seleccionada por ID 
+        $category = Category::findOrFail($categoryId);
+
+        //Buscamos los productos de la categoría. Por parámetro le pasamos la categoría y el nº de productos por pantalla(paginar)
+        //$products = Product::findByCategory($categoryId, 5);
+
+        //Devolvemos a la vista los datos de la categoría seleccionada
         return view('category', @compact("category"));
-
-    }
-
-    public function categorias()
-    {
-        $category = Category::all();
-        return view('category', @compact("category"));
-
     }
 }

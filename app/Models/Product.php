@@ -26,12 +26,9 @@ class Product extends Model
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
-    public static function deportes(int $param)
+    //Esta función devuelve los productos de la categoría seleccionada (accede a la tabla pivote)
+    public static function findByCategory(int $categoryId, int $paginate)
     {
-        return Category::where('name', 'deportes')->paginate($param);
-    }
-
-    public static function findByCategory(int $categoryId, int $paginate){
 
         return Product::intersect(Category::whereIn($categoryId))->paginate($paginate);
     }
