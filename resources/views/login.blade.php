@@ -2,9 +2,10 @@
 @section('login')
     <div id="login">
         <form method="post" action="{{route('verify')}}" class="text-center">
+            @csrf
             <h1>INICIAR SESIÓN</h1><br>
             @error('email')
-
+                //! No está funcionando, tiene que explicarlo olga
             @enderror
             <h1><i class="bi bi-person-circle fs-1"></i></h1>
             <input class="form-control" type="text" name="name" placeholder="Email o user" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required><br>

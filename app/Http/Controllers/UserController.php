@@ -13,12 +13,14 @@ class UserController extends Controller
 {
 
     public function crear_usuario(Request $request){
-
+        //* ya funciona
+        //todo password same
+        //todo mejorar mensajes de error
         $request->validate([
             'name' => 'required|min:4|max:255',
             'surname' => 'required|min:4|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|numeric|max:9|min:9',
+            'phone' => 'required|integer|max:9|min:9',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255',
             'genre' => Rule::in(['F','M','O']),
@@ -70,7 +72,7 @@ class UserController extends Controller
             'name' => 'required|min:4|max:255',
             'surname' => 'required|min:4|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|numeric|max:9|min:9',
+            'phone' => 'required|integer|max:9|min:9',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255',
             'genre' => Rule::in(['F','M','O']),
@@ -107,7 +109,7 @@ class UserController extends Controller
         return back()->with('mensaje', 'El usuario ha sido eliminado.');
     }
 
-   
+
 
 
 

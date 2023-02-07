@@ -19,9 +19,9 @@ return new class extends Migration
             $table->text('description');
             $table->double('price');
             $table->date('date');
-            $table->boolean('state');
-            $table->integer('stock');
-            $table->string('img');
+            $table->boolean('state')->default(0);
+            $table->integer('stock')->default(0);
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }
