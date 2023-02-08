@@ -47,10 +47,10 @@
             <p class="text-center">Regístrate en Green Travel para disfrutar de todas las experiencias que ofrecemos.<br>Si ya estas registrado pulsa <a href="{{ route('login') }}">aquí</a></p>
             <div class="row m-3">
                 <div class="col-md-6 col-sm-12">
-                    <label>Nombre</label><input class="form-control" type="text" name="name" placeholder="*" value="{{old('name')}}" required><br>
+                    <label>Nombre</label><input class="form-control" type="text" name="name" placeholder="Mínimo 3 caracteres" value="{{old('name')}}" required><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label>Apellidos</label><input class="form-control" type="text" name="surname" placeholder="*" value="{{old('surname')}}" required><br>
+                    <label>Apellidos</label><input class="form-control" type="text" name="surname" placeholder="Mínimo 3 caracteres" value="{{old('surname')}}" required><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label>Número de teléfono</label><input class="form-control" type="tel" name="phone" placeholder="*" value="{{old('phone')}}" required><br>
