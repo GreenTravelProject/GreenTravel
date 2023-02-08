@@ -25,8 +25,7 @@ Route::get('/category', function () {
     return view('category');
 });
 
-
-Route::get('/admin', function () {
+Route::get('/admin/products', function () {
     return view('admin');
 });
 
@@ -55,4 +54,3 @@ Route::post('/signup}', [UserController::class, "crear_usuario"])->name('signup.
 
 //! No funciona, tiene que explicarlo Olga
 Route::post('/login', [LogInController::class, 'authenticate'])->name('verify');
-
