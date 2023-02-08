@@ -15,6 +15,8 @@ body {
     font-weight: 400;
 }
 
+/*Fondos para usar la paleta:*/
+
 .bg1 {
     background-color: var(--green1);
 }
@@ -30,6 +32,8 @@ body {
 .bg4 {
     background-color: var(--green4);
 }
+
+/*Grid de categorías (index)*/
 
 .categorias p {
     font-size: 5rem;
@@ -96,30 +100,38 @@ body {
     color: white;
 }
 
-.bgDeportes {
+/*Fondos para descripción de categorías (categoy)*/
+
+.bgdeportes {
     background: url("../../public/img/deportesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgAcuatico {
+.bgacuatico {
     background: url("../../public/img/acuaticoCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgExtranjero {
+.bgextranjero {
     background: url("../../public/img/extranjeroCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgAnimales {
+.bganimales {
     background: url("../../public/img/animalesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgCamping {
+.bgcamping {
     background: url("../../public/img/campingCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.products{
+    background-color: var(--greymenu);
+    border: 1px solid;
+    border-radius: 10px;
 }
 
 /*GRID MENU USER*/
