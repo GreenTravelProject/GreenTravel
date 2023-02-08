@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="col-sm-12">
-                    <label>Fecha de nacimiento*</label><input class="form-control" type="date" name="birth_date" required><br>
+                    <label id="nacimiento">Fecha de nacimiento*</label><input class="form-control" type="date" name="birth_date" required><br>
                 </div>
             </div><hr class="mt-4 mb-5">
             <div class="row m-3">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="bg-success btn mb-5 w-25 text-light text-center" type="submit">Registrarse</button>
+                <button id="btn-signup" class="bg-success btn mb-5 text-light text-center" type="submit">Registrarse</button>
             </div>
         </form>
     </div>

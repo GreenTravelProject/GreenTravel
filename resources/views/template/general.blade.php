@@ -3,7 +3,7 @@
     <header class="bg-success py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">GREEN TRAVEL</h1>
+                <a id="title" href="{{ route('index') }}"><h1 class="display-4 fw-bolder text-white">GREEN TRAVEL</h1></a>
                 <p class="lead fw-normal text-white-50 mb-0">Viajes sostenibles</p>
             </div>
         </div>
@@ -30,8 +30,8 @@
             </div>
             <div class="d-flex gap-3">
                 <button id="btn-session" class="btn btn-outline-dark">
-                    <i class="bi bi-person-fill"></i>
-                    <a href="{{ route('login') }}"><span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span></a>
+                    <a href="{{ route('login') }}"><i class="bi bi-person-fill" ></i></a>
+                    <span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span>
                 </button>
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1 " data-bs-toggle="collapse"></i>
