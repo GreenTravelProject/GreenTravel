@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorite;
+use App\Models\Shopping_cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,16 +11,16 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-
+    //todo redirigir al completar un registro
     public function crear_usuario(Request $request){
 
         $request->validate([
-            'name' => 'required|min:4|max:255',
-            'surname' => 'required|min:4|max:255',
+            'name' => 'required|alpha|min:3|max:255',
+            'surname' => 'required|alpha|min:3|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|numeric|max:9|min:9',
+            'phone' => 'required|numeric|digits:9',
             'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|min:8|max:255',
+            'password' => 'required|min:8|max:255|same:password_verify',
             'genre' => Rule::in(['F','M','O']),
         ]);
 
@@ -35,7 +37,21 @@ class UserController extends Controller
 
         $crearUsuario->save();
 
-        return back()->with('mensaje', 'Usuario ha sido creado exitosamente');
+
+        //Crear carrito en el momento de crear el usuario
+        //? No sé si valdrá hacerlo así
+        $crearCarrito = new Shopping_cart;
+        $crearCarrito->user_id = $crearUsuario->id;
+        $crearCarrito->save();
+
+        //Crear favorito en el momento de crear el usuario
+        //? No sé si valdrá hacerlo así
+        $crearFavorito = new Favorite;
+        $crearFavorito->user_id = $crearUsuario->id;
+        $crearFavorito->save();
+
+        return back()->with('mensaje', 'El suario ha sido creado exitosamente');
+
     }
 
     public function mostrar_usuario(){
@@ -56,7 +72,7 @@ class UserController extends Controller
             'name' => 'required|min:4|max:255',
             'surname' => 'required|min:4|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|numeric|max:9|min:9',
+            'phone' => 'required|integer|max:9|min:9',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255',
             'genre' => Rule::in(['F','M','O']),
@@ -79,7 +95,7 @@ class UserController extends Controller
     }
 
     public function eliminar_usuario($id){
-        
+
         $user = User::findOrFail(Auth::id());
 
         if($user->admin === 1){ // Borra la cuenta (ADMIN)
@@ -92,6 +108,5 @@ class UserController extends Controller
 
         return back()->with('mensaje', 'El usuario ha sido eliminado.');
     }
-
 
 }
