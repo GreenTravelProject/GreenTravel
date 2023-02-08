@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+
+use App\Http\Controllers\LogInController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,4 +47,12 @@ Route::get('/shoppingCart', function () {
 })->name('shoppingCart');
 
 //Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
+
 Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');
+
+//Para registrar un nuevo usuario
+Route::post('/signup}', [UserController::class, "crear_usuario"])->name('signup.register');
+
+//! No funciona, tiene que explicarlo Olga
+Route::post('/login', [LogInController::class, 'authenticate'])->name('verify');
+
