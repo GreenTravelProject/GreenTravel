@@ -6,13 +6,13 @@
             <p class="text-center">Regístrate en Green Travel para disfrutar de todas las experiencias que ofrecemos.<br>Si ya estas registrado pulsa <a href="{{ route('login') }}">aquí</a></p>
             <div class="row m-3">
                 <div class="col-md-6 col-sm-12">
-                    <label>Nombre</label><input class="form-control" type="text" name="name" placeholder="*" required><br>
+                    <label>Nombre</label><input class="form-control" type="text" name="name" placeholder="Mínimo 4 caracteres" required><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label>Apellidos</label><input class="form-control" type="text" name="surname" placeholder="*" required><br>
+                    <label>Apellidos</label><input class="form-control" type="text" name="surname" placeholder="Mínimo 4 caracteres" required><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label>Número de teléfono</label><input class="form-control" type="tel" name="phone" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{3}" placeholder="*" required><br>
+                    <label>Número de teléfono</label><input class="form-control" type="tel" name="phone" placeholder="*" required><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label>Género</label><select class="form-control" type="text" name="genre" value>
@@ -32,7 +32,7 @@
                     <div class="input-group-text">@</div><input class="form-control" type="email" name="email" placeholder="*" required></div><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label>Contraseña</label><input class="form-control" type="password" name="password" placeholder="*" required><br>
+                    <label>Contraseña</label><input class="form-control" type="password" name="password" placeholder="Mínimo 8 caracteres" required><br>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label>Repetir contraseña</label><input class="form-control" type="password" name="password_verify" placeholder="*" required><br>
