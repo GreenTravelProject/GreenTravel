@@ -23,5 +23,4 @@ class Shopping_cart extends Model
     public function delivery(){
         return $this->belongsTo(Delivery::class);
     }
-
 }

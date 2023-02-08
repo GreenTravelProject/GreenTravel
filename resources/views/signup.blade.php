@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button id="btn-signup" class="bg-success btn mb-5 text-light text-center" type="submit">Registrarse</button>
+                <button class="bg-success btn mb-5 w-25 text-light text-center" type="submit">Registrarse</button>
             </div>
         </form>
     </div>

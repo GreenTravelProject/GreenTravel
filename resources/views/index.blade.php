@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-1 d-flex justify-content-center align-items-center">
-                    <a id="btn-carrousel" class="btn btn-success" href="#destacados" role="button" data-bs-slide="prev">
+                    <a class="btn btn-success" href="#destacados" role="button" data-bs-slide="prev">
                         <i class="bi bi-caret-left-fill"></i>
                     </a>
                 </div>
@@ -253,20 +253,16 @@
                     </div>
                 </div>
                 <div class="col-1 d-flex justify-content-center align-items-center">
-                    <a id="btn-carrousel" class="btn btn-success" href="#destacados" role="button" data-bs-slide="next">
+                    <a class="btn btn-success" href="#destacados" role="button" data-bs-slide="next">
                         <i class="bi-caret-right-fill"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container-fluid p-5 bg-success">
-        <div class="container">
-            <h4 class="m-0 p-4 text-center text-white">En Green Travel estamos comprometidos con facilitar las experiencias divertidas y saludables a todos nuestros usuarios, integrando para ello la sostenibilidad en su actividad diaria, habiendo obtenido el Certificado “S” de Turismo Sostenible, por su contribución a los Objetivos de Desarrollo Sostenibles relativos a Seguridad y Salud (ODS 3), Agua (ODS 6) y Energía (ODS 7).</h4>
-        </div>
-    </section>
+
     <section class="categorias pt-5 pb-5">
-        <h1 class="display-4 text-center">CATEGORÍAS</h1>
+        <h2 class="display-4 text-center">CATEGORÍAS</h2>
         <div class="d-grid p-5">
             <div class="row">
                 <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">

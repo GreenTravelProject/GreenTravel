@@ -8,8 +8,8 @@
     </div>
 </header>
 <div class="container">
-    <div class="row bg-secondary text-center text-white">
-        <div class="col border-end">Usuarios</div>
+    <div class="row bg-secondary text-center">
+        <div class="col border-end">col</div>
         <div class="col border-end">col</div>
         <div class="col border-end">col</div>
         <div class="col border-end">col</div>

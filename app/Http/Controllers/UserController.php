@@ -37,6 +37,7 @@ class UserController extends Controller
 
         $crearUsuario->save();
 
+
         //Crear carrito en el momento de crear el usuario
         //? No sé si valdrá hacerlo así
         $crearCarrito = new Shopping_cart;
@@ -50,6 +51,7 @@ class UserController extends Controller
         $crearFavorito->save();
 
         return back()->with('mensaje', 'El suario ha sido creado exitosamente');
+
     }
 
     public function mostrar_usuario(){
@@ -106,9 +108,5 @@ class UserController extends Controller
 
         return back()->with('mensaje', 'El usuario ha sido eliminado.');
     }
-
-
-
-
 
 }
