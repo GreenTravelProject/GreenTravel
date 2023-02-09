@@ -122,21 +122,45 @@ body {
     background-size: cover;
 }
 
-/*GRID MENU USER*/
+/*USER*/
 
-.menu {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-areas: "aside article";
-}
-
-aside {
+.profile-sidebar {
     background-color: var(--greymenu);
 }
 
-article {
-    background-color: #198754;
-    margin: 5em;
+.profile-menu ul{
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.profile-menu{
+    margin: 5% 5% 0;
+}
+
+.profile-menu h4{
+    padding: 7%;
+    margin: 0;
+}
+
+/*----- PÁGINA -----*/
+
+#full-page {
+    width: 100%;
+}
+
+.myHiddenText {
+    display: none;
+}
+
+.profile-menu:hover{
+    cursor: pointer;
+}
+
+/*----- INFORMACIÓN -----*/
+
+#user-data{
+    background-color: aquamarine;
+    padding: 3%;
 }
 
 /*LOG-IN*/
@@ -185,6 +209,8 @@ article {
 #p-login {
     padding-bottom: 7%;
 }
+
+
 
 /* RESPONSIVE */
 
