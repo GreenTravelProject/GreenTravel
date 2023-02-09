@@ -17,8 +17,7 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
-                    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"
-                            alt=""></a>
+                    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#!">Deportes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Camping</a></li>
@@ -29,10 +28,10 @@
                 </ul>
             </div>
             <div class="d-flex gap-3">
-                <button id="btn-session" class="btn btn-outline-dark">
-                    <a href="{{ route('login') }}"><i class="bi bi-person-fill" ></i></a>
+                <a href="{{ route('login') }}"><button id="btn-session" class="btn btn-outline-dark">
+                    <i class="bi bi-person-fill" ></i>
                     <span class="d-lg-inline d-none">Mi cuenta // Iniciar Sesión</span>
-                </button>
+                </button></a>
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1 " data-bs-toggle="collapse"></i>
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
