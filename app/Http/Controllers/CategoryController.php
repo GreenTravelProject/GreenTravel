@@ -13,7 +13,6 @@ class CategoryController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
     public function category(int $categoryId)
     {
         //Guardamos la categoría seleccionada por ID 
