@@ -169,11 +169,19 @@ body {
 /*----- PÁGINA -----*/
 
 #full-page {
-    width: 100%;
+    width: 99%;
 }
 
-.myHiddenText {
+.user-info{
     display: none;
+}
+
+#user-section{
+    border-right: solid 1px black;
+}
+
+.profile-menu{
+    padding: 0 1em;
 }
 
 .profile-menu:hover{
@@ -183,8 +191,21 @@ body {
 /*----- INFORMACIÓN -----*/
 
 #user-data{
-    background-color: aquamarine;
     padding: 3%;
+}
+
+#input-user-reppass{
+    width: 30%;
+}
+
+@media (max-width:768px){
+    #input-user-reppass{
+        width: 100%;
+    }
+
+    #user-cont{
+        width: 100%;
+    }
 }
 
 /*LOG-IN*/
