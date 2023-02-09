@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function mostrar_productos()
     {
         $productos = Product::all();
-        $productos = Product::paginate(1);
+        $productos = Product::paginate(10);
         return view('admin', @compact('productos'));
     }
     public function crear_producto(Request $request)

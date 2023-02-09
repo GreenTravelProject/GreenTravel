@@ -8,7 +8,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/custom.css', 'resources/js/custom.js'])
     <link rel="icon" type="image/jpg" href="{{ URL::asset('favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    
 </head>
 
 <body>
