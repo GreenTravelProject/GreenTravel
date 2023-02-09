@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,10 +25,10 @@ Route::get('/category', function () {
     return view('category');
 });
 
+Route::get('/admin', [ProductController::class, 'mostrar_productos']);
+Route::get('/edit/{id}', [ProductController::class, 'editar_producto'])->name('products.edit');
+Route::put('/update/{id}', [ProductController::class, 'actualizar_producto'])->name('products.update');
 
-Route::get('/admin', function () {
-    return view('admin');
-});
 
 Route::get('/login', function () {
     return view('login');
@@ -55,4 +55,3 @@ Route::post('/signup}', [UserController::class, "crear_usuario"])->name('signup.
 
 //! No funciona, tiene que explicarlo Olga
 Route::post('/login', [LogInController::class, 'authenticate'])->name('verify');
-

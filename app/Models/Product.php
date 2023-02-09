@@ -25,11 +25,4 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
-
-    //Esta función devuelve los productos de la categoría seleccionada (accede a la tabla pivote)
-    public static function findByCategory(int $categoryId, int $paginate)
-    {
-
-        return Product::intersect(Category::whereIn('category_id', [1]))->paginate($paginate);
-    }
 }
