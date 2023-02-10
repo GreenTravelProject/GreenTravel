@@ -52,33 +52,47 @@ class ProductController extends Controller
 
     public function actualizar_producto(Request $request, $id)
     {
-        //ESTO NO FUNCIONA
+        //TODO: FUNCIÓN JAVASCRIPT PARA QUE PRECIO SIEMPRE SEA DECIMAL ,00
+        //TODO: categoría nunca puede estar vacía, peta
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
-            // 'description' => 'required|alpha|min:3',
-            // 'price' => 'required|integer',
-            // 'date' => 'required|date_format:Y/m/d',
-            // 'state' => 'required|boolean',
-            // 'stock' => 'required|integer',
-            // 'img' => 'required|min:3|max:255',
-            // 'category' => 'required|integer'
+            'description' => 'required|alpha|min:3',
+            'price' => 'required|decimal:2,4',
+            'date' => 'required|date_format:Y-m-d',
+            'state' => 'boolean',
+            'stock' => 'required|integer',
+            'img' => 'required|min:3|max:255',
+            'category' => 'required'
         ]);
 
         $producto = Product::findOrFail($id);
-        $producto->id = 1;
+        $producto->id = $request->id;
         $producto->name = $request->name;
-        // $producto->description = $request->description;
-        // $producto->price = $request->price;
-        // $producto->date = $request->date;
-        // $producto->state = $request->state;
-        // $producto->stock = $request->stock;
-        // $producto->img = $request->img;
+        $producto->description = $request->description;
+        $producto->price = $request->price;
+        $producto->date = $request->date;
+        if ($request->state == null) {
+            $producto->state = 0;
+        } else {
+            $producto->state = 1;
+        }
+        $producto->stock = $request->stock;
+        $producto->img = $request->img;
+
+        $producto->categories()->detach();
+
+        if (isset($request->category)) {
+            if (count($request->category) == 1) {
+                $producto->categories()->attach($request->category);
+
+            } else
+                foreach ($request->category as $s) {
+                    $producto->categories()->attach($s);
+                }
+        }
         $producto->save();
-        DB::table('category_product')->insert([
-            ['category_id' => 1],
-            ['product_id' => 1],
-        ]);
-        return back()->with('mensaje', 'El producto ha sido modificado');
+        return back()->with('mensaje', 'El producto ha sido modificado' . $request);
+
     }
 
     public function eliminar_producto($id)

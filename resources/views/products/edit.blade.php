@@ -23,10 +23,7 @@
             @method('PUT') {{-- Necesitamos cambiar al método PUT para editar --}}
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
 
-            {{-- TODO: ¿POR QUÉ IMPRIME? --}}
-            @foreach ($producto->categories as $cp)
-                {{ $categoryProduct = $cp->id }}
-            @endforeach
+
             <div class="d-grid">
                 <div class="row p-2 py-md-3">
                     <div class="col-md-5">
@@ -50,7 +47,7 @@
                     </div>
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="state" class="p-3">Estado:</label>
-                        <input type="checkbox" name="state" checked value="1">
+                        <input type="checkbox" name="state" id="state" checked value="1">
                     </div>
                 </div>
                 <div class="row p-2 py-md-3">
@@ -66,16 +63,17 @@
                         <label for="select">Categorías:</label>
                         <div class="selectBox position-relative" onclick="showCheckboxes()">
                             <select class="w-100 form-select" name="select" id="select">
-                                <option>Selecciona las categorías</option>
+                                <option value="">Selecciona las categorías</option>
                             </select>
                             <div class="overSelect position-absolute"></div>
                         </div>
 
-                        <div id="checkboxes">
+                        <div id="checkboxes" name="categories">
                             @foreach ($categories as $category)
                                 <label class="d-flex py-1 px-3 gap-2" for="{{ $category->name }}">{{ $category->name }}
-                                    <input type="checkbox" id="{{ $category->name }}" name="{{ $category->name }}"
-                                        @if ($category->id == $categoryProduct) checked @endif></input></label>
+                                    <input type="checkbox" id="{{ $category->name }}" name="category[]"
+                                        value="{{ $category->id }}"
+                                        {{ $producto->categories->contains($category->id) ? 'checked=true' : 'checked=false' }}></input></label>
                             @endforeach
                         </div>
                     </div>
