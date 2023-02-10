@@ -9,14 +9,20 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    //TODO:Pasar por parámetro la paginación: 
+    //TODO:Pasar por parámetro la paginación:
+
+    public function crear_producto()
+    {
+        $categories = Category::all();
+        return view('products.create', @compact('categories'));
+    }
     public function mostrar_productos()
     {
         $productos = Product::all();
         $productos = Product::paginate(10);
         return view('admin', @compact('productos'));
     }
-    public function crear_producto(Request $request)
+    public function insertar_producto(Request $request)
     {
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
@@ -65,33 +71,40 @@ class ProductController extends Controller
             'category' => 'required'
         ]);
 
-        $producto = Product::findOrFail($id);
-        $producto->id = $request->id;
-        $producto->name = $request->name;
-        $producto->description = $request->description;
-        $producto->price = $request->price;
-        $producto->date = $request->date;
-        if ($request->state == null) {
-            $producto->state = 0;
+        $errors = $request->has('errors');
+
+        if ($errors) {
+            $producto = Product::findOrFail($id);
+            $producto->id = $request->id;
+            $producto->name = $request->name;
+            $producto->description = $request->description;
+            $producto->price = $request->price;
+            $producto->date = $request->date;
+            if ($request->state == null) {
+                $producto->state = 0;
+            } else {
+                $producto->state = 1;
+            }
+            $producto->stock = $request->stock;
+            $producto->img = $request->img;
+
+            $producto->categories()->detach();
+
+            if (isset($request->category)) {
+                if (count($request->category) == 1) {
+                    $producto->categories()->attach($request->category);
+
+                } else
+                    foreach ($request->category as $s) {
+                        $producto->categories()->attach($s);
+                    }
+            }
+            $producto->save();
+            return back()->with('mensaje', 'El producto ha sido modificado' . $request);
         } else {
-            $producto->state = 1;
+            return back()->with('errors');
+
         }
-        $producto->stock = $request->stock;
-        $producto->img = $request->img;
-
-        $producto->categories()->detach();
-
-        if (isset($request->category)) {
-            if (count($request->category) == 1) {
-                $producto->categories()->attach($request->category);
-
-            } else
-                foreach ($request->category as $s) {
-                    $producto->categories()->attach($s);
-                }
-        }
-        $producto->save();
-        return back()->with('mensaje', 'El producto ha sido modificado' . $request);
 
     }
 
