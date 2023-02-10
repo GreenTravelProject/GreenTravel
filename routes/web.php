@@ -28,7 +28,8 @@ Route::get('/category', function () {
 Route::get('/admin', [ProductController::class, 'mostrar_productos']);
 Route::get('/edit/{id}', [ProductController::class, 'editar_producto'])->name('products.edit');
 Route::put('/update/{id}', [ProductController::class, 'actualizar_producto'])->name('products.update');
-
+//en notas se creaba en la misma página , hay que crear una nueva vista o ponerla abajo
+Route::get('/create', [ProductController::class, 'crear_producto'])->name('products.create');
 
 Route::get('/login', function () {
     return view('login');

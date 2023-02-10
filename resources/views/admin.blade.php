@@ -24,10 +24,10 @@
                         <th scope="row">{{ $product->id }}</th>
                         <td>{{ $product->name }}</td>
                         <td>
-                        @foreach ($product->categories as $category)
-                          {{ $category->name }}
-                        @endforeach
-                    </td>
+                            @foreach ($product->categories as $category)
+                                {{ $category->name }}
+                            @endforeach
+                        </td>
                         <td>{{ substr($product->description, 0, 50) }}...</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->date }}</td>
@@ -42,6 +42,8 @@
                 @endforeach
             </tbody>
         </table>
+        <button class="btn btn-success"><a class="text-decoration-none text-white"
+                href="{{ route('products.create') }}">Crear producto</a></button>
         {{-- Esto es para que genere los botones de paginación (la paginación está en el ProductsController) --}}
         <div>{{ $productos->links() }}</div>
     </div>
