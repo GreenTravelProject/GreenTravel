@@ -23,9 +23,11 @@
                     <tr>
                         <th scope="row">{{ $product->id }}</th>
                         <td>{{ $product->name }}</td>
+                        <td>
                         @foreach ($product->categories as $category)
-                            <td>{{ $category->name }}</td>
+                          {{ $category->name }}
                         @endforeach
+                    </td>
                         <td>{{ substr($product->description, 0, 50) }}...</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->date }}</td>
