@@ -28,10 +28,11 @@ class ProductController extends Controller
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
             'description' => 'required|alpha|min:3',
             'price' => 'required|decimal:2,4',
-            'date' => 'required|date_format:Y/m/d',
-            'state' => 'required|boolean',
+            'date' => 'required|date_format:Y-m-d',
+            'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|min:3|max:255'
+            'img' => 'required|min:3|max:255',
+            'category' => 'required'
         ]);
 
         $crearProducto = new Product;
@@ -43,10 +44,18 @@ class ProductController extends Controller
         $crearProducto->state = $request->state;
         $crearProducto->stock = $request->stock;
         $crearProducto->img = $request->img;
-
         $crearProducto->save();
+        //Si se selecciona 1 categoría, se añade directamente. Si no, se va insertando una por una con un for:
+        if (count($request->category) == 1) {
+            $crearProducto->categories()->attach($request->category);
 
-        return back()->with('mensaje', 'El producto se ha añadido correctamente');
+        } else {
+            foreach ($request->category as $s) {
+                $crearProducto->categories()->attach($s);
+            }
+        }
+
+        return back()->with('mensaje', 'El producto se ha añadido correctamente' . $request);
     }
 
     public function editar_producto($id)
@@ -94,10 +103,11 @@ class ProductController extends Controller
                 if (count($request->category) == 1) {
                     $producto->categories()->attach($request->category);
 
-                } else
+                } else {
                     foreach ($request->category as $s) {
                         $producto->categories()->attach($s);
                     }
+                }
             }
             $producto->save();
             return back()->with('mensaje', 'El producto ha sido modificado' . $request);

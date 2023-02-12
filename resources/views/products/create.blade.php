@@ -1,7 +1,10 @@
 @extends('template.templateAdmin')
 @section('edit')
-    {{-- Vista para editar los productos --}}
-
+    {{-- Vista para crear los productos --}}
+    @if (session('errors'))
+        {{-- TODO: HAY QUE MODIFICAR LOS ERRORES --}}
+        {{ session('errors') }}
+    @endif
     @if (session('mensaje'))
         <div class="alert alert-success">
             {{ session('mensaje') }}
@@ -19,20 +22,19 @@
 
     <section class="container p-5 my-3 adminForm">
         <h2>Crear nuevo producto</h2>
-        <form action="" method="POST">
-            @method('PUT') {{-- Necesitamos cambiar al método PUT para editar --}}
+        <form action="{{ route('products.insert') }}" method="POST">
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
-
-
             <div class="d-grid">
                 <div class="row p-2 py-md-3">
                     <div class="col-md-5">
                         <label for="name">Nombre: </label>
-                        <input type="text" name="name" class="form-control" placeholder = "Nombre del producto" autofocus>
+                        <input type="text" name="name" class="form-control" placeholder="Nombre del producto"
+                            autofocus>
                     </div>
                     <div class="col-md-2">
                         <label for="price">Precio: </label>
-                        <input type="number" step="0.01" name="price" placeholder = "0.00" class="form-control" autofocus>
+                        <input type="number" step="0.01" name="price" placeholder="0.00" class="form-control"
+                            autofocus onchange="priceInDecimal(this)">
                     </div>
                     <div class="col-md-5">
                         <label for="date">Fecha: </label>
@@ -70,7 +72,8 @@
                         <div id="checkboxes" name="categories">
                             @foreach ($categories as $category)
                                 <label class="d-flex py-1 px-3 gap-2" for="{{ $category->name }}">{{ $category->name }}
-                                    <input type="checkbox" id="{{ $category->name }}" name="category[]"></input></label>
+                                    <input type="checkbox" id="{{ $category->name }}" name="category[]"
+                                        value="{{ $category->id }}"></input></label>
                             @endforeach
                         </div>
                     </div>
@@ -93,6 +96,11 @@
                 checkboxes.style.display = "none";
                 expanded = false;
             }
+        }
+        {{-- TODO: REVISAR CONTROL DE DECIMALES EN EL PRECIO --}}
+
+        function priceInDecimal(input) {
+            input.value = parseFloat(input.value).toFixed(2);
         }
     </script>
 @endsection
