@@ -1,7 +1,11 @@
 @extends('template.templateAdmin')
 @section('products')
     {{-- Primera vista del admin: mostrar_productos() --}}
-    <div class="px-5 mt-5">
+    <div class="px-5 mt-4">
+        <div class="pb-3">
+            <button class="btn btn-success"><a class="text-decoration-none text-white"
+                    href="{{ route('products.create') }}">Crear producto</a></button>
+        </div>
         <table class="table table-responsive table-bordered text-center">
             <thead>
                 <tr class="text-center">
@@ -42,9 +46,7 @@
                 @endforeach
             </tbody>
         </table>
-        <button class="btn btn-success"><a class="text-decoration-none text-white"
-                href="{{ route('products.create') }}">Crear producto</a></button>
-        {{-- Esto es para que genere los botones de paginación (la paginación está en el ProductsController) --}}
         <div>{{ $productos->links() }}</div>
+
     </div>
 @endsection
