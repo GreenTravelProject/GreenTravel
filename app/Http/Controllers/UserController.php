@@ -11,51 +11,51 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    //todo redirigir al completar un registro
-    public function crear_usuario(Request $request){
+    //! Lo realiza Fortify
+    // public function crear_usuario(Request $request){
 
-        $request->validate([
-            'name' => 'required|alpha|min:3|max:255',
-            'surname' => 'required|alpha|min:3|max:255',
-            'birth_date' => 'required|date',
-            'phone' => 'required|numeric|digits:9',
-            'email' => 'required|email|unique:users,email|max:255',
-            'password' => 'required|min:8|max:255|same:password_verify',
-            'genre' => Rule::in(['F','M','O']),
-        ]);
+    //     $request->validate([
+    //         'name' => 'required|alpha|min:3|max:255',
+    //         'surname' => 'required|alpha|min:3|max:255',
+    //         'birth_date' => 'required|date',
+    //         'phone' => 'required|numeric|digits:9',
+    //         'email' => 'required|email|unique:users,email|max:255',
+    //         'password' => 'required|min:8|max:255|same:password_verify',
+    //         'genre' => Rule::in(['F','M','O']),
+    //     ]);
 
-        $crearUsuario = new User;
+    //     $crearUsuario = new User;
 
-        $crearUsuario->name = $request->name;
-        $crearUsuario->surname = $request->surname;
-        $crearUsuario->phone = $request->phone;
-        $crearUsuario->birth_date = $request->birth_date;
-        $crearUsuario->genre = $request->genre ?? 'O'; //? Si no elije género será O(otro).
-        $crearUsuario->admin = 0;
-        $crearUsuario->email = $request->email;
-        $crearUsuario->password = $request->password;
+    //     $crearUsuario->name = $request->name;
+    //     $crearUsuario->surname = $request->surname;
+    //     $crearUsuario->phone = $request->phone;
+    //     $crearUsuario->birth_date = $request->birth_date;
+    //     $crearUsuario->genre = $request->genre ?? 'O';
+    //     $crearUsuario->admin = 0;
+    //     $crearUsuario->email = $request->email;
+    //     $crearUsuario->password = $request->password;
 
-        $crearUsuario->save();
+    //     $crearUsuario->save();
 
 
-        //Crear carrito en el momento de crear el usuario
-        //? No sé si valdrá hacerlo así
-        $crearCarrito = new Shopping_cart;
-        $crearCarrito->user_id = $crearUsuario->id;
-        $crearCarrito->save();
+    //* Lo realiza un trigger en la bbdd
+    //     //Crear carrito en el momento de crear el usuario
+    //     $crearCarrito = new Shopping_cart;
+    //     $crearCarrito->user_id = $crearUsuario->id;
+    //     $crearCarrito->save();
 
-        //Crear favorito en el momento de crear el usuario
-        //? No sé si valdrá hacerlo así
-        $crearFavorito = new Favorite;
-        $crearFavorito->user_id = $crearUsuario->id;
-        $crearFavorito->save();
+    //     //Crear favorito en el momento de crear el usuario
+    //* Lo realiza un trigger en la bbdd
+    //     $crearFavorito = new Favorite;
+    //     $crearFavorito->user_id = $crearUsuario->id;
+    //     $crearFavorito->save();
 
-        return back()->with('mensaje', 'El suario ha sido creado exitosamente');
+    //     return back()->with('mensaje', 'El suario ha sido creado exitosamente');
 
-    }
+    // }
 
-    public function mostrar_usuario($user_ID){
-        $usuario = User::findOrFail($user_ID); //Recoge el usuario mediante el ID del usuario con sesión
+    public function mostrar_usuario(){
+        $usuario = User::findOrFail(Auth::id()); //Recoge el usuario mediante el ID del usuario con sesión
         return view('user', @compact('usuario'));
     }
 
