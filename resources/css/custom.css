@@ -102,27 +102,27 @@ body {
 
 /*Fondos para descripción de categorías (categoy)*/
 
-.bgdeportes {
+.bgDeportes {
     background: url("../../public/img/deportesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgacuatico {
+.bgAcuatico {
     background: url("../../public/img/acuaticoCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgextranjero {
+.bgExtranjero {
     background: url("../../public/img/extranjeroCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bganimales {
+.bgAnimales {
     background: url("../../public/img/animalesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bgcamping {
+.bgCamping {
     background: url("../../public/img/campingCategory.png");
     background-repeat: no-repeat;
     background-size: cover;

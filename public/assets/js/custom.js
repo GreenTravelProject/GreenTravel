@@ -32,5 +32,11 @@ function showCheckboxes() {
 
 //Cambiar a decimal automáticamente en crear/editar producto
 function priceInDecimal(input) {
-    input.value = parseFloat(input.value).toFixed(2);
+    let name = document.getElementById('price');
+    
+    name.value = parseFloat(input.value).toFixed(2);
+     //=name.value.replace(',','.');
+
+    //name.value=+rep;
+
 }
