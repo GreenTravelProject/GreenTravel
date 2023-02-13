@@ -1,18 +1,6 @@
 @extends('template.templateAdmin')
 @section('edit')
     {{-- Vista para editar los productos --}}
-    @if (session('errors'))
-        <div class="alert alert-danger">
-            {{-- TODO: HAY QUE MODIFICAR LOS ERRORES --}}
-            {{ session('errors') }}
-        </div>
-    @endif
-
-    @if (session('mensaje'))
-        <div class="alert alert-success">
-            {{ session('mensaje') }}
-        </div>
-    @endif
 
     <section class="container p-5 my-3 adminForm">
         <h2>Editando el producto {{ $producto->id }}</h2>
@@ -23,12 +11,13 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-5">
                         <label for="name">Nombre: </label>
-                        <input type="text" name="name" class="form-control" value="{{ $producto->name }}" autofocus>
+                        <input type="text" name="name" class="form-control" value="{{ $producto->name }}" required
+                            autofocus>
                     </div>
                     <div class="col-md-2">
                         <label for="price">Precio: </label>
                         <input type="number" step="0.01" name="price" id="price" class="form-control"
-                            value="{{ $producto->price }}" autofocus onchange="priceInDecimal(this)">
+                            value="{{ $producto->price }}" autofocus required onchange="priceInDecimal(this)">
                     </div>
                     <div class="col-md-5">
                         <label for="date">Fecha: </label>
@@ -38,17 +27,18 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-10">
                         <label for="description">Descripción: </label>
-                        <textarea name="description" class="form-control" placeholder="Descripción del producto">{{ $producto->description }}</textarea>
+                        <textarea name="description" class="form-control" placeholder="Descripción del producto" required>{{ $producto->description }}</textarea>
                     </div>
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="state" class="p-3">Estado:</label>
-                        <input type="checkbox" name="state" id="state" checked value="1">
+                        <input type="checkbox" name="state" id="state" {{ $producto->state == 1 ? 'checked' : '' }}
+                            value="1">
                     </div>
                 </div>
                 <div class="row p-2 py-md-3">
                     <div class="col-md-3">
                         <label for="stock">Stock: </label>
-                        <input type="number" name="stock" class="form-control" value="{{ $producto->stock }}"
+                        <input type="number" name="stock" class="form-control" required value="{{ $producto->stock }}"
                             placeholder="1" autofocus>
                     </div>
                     <div class="col-md-6">
@@ -75,7 +65,21 @@
                         </div>
                     </div>
                 </div>
-
+                @if (session('mensaje'))
+                    <div class="alert alert-success">
+                        {{ session('mensaje') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        {!! implode('', $errors->all('<li>:message</li>')) !!}
+                    </div>
+                @endif
+                @if (session('mensaje'))
+                    <div class="alert alert-success">
+                        {{ session('mensaje') }}
+                    </div>
+                @endif
                 <button class="btn btn-success m-2" type="submit">Guardar cambios</button>
 
         </form>

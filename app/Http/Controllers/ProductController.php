@@ -42,6 +42,11 @@ class ProductController extends Controller
         $crearProducto->price = $request->price;
         $crearProducto->date = $request->date;
         $crearProducto->state = $request->state;
+        if ($request->state == null) {
+            $crearProducto->state = 0;
+        } else {
+            $crearProducto->state = 1;
+        }
         $crearProducto->stock = $request->stock;
         $crearProducto->img = $request->img;
         $crearProducto->save();
@@ -77,7 +82,9 @@ class ProductController extends Controller
             'stock' => 'required|integer',
             'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
             'category' => 'required'
-        ]);
+        ], [
+                'img.regex' => "No lo dejes vacío"
+            ]);
 
         $errors = $request->has('errors');
 

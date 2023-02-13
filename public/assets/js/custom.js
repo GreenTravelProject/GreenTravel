@@ -32,11 +32,8 @@ function showCheckboxes() {
 
 //Cambiar a decimal automáticamente en crear/editar producto
 function priceInDecimal(input) {
-    let name = document.getElementById('price');
-    
-    name.value = parseFloat(input.value).toFixed(2);
-     //=name.value.replace(',','.');
+    let name = document.getElementById("price");
 
-    //name.value=+rep;
-
+    name.value = parseFloat(name.value).toFixed(2);
+    name.value = name.value.replace(",", "."); //Aunque no se vea en el formulario, mete el punto en la BBDD
 }
