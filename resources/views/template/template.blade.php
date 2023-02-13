@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Green Travel</title>
     @vite(['resources/css/app.scss', 'resources/js/app.js', 'resources/css/custom.css', 'resources/js/custom.js'])
+    <script defer src="{{ URL::asset("assets/js/custom.js")}}"></script>
     <link rel="icon" type="image/jpg" href="{{ URL::asset('favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
