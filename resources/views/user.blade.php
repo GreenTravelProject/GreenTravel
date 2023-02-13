@@ -204,7 +204,7 @@ function reveal(id) {
         for (let i = 0, len = allTexts.length; i < len; i++) {
             allTexts[i].style.display = "none";
         }
-        
+
         e.style.display = "inline";
     }
 }
