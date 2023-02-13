@@ -206,6 +206,10 @@ body {
     #user-cont{
         width: 100%;
     }
+
+    #nacimiento{
+        margin-top: 1.5em;
+    }
 }
 
 /*LOG-IN*/
