@@ -31,13 +31,13 @@ Route::put('/update/{id}', [ProductController::class, 'actualizar_producto'])->n
 Route::get('/create', [ProductController::class, 'crear_producto'])->name('products.create');
 Route::post('/insert', [ProductController::class, 'insertar_producto'])->name('products.insert');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+// Route::get('/login', function () {
+//     return view('login');
+// })->name('login');
 
-Route::get('/signup', function () {
-    return view('signup');
-})->name('signup');
+// Route::get('/signup', function () {
+//     return view('signup');
+// })->name('signup');
 
 Route::get('/user', function () {
     return view('user');
@@ -52,7 +52,7 @@ Route::get('/shoppingCart', function () {
 Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');
 
 //Para registrar un nuevo usuario
-Route::post('/signup}', [UserController::class, "crear_usuario"])->name('signup.register');
+// Route::post('/signup}', [UserController::class, "crear_usuario"])->name('signup.register');
 
 //! No funciona, tiene que explicarlo Olga
-Route::post('/login', [LogInController::class, 'authenticate'])->name('verify');
+// Route::post('/login', [LogInController::class, 'authenticate'])->name('verify');
