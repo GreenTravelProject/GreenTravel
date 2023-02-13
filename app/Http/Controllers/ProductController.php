@@ -26,7 +26,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
-            'description' => 'required|alpha|min:3',
+            'description' => 'required|string|min:3',
             'price' => 'required|decimal:2,4',
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
@@ -55,7 +55,7 @@ class ProductController extends Controller
             }
         }
 
-        return back()->with('mensaje', 'El producto se ha añadido correctamente' . $request);
+        return back()->with('mensaje', 'El producto se ha añadido correctamente');
     }
 
     public function editar_producto($id)
@@ -71,7 +71,7 @@ class ProductController extends Controller
         //TODO: categoría nunca puede estar vacía, peta
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
-            'description' => 'required|alpha|min:3',
+            'description' => 'required|string|min:3',
             'price' => 'required|decimal:2,4',
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
@@ -82,7 +82,7 @@ class ProductController extends Controller
 
         $errors = $request->has('errors');
 
-        if ($errors) {
+        if (!$errors) {
             $producto = Product::findOrFail($id);
             $producto->id = $request->id;
             $producto->name = $request->name;
@@ -115,7 +115,6 @@ class ProductController extends Controller
             return back()->with('errors');
 
         }
-
     }
 
     public function eliminar_producto($id)

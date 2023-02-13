@@ -2,8 +2,16 @@
 @section('edit')
     {{-- Vista para editar los productos --}}
     @if (session('errors'))
-        {{-- TODO: HAY QUE MODIFICAR LOS ERRORES --}}
-        {{ session('errors') }}
+        <div class="alert alert-danger">
+            {{-- TODO: HAY QUE MODIFICAR LOS ERRORES --}}
+            {{ session('errors') }}
+        </div>
+    @endif
+
+    @if (session('mensaje'))
+        <div class="alert alert-success">
+            {{ session('mensaje') }}
+        </div>
     @endif
 
     <section class="container p-5 my-3 adminForm">

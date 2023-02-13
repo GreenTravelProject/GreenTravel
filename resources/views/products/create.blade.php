@@ -11,15 +11,6 @@
         </div>
     @endif
 
-    @error('name')
-        <div class="alert alert-danger"> El nombre es obligatorio </div>
-    @enderror
-
-    @error('description')
-        <div class="alert alert-danger"> La descripción es obligatoria </div>
-    @enderror
-    {{-- TODO: ERRORES ?? --}}
-
     <section class="container p-5 my-3 adminForm">
         <h2>Crear nuevo producto</h2>
         <form action="{{ route('products.insert') }}" method="POST">
@@ -98,9 +89,5 @@
             }
         }
         {{-- TODO: REVISAR CONTROL DE DECIMALES EN EL PRECIO --}}
-
-        function priceInDecimal(input) {
-            input.value = parseFloat(input.value).toFixed(2);
-        }
-    </script>
+     </script>
 @endsection
