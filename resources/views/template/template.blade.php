@@ -9,7 +9,6 @@
     <script defer src="assets/js/custom.js"></script>
     <link rel="icon" type="image/jpg" href="{{ URL::asset('favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    
 </head>
 
 <body>

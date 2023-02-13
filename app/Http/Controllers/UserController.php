@@ -67,7 +67,7 @@ class UserController extends Controller
         }
     }
 
-    public function actualizar_usuario(Request $request){
+    public function actualizar_usuario(Request $request, $user_ID){
         $request->validate([
             'name' => 'required|min:4|max:255',
             'surname' => 'required|min:4|max:255',
@@ -78,7 +78,7 @@ class UserController extends Controller
             'genre' => Rule::in(['F','M','O']),
         ]);
 
-        $usuario = User::findOrFail(Auth::id());
+        $usuario = User::findOrFail($user_ID);
         $usuario->name = $request->name;
         $usuario->surname = $request->surname;
         $usuario->phone = $request->phone;
@@ -94,12 +94,12 @@ class UserController extends Controller
 
     }
 
-    public function eliminar_usuario($id){
+    public function eliminar_usuario($user_ID){
 
         $user = User::findOrFail(Auth::id());
 
         if($user->admin === 1){ // Borra la cuenta (ADMIN)
-            $usuario = User::findOrFail($id);
+            $usuario = User::findOrFail($user_ID);
             $usuario->delete();
         }else{ //Deshabilita la cuenta (Usuario)
             $user->state = 0;
