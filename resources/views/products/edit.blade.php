@@ -38,7 +38,7 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-10">
                         <label for="description">Descripción: </label>
-                        <textarea name="description" class="form-control">{{ $producto->description }}</textarea>
+                        <textarea name="description" class="form-control" placeholder = "Descripción del producto">{{ $producto->description }}</textarea>
                     </div>
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="state" class="p-3">Estado:</label>
@@ -48,11 +48,12 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-3">
                         <label for="stock">Stock: </label>
-                        <input type="number" name="stock" class="form-control" value="{{ $producto->stock }}" autofocus>
+                        <input type="number" name="stock" class="form-control" value="{{ $producto->stock }}"  placeholder = "1" autofocus>
                     </div>
                     <div class="col-md-6">
                         <label for="img">Imagen: </label>
-                        <input type="text" name="img" class="form-control" value="{{ $producto->img }}" autofocus>
+                        <input type="text" name="img" class="form-control" value="{{ $producto->img }}"
+                            placeholder="producto1.jpg" autofocus>
                     </div>
                     <div class="col-md-3">
                         <label for="select">Categorías:</label>

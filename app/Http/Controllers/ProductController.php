@@ -31,7 +31,7 @@ class ProductController extends Controller
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|min:3|max:255',
+            'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
             'category' => 'required'
         ]);
 
@@ -67,7 +67,6 @@ class ProductController extends Controller
 
     public function actualizar_producto(Request $request, $id)
     {
-        //TODO: FUNCIÓN JAVASCRIPT PARA QUE PRECIO SIEMPRE SEA DECIMAL ,00
         //TODO: categoría nunca puede estar vacía, peta
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
@@ -76,7 +75,7 @@ class ProductController extends Controller
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|min:3|max:255',
+            'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
             'category' => 'required'
         ]);
 
