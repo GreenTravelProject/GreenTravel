@@ -74,20 +74,4 @@
 
         </form>
     </section>
-    <script>
-        {{-- TODO: ¿POR QUÉ NO LEE JAVASCRIPT???? --}}
-        let expanded = false;
-
-        function showCheckboxes() {
-            let checkboxes = document.getElementById("checkboxes");
-            if (!expanded) {
-                checkboxes.style.display = "block";
-                expanded = true;
-            } else {
-                checkboxes.style.display = "none";
-                expanded = false;
-            }
-        }
-        {{-- TODO: REVISAR CONTROL DE DECIMALES EN EL PRECIO --}}
-     </script>
 @endsection
