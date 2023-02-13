@@ -32,7 +32,7 @@ Route::get('/create', [ProductController::class, 'crear_producto'])->name('produ
 Route::post('/insert', [ProductController::class, 'insertar_producto'])->name('products.insert');
 
 
-Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth.basic');
+Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
 
 
 Route::get('/shoppingCart', function () {
