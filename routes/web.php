@@ -40,9 +40,7 @@ Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
 
-Route::get('/user', function () {
-    return view('user');
-});
+Route::get('/user/{id?}', [UserController::class, "mostrar_usuario"])->name('mostrar_usuario');
 
 Route::get('/shoppingCart', function () {
     return view('/shoppingCart');
