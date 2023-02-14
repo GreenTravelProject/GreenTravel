@@ -23,14 +23,14 @@ Route::get('/category', function () {
     return view('category');
 });
 
-Route::prefix('/admin')->group(function () {
+//Llamamos al middleware de isAdmin (configurado en kernel.php y adminMiddleware) para asegurarnos que solo los admin acceden al dashboard
+Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get(
         '/',
         function () {
             return view('admin');
         }
-    ); //->middleware('auth.basic');
-
+    );
     Route::prefix('/products')->group(
         function () {
             Route::get('/', [ProductController::class, 'mostrar_productos'])->name('admin.products');

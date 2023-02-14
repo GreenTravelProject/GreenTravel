@@ -75,11 +75,6 @@
                         {!! implode('', $errors->all('<li>:message</li>')) !!}
                     </div>
                 @endif
-                @if (session('mensaje'))
-                    <div class="alert alert-success">
-                        {{ session('mensaje') }}
-                    </div>
-                @endif
                 <button class="btn btn-success m-2" type="submit">Guardar cambios</button>
 
         </form>

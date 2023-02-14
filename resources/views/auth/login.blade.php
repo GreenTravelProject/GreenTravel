@@ -5,6 +5,13 @@
         <form method="POST" action="{{ route('login') }}" class="text-center">
             @csrf
             <h1>INICIAR SESIÓN</h1><br>
+            @if (session('mensaje'))
+                {
+  
+                    {{ session('mensaje') }}
+        
+                }
+            @endif
             @error('email')
                 //! No está funcionando, tiene que explicarlo olga
             @enderror
@@ -12,7 +19,8 @@
             <div class="form-group row mb-3">
                 <label for="email" class="col-form-label text-md-right">{{ __('E-Mail') }}</label>
                 <div>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -24,8 +32,9 @@
             <div class="form-group row mb-3">
                 <label for="password" class="col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
-                <div >
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                <div>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="current-password">
 
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -35,9 +44,10 @@
                 </div>
             </div>
             <div class="form-group row mb-3">
-                <div >
+                <div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                            {{ old('remember') ? 'checked' : '' }}>
 
                         <label class="form-check-label" for="remember">
                             {{ __('Recordar usuario') }}
@@ -60,5 +70,5 @@
             </div>
         </form>
     </div>
-    <p id="p-login" class="text-center">Si no estás registrado pulsa <a  href="{{ route('register') }}">aquí</a></p>
+    <p id="p-login" class="text-center">Si no estás registrado pulsa <a href="{{ route('register') }}">aquí</a></p>
 @endsection

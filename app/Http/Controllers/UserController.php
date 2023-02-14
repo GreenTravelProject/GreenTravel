@@ -88,10 +88,10 @@ class UserController extends Controller
     public function actualizar_usuario(Request $request, $user_ID)
     {
         $request->validate([
-            'name' => 'required|min:4|max:255',
-            'surname' => 'required|min:4|max:255',
+            'name' => 'required|alpha|min:4|max:255',
+            'surname' => 'required|regex:/^[\pL\s\-]+$/u|min:4|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|integer|max:8|min:8',
+            'phone' => 'required|integer|min:8',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255',
             'genre' => Rule::in(['F', 'M', 'O']),
@@ -103,14 +103,18 @@ class UserController extends Controller
         $usuario->phone = $request->phone;
         $usuario->birth_date = $request->birth_date;
         $usuario->genre = $request->genre ?? 'O';
-        $usuario->admin = 0;
+        if ($request->admin == null) {
+            $usuario->admin = 0;
+        } else {
+            $usuario->admin = 1;
+        }
+        //TODO: hay un problema con email unique: si se deja el mismo que tenía antes, peta
         $usuario->email = $request->email;
         $usuario->password = $request->password;
 
         $usuario->save();
 
         return back()->with('mensaje', 'Los datos han sido modificados.');
-
     }
 
     public function eliminar_usuario($user_ID)

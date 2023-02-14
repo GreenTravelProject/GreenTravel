@@ -9,9 +9,9 @@
             <button class="btn btn-success"><a class="text-decoration-none text-white"
                     href="{{ route('products.create') }}">Crear producto</a></button>
         </div>
-        <table class="table table-responsive table-bordered text-center">
+        <table class="table table-responsive table-bordered text-center ">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center bg-dark text-white">
                     <th scope="col">id</th>
                     <th scope="col">name</th>
                     <th scope="col">Categoría</th>
@@ -27,7 +27,7 @@
             </thead>
             <tbody class="table-group-divider">
                 @foreach ($productos as $product)
-                    <tr>
+                    <tr class = "align-middle">
                         <th scope="row">{{ $product->id }}</th>
                         <td>{{ $product->name }}</td>
                         <td>
@@ -36,7 +36,7 @@
                             @endforeach
                         </td>
                         <td>{{ substr($product->description, 0, 50) }}...</td>
-                        <td>{{ $product->price }}</td>
+                        <td class = "d-flex justify-content-center align-items-center">{{ $product->price }}</td>
                         <td>{{ $product->date }}</td>
                         <td>{{ $product->state }}</td>
                         <td>{{ $product->stock }}</td>

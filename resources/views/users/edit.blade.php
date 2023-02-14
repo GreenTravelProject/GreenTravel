@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="row p-2 py-md-3">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="email">Email: </label>
                         <input id="email" class="form-control" type="email" name="email"
                             value="{{ $usuario->email }}" required autocomplete="email" autofocus>
@@ -51,12 +51,12 @@
                         <input id="password" class="form-control" type="password" name="password" required
                             autocomplete="password" autofocus value="{{ $usuario->password }}">
                     </div>
-                </div>
-                @if (session('mensaje'))
-                    <div class="alert alert-success">
-                        {{ session('mensaje') }}
+                    <div class="col-md-2 d-flex align-items-center gap-3 justify-content-center">
+                        <label for="admin">Admin:</label>
+                        <input type="checkbox" name="admin" id="admin" {{ $usuario->admin == 1 ? 'checked' : '' }}
+                            value="1">
                     </div>
-                @endif
+                </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         {!! implode('', $errors->all('<li>:message</li>')) !!}
