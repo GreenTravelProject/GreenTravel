@@ -100,7 +100,7 @@
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)
-                                <li class="mt-2"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                                <li class="mt-md-1"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
