@@ -12,8 +12,6 @@ class CartController extends Controller
 {
 
     // Mostrar los productos que actualmente se encuentra en el carrito.
-    // ? Podríamos hacerlo así, si se selecciona un producto se añade a la bbdd (Aunque no se confirme la compra)
-    // ? Cuando se confirme se vuelcan los datos en la tabla pedido y se borran del carrito.
     public function show_cart(){
         $shopping_cart = Shopping_cart::where('user_id', Auth::id());
 
