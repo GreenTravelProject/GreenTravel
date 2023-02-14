@@ -20,7 +20,7 @@ class ProductController extends Controller
     {
         $productos = Product::all();
         $productos = Product::paginate(10);
-        return view('admin', @compact('productos'));
+        return view('products.adminProducts', @compact('productos'));
     }
     public function insertar_producto(Request $request)
     {
