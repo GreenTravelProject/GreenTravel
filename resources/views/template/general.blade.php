@@ -19,11 +19,9 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
                     <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#!">Deportes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Camping</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Extranjero</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Acuático</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Animales</a></li>
+                        @foreach ($categories as $category)
+                            <li class="nav-item"><a class="nav-link" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </ul>
             </div>
