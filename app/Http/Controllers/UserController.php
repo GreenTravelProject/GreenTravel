@@ -54,20 +54,31 @@ class UserController extends Controller
 
     // }
 
-    public function mostrar_usuario(){
+    public function mostrar_usuario()
+    {
         $usuario = User::findOrFail(Auth::id()); //Recoge el usuario mediante el ID del usuario con sesión
         return view('user', @compact('usuario'));
     }
 
-    public function mostrar_todos(){
-        $usuario = User::findOrFail(Auth::id());
-        if($usuario->admin === 1){ //Comprueba que el usuario tenga permiso de administrador
-            $notas = User::paginate(5);
-            return view('admin', @compact('usuarios'));
-        }
+    public function mostrar_usuarios()
+    {
+        $users = User::all();
+        $users = User::paginate(10);
+        return view('users.adminUsers', @compact('users'));
     }
+    /*
+    public function mostrar_usuarios()
+    {
+    //$usuario = User::findOrFail(Auth::id());
+    //if ($usuario->admin === 1) { //Comprueba que el usuario tenga permiso de administrador
+    $usuarios = User::all();
+    $usuarios = User::paginate(5);
+    return view('users.adminUsers', @compact('usuarios'));
+    //}
+    }*/
 
-    public function actualizar_usuario(Request $request, $user_ID){
+    public function actualizar_usuario(Request $request, $user_ID)
+    {
         $request->validate([
             'name' => 'required|min:4|max:255',
             'surname' => 'required|min:4|max:255',
@@ -75,7 +86,7 @@ class UserController extends Controller
             'phone' => 'required|integer|max:9|min:9',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255',
-            'genre' => Rule::in(['F','M','O']),
+            'genre' => Rule::in(['F', 'M', 'O']),
         ]);
 
         $usuario = User::findOrFail($user_ID);
@@ -94,14 +105,15 @@ class UserController extends Controller
 
     }
 
-    public function eliminar_usuario($user_ID){
+    public function eliminar_usuario($user_ID)
+    {
 
         $user = User::findOrFail(Auth::id());
 
-        if($user->admin === 1){ // Borra la cuenta (ADMIN)
+        if ($user->admin === 1) { // Borra la cuenta (ADMIN)
             $usuario = User::findOrFail($user_ID);
             $usuario->delete();
-        }else{ //Deshabilita la cuenta (Usuario)
+        } else { //Deshabilita la cuenta (Usuario)
             $user->state = 0;
             $user->save();
         }
