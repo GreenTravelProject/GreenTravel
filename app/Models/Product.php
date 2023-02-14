@@ -25,4 +25,10 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
+
+    // Obtener los pedidos en los que se encuentra el producto
+    public function daliveries()
+    {
+        return $this->belongsToMany(Delivery::class)->withTimestamps();
+    }
 }

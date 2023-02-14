@@ -15,14 +15,21 @@ class Delivery extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Obtener dirección del producto
-    public function adress(){
-        return $this->belongsTo(Adress::class);
+    // Obtener productos
+    public function products(){
+        return $this->belongsToMany(Product::class)->withTimestamps();
     }
 
-    // Obtener el carro que pertenece al pedido
+    // Obtener el carro al que pertenece el pedido
     public function shopping_cart(){
-        return $this->hasOne(Shopping_cart::class);
+        return $this->belongsTo(Shopping_cart::class);
     }
+
+    // Obtener dirección del producto
+    // public function adress(){
+    //     return $this->belongsTo(Adress::class);
+    // }
+
+
 
 }

@@ -15,7 +15,7 @@ class Adress extends Model
     }
 
     // Obtener pedidos que pertenencen a la dirección
-    public function deliveries(){
-        return $this->hasMany(Delivery::class);
-    }
+    // public function deliveries(){
+    //     return $this->hasMany(Delivery::class);
+    // }
 }
