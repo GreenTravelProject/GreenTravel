@@ -53,7 +53,7 @@ Route::prefix('/admin')->group(function () {
     );
 });
 
-Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth.basic');
+Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
 
 
 Route::get('/shoppingCart', function () {

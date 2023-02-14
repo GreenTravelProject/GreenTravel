@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Laravel\Fortify\Fortify;
 
 class UserController extends Controller
 {
@@ -54,8 +55,7 @@ class UserController extends Controller
 
     // }
 
-    public function mostrar_usuario()
-    {
+    public function mostrar_usuario(){
         $usuario = User::findOrFail(Auth::id()); //Recoge el usuario mediante el ID del usuario con sesión
         return view('user', @compact('usuario'));
     }
