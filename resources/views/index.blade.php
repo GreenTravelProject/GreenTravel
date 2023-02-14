@@ -273,11 +273,12 @@
         <h1 class="display-4 text-center">CATEGORÍAS</h1>
         <div class="p-5 gridCategory d-grid">
             @foreach ($categories as $category)
-                <div class="p-0 m-0 position-relative casilla">
-                    <p class="position-absolute text-category">{{ $category->name }}</p>
-                    <div class="overlay {{ strtolower($category->name) }}"></div>
-                    <img src="{{ URL::asset('img/' . $category->name . '.jpg') }}" class="img-fluid p-0 m-0"
-                        alt="{{ $category->name }}">
+                <div class="p-0 m-0 position-relative casilla"><a href="{{ route('category', $category->id) }}">
+                        <p class="position-absolute text-category">{{ $category->name }}</p>
+                        <div class="overlay {{ strtolower($category->name) }}"></div>
+                        <img src="{{ URL::asset('img/' . $category->name . '.jpg') }}" class="img-fluid p-0 m-0"
+                            alt="{{ $category->name }}">
+                    </a>
                 </div>
             @endforeach
         </div>
