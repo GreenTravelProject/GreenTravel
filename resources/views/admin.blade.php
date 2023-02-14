@@ -1,6 +1,9 @@
 @extends('template.templateAdmin')
 @section('products')
     {{-- Primera vista del admin: mostrar_productos() --}}
+    @if (session('mensaje'))
+        {{ session('mensaje') }}
+    @endif
     <div class="px-5 mt-4">
         <div class="pb-3">
             <button class="btn btn-success"><a class="text-decoration-none text-white"
@@ -40,13 +43,17 @@
                         <td class="td-img"><img class="img-admin" src="{{ URL::asset("img/$product->img") }}"></td>
                         <td class=" text-center"><a href="{{ route('products.edit', $product->id) }}"
                                 class="text-success"><i class="bi bi-pencil-fill"></i></a></td>
-                        <td class=" text-center"><a href="" class="text-danger text-center"><i
-                                    class="bi bi-trash3-fill"></i></a></td>
+                        <td class=" text-center">
+                            <form action="{{ route('products.delete', $product) }}" method="POST" class="d-inline">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger" type="submit"><i class="bi bi-trash3-fill"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <div>{{ $productos->links() }}</div>
-
     </div>
 @endsection

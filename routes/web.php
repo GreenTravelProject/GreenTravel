@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [CategoryController::class, 'categorias_index'])->name('index');
 
 Route::get('/category', function () {
     return view('category');
@@ -30,6 +28,7 @@ Route::get('/edit/{id}', [ProductController::class, 'editar_producto'])->name('p
 Route::put('/update/{id}', [ProductController::class, 'actualizar_producto'])->name('products.update');
 Route::get('/create', [ProductController::class, 'crear_producto'])->name('products.create');
 Route::post('/insert', [ProductController::class, 'insertar_producto'])->name('products.insert');
+Route::delete('delete/{id}', [ProductController::class, 'eliminar_producto'])->name('products.delete');
 
 
 Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
