@@ -26,12 +26,12 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
-            'description' => 'required|alpha|min:3',
+            'description' => 'required|string|min:3',
             'price' => 'required|decimal:2,4',
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|min:3|max:255',
+            'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
             'category' => 'required'
         ]);
 
@@ -42,6 +42,11 @@ class ProductController extends Controller
         $crearProducto->price = $request->price;
         $crearProducto->date = $request->date;
         $crearProducto->state = $request->state;
+        if ($request->state == null) {
+            $crearProducto->state = 0;
+        } else {
+            $crearProducto->state = 1;
+        }
         $crearProducto->stock = $request->stock;
         $crearProducto->img = $request->img;
         $crearProducto->save();
@@ -55,7 +60,7 @@ class ProductController extends Controller
             }
         }
 
-        return back()->with('mensaje', 'El producto se ha añadido correctamente' . $request);
+        return back()->with('mensaje', 'El producto se ha añadido correctamente');
     }
 
     public function editar_producto($id)
@@ -67,22 +72,23 @@ class ProductController extends Controller
 
     public function actualizar_producto(Request $request, $id)
     {
-        //TODO: FUNCIÓN JAVASCRIPT PARA QUE PRECIO SIEMPRE SEA DECIMAL ,00
         //TODO: categoría nunca puede estar vacía, peta
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
-            'description' => 'required|alpha|min:3',
+            'description' => 'required|string|min:3',
             'price' => 'required|decimal:2,4',
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|min:3|max:255',
+            'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
             'category' => 'required'
-        ]);
+        ], [
+                'img.regex' => "No lo dejes vacío"
+            ]);
 
         $errors = $request->has('errors');
 
-        if ($errors) {
+        if (!$errors) {
             $producto = Product::findOrFail($id);
             $producto->id = $request->id;
             $producto->name = $request->name;
@@ -115,7 +121,6 @@ class ProductController extends Controller
             return back()->with('errors');
 
         }
-
     }
 
     public function eliminar_producto($id)

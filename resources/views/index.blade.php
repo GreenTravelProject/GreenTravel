@@ -253,7 +253,8 @@
                     </div>
                 </div>
                 <div class="col-1 d-flex justify-content-center align-items-center">
-                    <a id="btn-carrousel" class="btn btn-success" href="#destacados" role="button" data-bs-slide="next">
+                    <a id="btn-carrousel" class="btn btn-success" href="#destacados" role="button"
+                        data-bs-slide="next">
                         <i class="bi-caret-right-fill"></i>
                     </a>
                 </div>
@@ -262,43 +263,24 @@
     </section>
     <section class="container-fluid p-5 bg-success">
         <div class="container">
-            <h4 class="m-0 p-4 text-center text-white">En Green Travel estamos comprometidos con facilitar las experiencias divertidas y saludables a todos nuestros usuarios, integrando para ello la sostenibilidad en su actividad diaria, habiendo obtenido el Certificado “S” de Turismo Sostenible, por su contribución a los Objetivos de Desarrollo Sostenibles relativos a Seguridad y Salud (ODS 3), Agua (ODS 6) y Energía (ODS 7).</h4>
+            <h4 class="m-0 p-4 text-center text-white">En Green Travel estamos comprometidos con facilitar las experiencias
+                divertidas y saludables a todos nuestros usuarios, integrando para ello la sostenibilidad en su actividad
+                diaria, habiendo obtenido el Certificado “S” de Turismo Sostenible, por su contribución a los Objetivos de
+                Desarrollo Sostenibles relativos a Seguridad y Salud (ODS 3), Agua (ODS 6) y Energía (ODS 7).</h4>
         </div>
     </section>
     <section class="categorias pt-5 pb-5">
         <h1 class="display-4 text-center">CATEGORÍAS</h1>
-        <div class="d-grid p-5">
-            <div class="row">
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
-                    <p class="position-absolute text-category">DEPORTES</p>
-                    <div class="overlay deportes"></div>
-                    <img src="{{ URL::asset('img/deportes.jpg') }}" class="img-fluid p-0 m-0" alt="deportes">
+        <div class="p-5 gridCategory d-grid">
+            @foreach ($categories as $category)
+                <div class="p-0 m-0 position-relative casilla"><a href="{{ route('category', $category->id) }}">
+                        <p class="position-absolute text-category">{{ $category->name }}</p>
+                        <div class="overlay {{ strtolower($category->name) }}"></div>
+                        <img src="{{ URL::asset('img/' . $category->name . '.jpg') }}" class="img-fluid p-0 m-0"
+                            alt="{{ $category->name }}">
+                    </a>
                 </div>
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
-                    <p class="position-absolute">CAMPING</p>
-                    <div class="overlay camping"></div>
-                    <img src="{{ URL::asset('img/camping.jpg') }}" class="img-fluid" alt="camping">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12  p-0 m-0 position-relative casilla">
-                    <p class="position-absolute">EXTRANJERO</p>
-                    <div class="overlay extranjero"></div>
-                    <img src="{{ URL::asset('img/extranjero.jpg') }}" class="img-fluid" alt="extranjero">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
-                    <p class="position-absolute">ACUÁTICO</p>
-                    <div class="overlay acuatico"></div>
-                    <img src="{{ URL::asset('img/acuatico.jpg') }}" class="img-fluid" alt="acuatico">
-                </div>
-                <div class="col-lg-6 col-12 p-0 m-0 position-relative casilla">
-                    <p class="position-absolute">ANIMALES</p>
-                    <div class="overlay animales"></div>
-                    <img src="{{ URL::asset('img/animales.jpg') }}" class="img-fluid" alt="animales">
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection

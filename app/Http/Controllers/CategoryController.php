@@ -25,4 +25,10 @@ class CategoryController extends BaseController
         //Devolvemos a la vista los datos de la categoría seleccionada
         return view('category', @compact("category", "products"));
     }
+
+    public function categorias_index()
+    {
+        $categories = Category::all();
+        return view('index', @compact("categories"));
+    }
 }
