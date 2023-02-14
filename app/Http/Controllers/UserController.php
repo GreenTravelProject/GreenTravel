@@ -55,7 +55,8 @@ class UserController extends Controller
 
     // }
 
-    public function mostrar_usuario(){
+    public function mostrar_usuario()
+    {
         $usuario = User::findOrFail(Auth::id()); //Recoge el usuario mediante el ID del usuario con sesión
         return view('user', @compact('usuario'));
     }
@@ -66,6 +67,13 @@ class UserController extends Controller
         $users = User::paginate(10);
         return view('users.adminUsers', @compact('users'));
     }
+
+    public function editar_usuario($id)
+    {
+        $usuario = User::findOrFail($id);
+        return view('users.edit', @compact('usuario'));
+    }
+
     /*
     public function mostrar_usuarios()
     {
@@ -83,7 +91,7 @@ class UserController extends Controller
             'name' => 'required|min:4|max:255',
             'surname' => 'required|min:4|max:255',
             'birth_date' => 'required|date',
-            'phone' => 'required|integer|max:9|min:9',
+            'phone' => 'required|integer|max:8|min:8',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255',
             'genre' => Rule::in(['F', 'M', 'O']),

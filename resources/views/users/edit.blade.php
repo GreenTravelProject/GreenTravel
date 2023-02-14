@@ -1,68 +1,55 @@
 @extends('template.templateAdmin')
 @section('edit')
-    {{-- Vista para editar los productos --}}
+    {{-- Vista para editar los usuarios --}}
 
     <section class="container p-5 my-3 adminForm">
-        <h2>Editando el producto {{ $producto->id }}</h2>
-        <form action="{{ route('products.update', $producto->id) }}" method="POST">
+        <h2>Editando al usuario {{ $usuario->id }}</h2>
+        <form action="{{ route('users.update', $usuario->id) }}" method="POST">
             @method('PUT') {{-- Necesitamos cambiar al método PUT para editar --}}
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
             <div class="d-grid">
                 <div class="row p-2 py-md-3">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <label for="name">Nombre: </label>
-                        <input type="text" name="name" class="form-control" value="{{ $producto->name }}" required
+                        <input type="text" name="name" class="form-control" value="{{ $usuario->name }}" required
                             autofocus>
                     </div>
-                    <div class="col-md-2">
-                        <label for="price">Precio: </label>
-                        <input type="number" step="0.01" name="price" id="price" class="form-control"
-                            value="{{ $producto->price }}" autofocus required onchange="priceInDecimal(this)">
-                    </div>
-                    <div class="col-md-5">
-                        <label for="date">Fecha: </label>
-                        <input class="form-control" type="date" name="date" value="{{ $producto->date }}" required>
-                    </div>
-                </div>
-                <div class="row p-2 py-md-3">
-                    <div class="col-md-10">
-                        <label for="description">Descripción: </label>
-                        <textarea name="description" class="form-control" placeholder="Descripción del producto" required>{{ $producto->description }}</textarea>
-                    </div>
-                    <div class="col-md-2 d-flex align-items-center">
-                        <label for="state" class="p-3">Estado:</label>
-                        <input type="checkbox" name="state" id="state" {{ $producto->state == 1 ? 'checked' : '' }}
-                            value="1">
+                    <div class="col-md-6">
+                        <label for="surname">Apellido: </label>
+                        <input type="text" name="surname" class="form-control" value="{{ $usuario->surname }}" required
+                            autofocus>
                     </div>
                 </div>
                 <div class="row p-2 py-md-3">
                     <div class="col-md-3">
-                        <label for="stock">Stock: </label>
-                        <input type="number" name="stock" class="form-control" required value="{{ $producto->stock }}"
-                            placeholder="1" autofocus>
+                        <label for="phone">Teléfono: </label>
+                        <input id="phone" class="form-control" type="tel" name="phone"
+                            value="{{ $usuario->phone }}" required autocomplete="phone" autofocus>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Género</label><select class="form-control" type="text" name="genre" value>
+                            <option selected="selected" disabled>-</option>
+                            <option @if ($usuario->genre == 'M') selected @endif value="M">Masculino</option>
+                            <option @if ($usuario->genre == 'F') selected @endif value="F">Femenino</option>
+                            <option @if ($usuario->genre == 'O') selected @endif value="O">Otro</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="img">Imagen: </label>
-                        <input type="text" name="img" class="form-control" value="{{ $producto->img }}"
-                            placeholder="producto1.jpg" autofocus>
+                        <label for="birth_date">Fecha de nacimiento</label>
+                        <input id="birth_date" class="form-control" type="date" name="birth_date"
+                            value="{{ $usuario->birth_date }}" required autocomplete="birth_date" autofocus>
                     </div>
-                    <div class="col-md-3">
-                        <label for="select">Categorías:</label>
-                        <div class="selectBox position-relative" onclick="showCheckboxes()">
-                            <select class="w-100 form-select" name="select" id="select">
-                                <option value="">Selecciona las categorías</option>
-                            </select>
-                            <div class="overSelect position-absolute"></div>
-                        </div>
-
-                        <div id="checkboxes" name="categories">
-                            @foreach ($categories as $category)
-                                <label class="d-flex py-1 px-3 gap-2" for="{{ $category->name }}">{{ $category->name }}
-                                    <input type="checkbox" id="{{ $category->name }}" name="category[]"
-                                        value="{{ $category->id }}"
-                                        {{ $producto->categories->contains($category->id) ? 'checked=true' : 'checked=false' }}></input></label>
-                            @endforeach
-                        </div>
+                </div>
+                <div class="row p-2 py-md-3">
+                    <div class="col-md-6">
+                        <label for="email">Email: </label>
+                        <input id="email" class="form-control" type="email" name="email"
+                            value="{{ $usuario->email }}" required autocomplete="email" autofocus>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password">Contraseña: </label>
+                        <input id="password" class="form-control" type="password" name="password" required
+                            autocomplete="password" autofocus value="{{ $usuario->password }}">
                     </div>
                 </div>
                 @if (session('mensaje'))
@@ -81,7 +68,6 @@
                     </div>
                 @endif
                 <button class="btn btn-success m-2" type="submit">Guardar cambios</button>
-
         </form>
     </section>
 @endsection
