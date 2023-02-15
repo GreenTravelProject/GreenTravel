@@ -30,7 +30,7 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
         function () {
             return view('admin');
         }
-    );
+    )->name('admin');
     Route::prefix('/products')->group(
         function () {
             Route::get('/', [ProductController::class, 'mostrar_productos'])->name('admin.products');
