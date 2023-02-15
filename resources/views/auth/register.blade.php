@@ -1,4 +1,4 @@
-@extends('template.general2')
+@extends('template.general3')
 @section('login')
     <div class="container">
         <form method="POST" action="{{ route('register') }}">

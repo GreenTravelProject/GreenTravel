@@ -8,22 +8,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Green Travel</title>
     @vite(['resources/css/app.scss', 'resources/js/app.js', 'resources/css/custom.css'])
-    <script defer src="{{ URL::asset("assets/js/custom.js")}}"></script>
+    <script defer src="{{ URL::asset('assets/js/custom.js') }}"></script>
     <link rel="icon" type="image/jpg" href="{{ URL::asset('favicon.ico') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
 </head>
 
-<body>
-    @yield('banner')
-    @yield('nav')
-    @yield('index')
-    @yield('category')
-    @yield('shoppingCart')
-    @yield('user')
-    @yield('login')
-    @yield('admin')
-    @yield('footer')
+<body onload="carga()">
+    <div class="loader-parent">
+        <img id="loader" src="{{ URL::asset('img/LOGO_VERDE_WEB.png') }}">
+    </div>
+    <div id="contenido">
+        @yield('banner')
+        @yield('nav')
+        @yield('index')
+        @yield('category')
+        @yield('shoppingCart')
+        @yield('user')
+        @yield('login')
+        @yield('admin')
+        @yield('footer')
+    </div>
 </body>
-
 </html>

@@ -21,11 +21,9 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
                     <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="#!">Deportes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Camping</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Extranjero</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Acuático</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Animales</a></li>
+                        @foreach ($categories as $category)
+                            <li class="nav-item"><a class="nav-link" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </ul>
             </div>
@@ -35,11 +33,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> {{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add"></i> {{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
@@ -73,7 +71,7 @@
     </nav>
 @endsection
 
-{{-- @section('footer')
+@section('footer')
     <div class="container-fluid justify-content-center bg-success text-light">
         <div class="row py-5">
             <div class="col">
@@ -107,7 +105,7 @@
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)
-                                <li class="mt-2"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                                <li class="mt-md-1"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -131,5 +129,5 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-{{-- @endsection --}}
+    </div> 
+@endsection
