@@ -43,7 +43,7 @@ body {
     grid-template-columns: 1fr 1fr;
 }
 
-.gridCategory > div:nth-child(3n + 3) {
+.gridCategory>div:nth-child(3n + 3) {
     grid-column: 1/3;
 }
 
@@ -94,15 +94,19 @@ body {
 .deportes {
     background-color: rgba(27, 213, 6, 0.116);
 }
+
 .camping {
     background-color: rgba(213, 6, 168, 0.116);
 }
+
 .extranjero {
     background-color: rgba(7, 5, 111, 0.365);
 }
+
 .acuático {
     background-color: rgba(47, 235, 204, 0.319);
 }
+
 .animales {
     background-color: rgba(226, 146, 26, 0.29);
 }
@@ -119,21 +123,25 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .bgAcuático {
     background: url("../../public/img/acuaticoCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .bgExtranjero {
     background: url("../../public/img/extranjeroCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .bgAnimales {
     background: url("../../public/img/animalesCategory.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .bgCamping {
     background: url("../../public/img/campingCategory.png");
     background-repeat: no-repeat;
@@ -303,9 +311,56 @@ article {
     padding-bottom: 7%;
 }
 
+/*LOADER*/
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin: -75px 0 0 -75px;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#contenido {
+    display: none;
+    text-align: center;
+}
+
+.loader-parent {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
+
     /* INDEX */
     .categorias p {
         font-size: 3em;
@@ -326,7 +381,7 @@ article {
         margin-left: 30%;
     }
 
-    .gridCategory > div {
+    .gridCategory>div {
         grid-column: 1/3;
     }
 

@@ -31,11 +31,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> {{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add"></i> {{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
@@ -64,7 +64,7 @@
     </nav>
 @endsection
 
-{{-- @section('footer')
+@section('footer')
     <div class="container-fluid justify-content-center bg-success text-light">
         <div class="row py-5">
             <div class="col">
@@ -122,5 +122,5 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-{{-- @endsection --}}
+    </div> 
+@endsection
