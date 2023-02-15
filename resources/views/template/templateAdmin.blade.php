@@ -1,6 +1,6 @@
 @extends('template.template')
 @section('admin')
-    <header class="bg-success py-1">
+    <header class="bg-success py-3">
         <div class="container">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">ADMINISTRACIÓN</h1>
