@@ -27,10 +27,13 @@
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi bi-heart-fill"></i>
                             </button>
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Añadir al carrito
-                            </button>
+                            {{-- No funciona --}}
+                            <form action="{{ route('add')}}" method="post">
+                                <button name="product_id" value='{{$product->id }}' type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Añadir al carrito
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

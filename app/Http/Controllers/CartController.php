@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Shopping_cart;
 use App\Models\User;
 
@@ -18,5 +19,13 @@ class CartController extends Controller
         $products = $shopping_cart->products;
 
         return view('shopping_cart', @compact("shopping_cart", "products"));
+    }
+
+    //!no funciona
+    public function add(Request $request){
+        // $product = Product::where('id', $product_id);
+        $cart = Shopping_cart::where('user_id', Auth::id());
+        $cart->products()->attach($request->product_id);
+        return view('');
     }
 }

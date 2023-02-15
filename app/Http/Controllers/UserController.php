@@ -37,6 +37,7 @@ class UserController extends Controller
         $usuario = User::findOrFail($user_ID);
 
         if ($usuario->email == $request->email) {
+
             $request->validate([
                 'name' => 'required|alpha|min:4|max:255',
                 'surname' => 'required|regex:/^[\pL\s\-]+$/u|min:4|max:255',
@@ -60,6 +61,7 @@ class UserController extends Controller
             $usuario->password = $request->password;
 
             return back()->with('mensaje', 'Los datos han sido modificados.');
+
         } else {
 
             $request->validate([
