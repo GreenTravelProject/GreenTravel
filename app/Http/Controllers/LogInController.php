@@ -8,26 +8,26 @@ use Illuminate\Support\Facades\Auth;
 
 class LogInController extends Controller
 {
-    //! No funciona !!
+    //! No funciona (PARA BORRAR)!!
     //* Tiene que explicarlo Olga
-    public function authenticate(Request $request){
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+    // public function authenticate(Request $request){
+    //     $credentials = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required'],
+    //     ]);
 
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
+    //     if(Auth::attempt($credentials)){
+    //         $request->session()->regenerate();
 
-            return back()->withErrors([
-                'email' => 'Usuario incorrecto.',
-            ])->onlyInput('email');
-        }
+    //         return back()->withErrors([
+    //             'email' => 'Usuario incorrecto.',
+    //         ])->onlyInput('email');
+    //     }
 
-        return back()->withErrors([
-            'email' => 'Usuario incorrecto.',
-        ])->onlyInput('email');
-    }
+    //     return back()->withErrors([
+    //         'email' => 'Usuario incorrecto.',
+    //     ])->onlyInput('email');
+    // }
 
 
 }

@@ -19,8 +19,8 @@ class Shopping_cart extends Model
         return $this->belongsToMany(Product::class)->withTimestamps();
     }
 
-    // Obtener el pedido del carrito
+    // Obtener los pedidos del carro
     public function delivery(){
-        return $this->belongsTo(Delivery::class);
+        return $this->hasMany(Delivery::class);
     }
 }

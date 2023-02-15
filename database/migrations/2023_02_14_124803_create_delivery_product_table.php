@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,10 +13,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('category_product', function (Blueprint $table) {
+        Schema::create('delivery_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->references('id')->on('categories');
-            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade'); 
+            $table->foreignId('delivery_id')->references('id')->on('delivery');
+            $table->foreignId('product_id')->references('id')->on('products');
+            $table->foreignId('shopping_cart_id')->references('id')->on('shopping_carts'); //? DUDA
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('product_category');
+        Schema::dropIfExists('delivery_product');
     }
 };

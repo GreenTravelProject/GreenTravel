@@ -23,11 +23,11 @@ class User extends Authenticatable
 
     // Obtener direcciones del usuario
     public function adress(){
-        return $this->hasMany(Adress::class);
+        return $this->hasOne(Adress::class);
     }
 
     public function delivery(){
-        return $this->hasMany(Delivery::class);
+        return $this->hasOne(Delivery::class);
     }
 
     // * --- DEFAULT ---
