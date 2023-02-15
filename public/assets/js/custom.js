@@ -31,9 +31,22 @@ function showCheckboxes() {
 }
 
 //Cambiar a decimal automáticamente en crear/editar producto
-function priceInDecimal(input) {
+function priceInDecimal() {
     let name = document.getElementById("price");
 
     name.value = parseFloat(name.value).toFixed(2);
     name.value = name.value.replace(",", "."); //Aunque no se vea en el formulario, mete el punto en la BBDD
+}
+
+//Loader de carga
+let loader;
+
+function carga() {
+    
+    loader = setTimeout(web, 150);
+}
+
+function web() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("contenido").style.display = "block";
 }

@@ -10,7 +10,7 @@
     </header>
 @endsection
 
-{{-- @section('footer')
+@section('footer')
     <div class="container-fluid justify-content-center bg-success text-light">
         <div class="row py-5">
             <div class="col">
@@ -43,7 +43,7 @@
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)
-                            <li class="mt-md-3 mt-4"><a class=" text-decoration-none" href="{{ route('category', $category->id) }}">Deportes</a></li>
+                                <li class="mt-md-1"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -69,4 +69,4 @@
             </div>
         </div>
     </div>
-@endsection --}}
+@endsection 

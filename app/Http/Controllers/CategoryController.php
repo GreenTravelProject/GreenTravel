@@ -18,6 +18,7 @@ class CategoryController extends BaseController
     {
         //Guardamos la categoría seleccionada por ID 
         $category = Category::findOrFail($categoryId);
+        $categories = Category::all();
 
         //Pasamos las categorías para que las tenga el footer: 
         $categories = Category::all();
@@ -38,12 +39,12 @@ class CategoryController extends BaseController
     public function categorias_footer()
     {
         $categories = Category::all();
-        return view('general', @compact("categories"));
+        return view('template.general', @compact("categories"));
     }
 
     public function categorias_footer2()
     {
         $categories = Category::all();
-        return view('general2', @compact("categories"));
+        return view('template.general2', @compact("categories"));
     }
 }
