@@ -26,6 +26,6 @@ class CartController extends Controller
         // $product = Product::where('id', $product_id);
         $cart = Shopping_cart::where('user_id', Auth::id());
         $cart->products->attach($request->product->id);
-        return view('category/1');
+        return view('category/');
     }
 }
