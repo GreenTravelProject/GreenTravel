@@ -73,7 +73,7 @@ return [
     'ipv4' => 'El campo :attribute debe ser una dirección IPv4 válida.',
     'ipv6' => 'El campo :attribute debe ser una dirección IPv6 válida.',
     'json' => 'El campo :attribute debe ser una cadena JSON válida.',
-    'lowercase' => 'El :attribute debe ser minusculas.',
+    'lowercase' => 'El :attribute debe ser minúsculas.',
     'lt' => [
         'numeric' => 'El campo :attribute debe ser menor que :max.',
         'file' => 'El campo :attribute debe ser menor que :max kilobytes.',
