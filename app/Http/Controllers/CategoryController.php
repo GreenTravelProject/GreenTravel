@@ -19,11 +19,14 @@ class CategoryController extends BaseController
         //Guardamos la categoría seleccionada por ID 
         $category = Category::findOrFail($categoryId);
 
+        //Pasamos las categorías para que las tenga el footer: 
+        $categories = Category::all();
+
         //Buscamos los productos de la categoría. Por parámetro le pasamos la categoría y el nº de productos por pantalla(paginar)
         $products = $category->products;
 
         //Devolvemos a la vista los datos de la categoría seleccionada
-        return view('category', @compact("category", "products"));
+        return view('category', @compact("category", "products", "categories"));
     }
 
     public function categorias_index()
