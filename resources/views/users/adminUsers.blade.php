@@ -1,17 +1,15 @@
 @extends('template.templateAdmin')
 @section('users')
     {{-- Primera vista del admin: mostrar_productos() --}}
-    @if (session('mensaje'))
-        {{ session('mensaje') }}
-    @endif
+
     <div class="px-5 mt-4">
         <div class="pb-3">
             <button class="btn btn-success"><a class="text-decoration-none text-white" href="{{ route('users.create') }}">Crear
                     usuario</a></button>
         </div>
-        <table class="table table-responsive table-bordered text-center">
+        <table class="table table-responsive table-bordered text-center bg5">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center bg-dark text-white">
                     <th scope="col">id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
@@ -26,7 +24,7 @@
             </thead>
             <tbody class="table-group-divider">
                 @foreach ($users as $user)
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->surname }}</td>
@@ -36,8 +34,8 @@
                         <td>{{ $user->admin }}</td>
                         <td>{{ $user->email }}</td>
 
-                        <td class=" text-center"><a href="{{ route('users.edit', $user->id) }}"
-                                class="text-success"><i class="bi bi-pencil-fill"></i></a></td>
+                        <td class=" text-center"><a href="{{ route('users.edit', $user->id) }}" class="text-success"><i
+                                    class="bi bi-pencil-fill"></i></a></td>
                         <td class=" text-center">
                             <form action="{{ route('users.delete', $user) }}" method="POST" class="d-inline">
                                 @method('DELETE')
@@ -50,5 +48,7 @@
             </tbody>
         </table>
         <div>{{ $users->links() }}</div>
+    </div>
+
     </div>
 @endsection
