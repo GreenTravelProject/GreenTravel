@@ -1,7 +1,7 @@
 @extends('template.templateAdmin')
 @section('edit')
     {{-- Vista para crear los productos --}}
-
+    {{-- TODO: ADMIN PUEDE CREAR USUARIOS???? --}}
     <section class="container p-5 my-3 adminForm">
         <h2>Crear nuevo producto</h2>
         <form action="{{ route('products.insert') }}" method="POST">

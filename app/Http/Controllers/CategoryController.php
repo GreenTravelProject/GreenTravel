@@ -20,6 +20,9 @@ class CategoryController extends BaseController
         $category = Category::findOrFail($categoryId);
         $categories = Category::all();
 
+        //Pasamos las categorías para que las tenga el footer: 
+        $categories = Category::all();
+
         //Buscamos los productos de la categoría. Por parámetro le pasamos la categoría y el nº de productos por pantalla(paginar)
         $products = $category->products;
 
