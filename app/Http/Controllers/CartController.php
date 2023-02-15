@@ -25,7 +25,7 @@ class CartController extends Controller
     public function add(Request $request){
         // $product = Product::where('id', $product_id);
         $cart = Shopping_cart::where('user_id', Auth::id());
-        $cart->products()->attach($request->product_id);
-        return view('');
+        $cart->products->attach($request->product->id);
+        return view('category/');
     }
 }
