@@ -21,9 +21,11 @@ class CartController extends Controller
         return view('shopping_cart', @compact("shopping_cart", "products"));
     }
 
-    public function add($product_id){
-        $product = Product::where('id', $product_id);
-        //TODO:
-        return $product;
+    //!no funciona
+    public function add(Request $request){
+        // $product = Product::where('id', $product_id);
+        $cart = Shopping_cart::where('user_id', Auth::id());
+        $cart->products()->attach($request->product_id);
+        return view('');
     }
 }

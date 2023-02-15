@@ -110,6 +110,7 @@ class UserController extends Controller
         }
         //TODO: hay un problema con email unique: si se deja el mismo que tenía antes, peta
         $usuario->email = $request->email;
+
         $usuario->password = $request->password;
 
         $usuario->save();
