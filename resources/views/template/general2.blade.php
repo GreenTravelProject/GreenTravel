@@ -10,7 +10,7 @@
     </header>
 @endsection
 
-@section('footer')
+{{-- @section('footer')
     <div class="container-fluid justify-content-center bg-success text-light">
         <div class="row py-5">
             <div class="col">
@@ -69,4 +69,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection --}}
