@@ -8,13 +8,21 @@
         <div class="overlay"></div>
     </div>
     </div>
+    {{-- TODO: MUESTRA EL PRODUCTO SE HA AÑADIDO AL CARRITO: HAY QUE CAMBIAR EL DISEÑO --}}
+    @if (session('mensaje'))
+        <div class="alert alert-success">
+            {{ session('mensaje') }}
+        </div>
+    @endif
     <!-- Product section-->
     <section>
         <div class="container px-4 px-lg-5 my-5 products">
+
             <!--Desde la BBDD hay que imprimir los datos de cada producto-->
             @foreach ($products as $product)
                 <div class="row gx-4 gx-lg-5 align-items-center lineaProducto">
-                    <div class="col-md-6 py-5"> <img class="card-img-top mb-5 mb-md-0"src="{{ URL::asset("img/$product->img") }}" alt="" />
+                    <div class="col-md-6 py-5"> <img
+                            class="card-img-top mb-5 mb-md-0"src="{{ URL::asset("img/$product->img") }}" alt="" />
                     </div>
                     <div class="col-md-6">
                         <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
@@ -29,7 +37,7 @@
                             {{-- No funciona --}}
                             <form action="{{ route('add') }}" method="post">
                                 @csrf
-                                <input type="hidden" name="product" value="{{$product->id}}">
+                                <input type="hidden" name="product" value="{{ $product->id }}">
 
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
                                     <i class="bi-cart-fill me-1"></i>
