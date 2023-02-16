@@ -35,16 +35,4 @@ class CategoryController extends BaseController
         $categories = Category::all();
         return view('index', @compact("categories"));
     }
-
-    public function categorias_footer()
-    {
-        $categories = Category::all();
-        return view('template.general', @compact("categories"));
-    }
-
-    public function categorias_footer2()
-    {
-        $categories = Category::all();
-        return view('template.general2', @compact("categories"));
-    }
 }

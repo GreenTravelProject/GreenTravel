@@ -15,20 +15,18 @@ class CartController extends Controller
 {
 
     // Mostrar los productos que actualmente se encuentra en el carrito.
-    public function show_cart(){
-        $shopping_cart = Cart::where('user_id', Auth::id());
-
-        $products = $shopping_cart->products;
-
-        return view('shopping_cart', @compact("shopping_cart", "products"));
+    public function show_cart()
+    {
+        $cart = Cart::where('user_id', Auth::id())->first();
+        $products = $cart->products;
+        return view('shoppingCart', @compact("products"));
     }
 
     //TODO:
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         $cart = Cart::where('user_id', Auth::id())->first();
-        $categories = Category::all();
         $cart->products()->attach($request->product);
-        $products = $cart->products;
-        return view('shoppingCart',@compact('products','categories'));
+        return back()->with('mensaje', 'el producto ha sido añadido al carrito');
     }
 }
