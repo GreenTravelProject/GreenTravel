@@ -22,7 +22,8 @@
                     <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
                     <ul class="navbar-nav">
                         @foreach ($categories as $category)
-                            <li class="nav-item"><a class="nav-link" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </ul>
@@ -33,11 +34,13 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill"></i> {{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill"></i>
+                                {{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add"></i> {{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add"></i>
+                                    {{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
@@ -105,7 +108,8 @@
                     <div class="col-md-3 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)
-                                <li class="mt-md-1"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                                <li class="mt-md-1"><a class="text-white"
+                                        href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
