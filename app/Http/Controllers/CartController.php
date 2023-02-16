@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
-use App\Models\Shopping_cart;
+
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -14,18 +16,19 @@ class CartController extends Controller
 
     // Mostrar los productos que actualmente se encuentra en el carrito.
     public function show_cart(){
-        $shopping_cart = Shopping_cart::where('user_id', Auth::id());
+        $shopping_cart = Cart::where('user_id', Auth::id());
 
         $products = $shopping_cart->products;
 
         return view('shopping_cart', @compact("shopping_cart", "products"));
     }
 
-    //!no funciona
+    //TODO:
     public function add(Request $request){
-        // $product = Product::where('id', $product_id);
-        $cart = Shopping_cart::where('user_id', Auth::id());
-        $cart->products->attach($request->product->id);
-        return view('category/');
+        $cart = Cart::where('user_id', Auth::id())->first();
+        $categories = Category::all();
+        $cart->products()->attach($request->product);
+        $products = $cart->products;
+        return view('shoppingCart',@compact('products','categories'));
     }
 }
