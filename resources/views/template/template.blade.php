@@ -16,17 +16,17 @@
 <body onload="carga()">
     <div class="loader-parent">
         <img id="loader" src="{{ URL::asset('img/LOGO_VERDE_WEB.png') }}">
-    </div>
-    <div id="contenido">
-        @yield('banner')
-        @yield('nav')
-        @yield('index')
-        @yield('category')
-        @yield('shoppingCart')
-        @yield('user')
-        @yield('login')
-        @yield('admin')
-        @yield('footer')
+        <div id="contenido">
+            @yield('banner')
+            @yield('nav')
+            @yield('index')
+            @yield('category')
+            @yield('shoppingCart')
+            @yield('user')
+            @yield('login')
+            @yield('admin')
+            @yield('footer')
+        </div>
     </div>
 </body>
 </html>

@@ -41,12 +41,11 @@ function priceInDecimal() {
 //Loader de carga
 let loader;
 
-function carga() {
-    
+function carga(){
     loader = setTimeout(web, 150);
 }
 
 function web() {
     document.getElementById("loader").style.display = "none";
-    document.getElementById("contenido").style.display = "block";
+    document.getElementById("contenido").style.display = "inherit";
 }
