@@ -9,7 +9,7 @@
             <button class="btn btn-success"><a class="text-decoration-none text-white"
                     href="{{ route('products.create') }}">Crear producto</a></button>
         </div>
-        <table class="table table-responsive table-bordered text-center ">
+        <table class="table table-responsive table-bordered text-center bg5">
             <thead>
                 <tr class="text-center bg-dark text-white">
                     <th scope="col">id</th>

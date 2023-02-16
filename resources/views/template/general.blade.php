@@ -3,7 +3,9 @@
     <header class="bg-success py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <a id="title" href="{{ route('index') }}"><h1 class="display-4 fw-bolder text-white">GREEN TRAVEL</h1></a>
+                <a id="title" href="{{ route('index') }}">
+                    <h1 class="display-4 fw-bolder text-white">GREEN TRAVEL</h1>
+                </a>
                 <p class="lead fw-normal text-white-50 mb-0">Viajes sostenibles</p>
             </div>
         </div>
@@ -25,7 +27,7 @@
                     </ul>
                 </ul>
             </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarSupportedContent">
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav">
                     <!-- Authentication Links -->
@@ -46,7 +48,12 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('user') }}">{{ __('Usuario') }}</a>
+                                    @if (Auth::user()->admin)
+                                        <a class="dropdown-item" href="{{ route('admin') }}">{{ __('Admin') }}</a>
+                                        <a class="dropdown-item" href="{{ route('user') }}">{{ __('Usuario') }}</a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('user') }}">{{ __('Usuario') }}</a>
+                                    @endif
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

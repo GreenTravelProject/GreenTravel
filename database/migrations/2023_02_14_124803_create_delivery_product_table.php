@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('delivery_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('delivery_id')->references('id')->on('delivery');
+            $table->foreignId('delivery_id')->references('id')->on('deliveries');
             $table->foreignId('product_id')->references('id')->on('products');
-            $table->foreignId('shopping_cart_id')->references('id')->on('shopping_carts'); //? DUDA
+            // $table->foreignId('shopping_cart_id')->references('id')->on('shopping_carts'); //? DUDA
             $table->timestamps();
         });
     }
