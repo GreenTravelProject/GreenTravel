@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('state');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('adress_id')->references('id')->on('adresses');
-            $table->foreignId('shopping_cart_product_id')->references('id')->on('shopping_cart_product');
+            // $table->foreignId('shopping_cart_product_id')->references('id')->on('shopping_cart_product');
             $table->timestamps();
         });
     }

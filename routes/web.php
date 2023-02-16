@@ -66,5 +66,6 @@ Route::get('/shoppingCart', function () {
 Route::get('/category/{id?}' ,[CategoryController::class, "category"])->name('category');
 
 //!no funciona
-Route::post('/category/1', [CartController::class, 'add'])->name('add');
+// Route::get('/category/1', [CartController::class, 'add'])->name('add');
+Route::post('/category/{id?}', [CartController::class, 'add'])->name('add');
 // Route::post('notas', [NotasController::class, 'crear'])->name('notas.crear');
