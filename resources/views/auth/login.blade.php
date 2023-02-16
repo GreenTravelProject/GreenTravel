@@ -13,7 +13,6 @@
                 }
             @endif
             @error('email')
-                //! No está funcionando, tiene que explicarlo olga
             @enderror
             <h1><i class="bi bi-person-circle fs-1"></i></h1>
             <div class="form-group row mb-3">
