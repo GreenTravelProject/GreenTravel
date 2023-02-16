@@ -27,7 +27,7 @@
                     </ul>
                 </ul>
             </div>
-            <div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav">
                     <!-- Authentication Links -->
@@ -129,5 +129,5 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 @endsection
