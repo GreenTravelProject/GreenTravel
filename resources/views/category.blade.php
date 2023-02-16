@@ -10,12 +10,11 @@
     </div>
     <!-- Product section-->
     <section>
-        <div class="container px-4 px-lg-5 my-5 px-5 products">
+        <div class="container px-4 px-lg-5 my-5 products">
             <!--Desde la BBDD hay que imprimir los datos de cada producto-->
             @foreach ($products as $product)
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6 py-5"><img class="card-img-top mb-5 mb-md-0"
-                            src="{{ URL::asset("img/$product->img") }}" alt="..." />
+                <div class="row gx-4 gx-lg-5 align-items-center lineaProducto">
+                    <div class="col-md-6 py-5"> <img class="card-img-top mb-5 mb-md-0"src="{{ URL::asset("img/$product->img") }}" alt="" />
                     </div>
                     <div class="col-md-6">
                         <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
@@ -28,9 +27,10 @@
                                 <i class="bi bi-heart-fill"></i>
                             </button>
                             {{-- No funciona --}}
-                            <form action="{{ route('add')}}" method="post">
+                            <form action="{{ route('add') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{$product->id}}">
+
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
                                     <i class="bi-cart-fill me-1"></i>
                                     Añadir al carrito
@@ -39,7 +39,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
             @endforeach
         </div>
     </section>
