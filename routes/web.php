@@ -69,3 +69,4 @@ Route::get('/category/{id?}', [CategoryController::class, "category"])->name('ca
 Route::post('/category/{id?}', [CartController::class, 'add'])->name('add');
 //TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
+Route::get('/cart/deleteProduct/{id?}', [CartController::class, 'delete_product'])->name('deleteProduct');

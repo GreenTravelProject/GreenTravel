@@ -37,8 +37,7 @@
                             {{-- No funciona --}}
                             <form action="{{ route('add') }}" method="post">
                                 @csrf
-                                <input type="hidden" name="product" value="{{ $product->id }}">
-
+                                <input type="hidden" name="product" value="{{ $product }}">
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
                                     <i class="bi-cart-fill me-1"></i>
                                     Añadir al carrito
