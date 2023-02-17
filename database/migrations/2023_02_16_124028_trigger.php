@@ -18,6 +18,10 @@ return new class extends Migration {
         BEGIN
             INSERT INTO carts SET user_id = NEW.id, created_at = NEW.created_at, updated_at = NEW.updated_at;
         END');
+        DB::unprepared('CREATE TRIGGER user_favorite AFTER INSERT ON users FOR EACH ROW
+        BEGIN
+            INSERT INTO favorites SET user_id = NEW.id, created_at = NEW.created_at, updated_at = NEW.updated_at;
+        END');
     }
 
     /**

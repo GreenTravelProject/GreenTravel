@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\UserController;
@@ -65,7 +66,9 @@ Route::get('/shoppingCart', function () {
 
 Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');
 
+Route::post('/category/fav_add', [FavoriteController::class, 'add'])->name('fav_add');
 //La función de añadir al carrito no puede ser la misma que lleve al carrito en sí: se añade el producto cada vez que recargas
-Route::post('/category/{id?}', [CartController::class, 'add'])->name('add');
+Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_add');
 //TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
+
