@@ -5,7 +5,7 @@
         {{ session('mensaje') }}
     @endif
     <div class="px-5 mt-4">
-        <h1>Bienvenido de nuevo {{-- {{$admin->name}} --}} </h1>
+        <h1>Bienvenido de nuevo {{ Auth::user()->name }} </h1>
 
     </div>
 @endsection

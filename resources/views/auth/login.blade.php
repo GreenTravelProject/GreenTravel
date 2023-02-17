@@ -7,13 +7,18 @@
             <h1>INICIAR SESIÓN</h1><br>
             @if (session('mensaje'))
                 {
-  
-                    {{ session('mensaje') }}
-        
+
+                {{ session('mensaje') }}
+
                 }
             @endif
             @error('email')
             @enderror
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    {!! implode('', $errors->all('<li>:message</li>')) !!}
+                </div>
+            @endif
             <h1><i class="bi bi-person-circle fs-1"></i></h1>
             <div class="form-group row mb-3">
                 <label for="email" class="col-form-label text-md-right">{{ __('E-Mail') }}</label>

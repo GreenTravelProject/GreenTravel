@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogInController;
@@ -30,7 +31,7 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
         function () {
             return view('admin');
         }
-    );
+    )->name('admin');
     Route::prefix('/products')->group(
         function () {
             Route::get('/', [ProductController::class, 'mostrar_productos'])->name('admin.products');
@@ -62,4 +63,8 @@ Route::get('/shoppingCart', function () {
 
 //Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
 
-Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');
+Route::get('/category/{id?}' ,[CategoryController::class, "category"])->name('category');
+
+//!no funciona
+Route::post('/category/1', [CartController::class, 'add'])->name('add');
+// Route::post('notas', [NotasController::class, 'crear'])->name('notas.crear');
