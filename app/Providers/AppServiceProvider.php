@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         // TODO: PREGUNTAR A OLGA SI ESTO ESTÁ BIEN 
-        view()->share('categories', Category::all()); 
+       view()->share('categories', Category::all()); 
     }
 }
