@@ -12,13 +12,13 @@
                         </div>
                     </div>
                     <div class="profile-menu mt-0">
-                        <h4 class="p-4" onclick="reveal('user-info1');">Datos</h4>
+                        <h4 class="p-4" onclick="reveal('user-info1');">Cuenta</h4>
                         <hr class="m-0">
                         <h4 class="p-4" onclick="reveal('user-info2');">Favoritos</h4>
                         <hr class="m-0">
                         <h4 class="p-4" onclick="reveal('user-info3');">Cambio contraseña</h4>
                         <hr class="m-0">
-                        <h4 class="p-4" onclick="reveal('user-info4');">Carrito</h4>
+                        <h4 class="p-4" onclick="reveal('user-info4');">Dirección</h4>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,8 @@
                                             name="phone" placeholder="*" value="{{ $usuario->phone }}" required><br>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <label>Género</label><select class="form-control" type="text" name="genre"
-                                            value="{{ $usuario->genre }}">
-                                            <option selected="selected" disabled>-</option>
+                                        <label>Género</label><select class="form-control" type="text" name="genre" value="{{ $usuario->genre }}">
+                                            <option disabled>-</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
                                             <option value="O">Otro</option>
@@ -61,69 +60,7 @@
                                             type="date" name="birth_date" required value="{{ $usuario->birth_date }}"><br>
                                     </div>
                                 </div>
-                                <hr>
-                                <div>
-                                    <div class="row m-3">
-                                        <div class="col-md-6 col-sm-12">
-                                            <label>País</label><select class="form-control" type="text" name="country"
-                                                required><br>
-                                                <option disabled selected>-</option>
-                                                <option value="DE">Alemania</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AM">Armenia</option>
-                                                <option value="AT">Austria</option>
-                                                <option value="BE">Bélgica</option>
-                                                <option value="BY">Bielorrusia</option>
-                                                <option value="BA">Bosnia</option>
-                                                <option value="BG">Bulgaria</option>
-                                                <option value="CY">Chipre</option>
-                                                <option value="HR">Croacia</option>
-                                                <option value="DK">Dinamarca</option>
-                                                <option value="SI">Eslovenia</option>
-                                                <option value="ES">España</option>
-                                                <option value="EE">Estonia</option>
-                                                <option value="FI">Finlandia</option>
-                                                <option value="FR">Francia</option>
-                                                <option value="GE">Georgia</option>
-                                                <option value="GI">Gibraltar</option>
-                                                <option value="GR">Grecia</option>
-                                                <option value="HU">Hungría</option>
-                                                <option value="IE">Irlanda</option>
-                                                <option value="IS">Islandia</option>
-                                                <option value="FO">Islas Feroe</option>
-                                                <option value="IT">Italia</option>
-                                                <option value="LV">Letonia</option>
-                                                <option value="LI">Liechtenstein</option>
-                                                <option value="LT">Lituania</option>
-                                                <option value="LU">Luxemburgo</option>
-                                                <option value="MK">Macedonia</option>
-                                                <option value="MT">Malta</option>
-                                                <option value="MD">Moldavia</option>
-                                                <option value="MC">Mónaco</option>
-                                                <option value="NO">Noruega</option>
-                                                <option value="NL">Países Bajos</option>
-                                                <option value="PL">Polonia</option>
-                                                <option value="PT">Portugal</option>
-                                                <option value="UK">Reino Unido</option>
-                                                <option value="CZ">República Checa</option>
-                                                <option value="SK">Eslovaquia</option>
-                                                <option value="RO">Rumania</option>
-                                                <option value="RU">Rusia</option>
-                                                <option value="SM">San Marino</option>
-                                                <option value="SE">Suecia</option>
-                                                <option value="CH">Suiza</option>
-                                                <option value="UA">Ucrania</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <label id="nacimiento">Localidad</label><input class="form-control" type="text"
-                                                name="city" placeholder="*" required><br>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <label>Correo electrónico</label><input class="form-control" type="text" name="street" placeholder="Dirección exacta" value="{{ old('email') }}" required>
-                                        </div><br>
-                                    </div>
-                                </div>
+                            
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button id="btn-signup" class="bg-success btn mb-5 text-light text-center" type="submit">Cambiar</button>
@@ -155,10 +92,10 @@
                         <div class="container p-4">
                             <form method="post">
                                 @csrf
-                                <label class="mb-0">Nueva contraseña</label><input id="input-user-reppass"
+                                <label id="pass-start">Nueva contraseña</label><input id="input-user-reppass"
                                     class="form-control" type="password" name="password"
                                     placeholder="Mínimo 8 caracteres" required><br>
-                                <label class="mb-0">Repetir nueva contraseña</label><input id="input-user-reppass"
+                                <label id="pass-start">Repetir nueva contraseña</label><input id="input-user-reppass"
                                     class="form-control" type="password" name="password" placeholder="*" required>
                                 <div class="mt-2">
                                     @error('password')
@@ -180,9 +117,74 @@
                 </span>
                 <span class="user-info" id="user-info4">
                     <div class="container">
-                        <h1>CARRITO</h1>
+                        <h1>DIRECCIÓN</h1>
                         <div class="container p-4">
-
+                            <form method="post">
+                                @csrf
+                            <div class="row m-3">
+                                <div class="col-md-6 col-sm-12">
+                                    <label>País</label><select class="form-control" type="text" name="country" required><br>
+                                        <option selected disabled> - </option>
+                                        <option value="DE">Alemania</option>
+                                        <option value="AD">Andorra</option>
+                                        <option value="AM">Armenia</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="BE">Bélgica</option>
+                                        <option value="BY">Bielorrusia</option>
+                                        <option value="BA">Bosnia</option>
+                                        <option value="BG">Bulgaria</option>
+                                        <option value="CY">Chipre</option>
+                                        <option value="HR">Croacia</option>
+                                        <option value="DK">Dinamarca</option>
+                                        <option value="SI">Eslovenia</option>
+                                        <option value="ES">España</option>
+                                        <option value="EE">Estonia</option>
+                                        <option value="FI">Finlandia</option>
+                                        <option value="FR">Francia</option>
+                                        <option value="GE">Georgia</option>
+                                        <option value="GI">Gibraltar</option>
+                                        <option value="GR">Grecia</option>
+                                        <option value="HU">Hungría</option>
+                                        <option value="IE">Irlanda</option>
+                                        <option value="IS">Islandia</option>
+                                        <option value="FO">Islas Feroe</option>
+                                        <option value="IT">Italia</option>
+                                        <option value="LV">Letonia</option>
+                                        <option value="LI">Liechtenstein</option>
+                                        <option value="LT">Lituania</option>
+                                        <option value="LU">Luxemburgo</option>
+                                        <option value="MK">Macedonia</option>
+                                        <option value="MT">Malta</option>
+                                        <option value="MD">Moldavia</option>
+                                        <option value="MC">Mónaco</option>
+                                        <option value="NO">Noruega</option>
+                                        <option value="NL">Países Bajos</option>
+                                        <option value="PL">Polonia</option>
+                                        <option value="PT">Portugal</option>
+                                        <option value="UK">Reino Unido</option>
+                                        <option value="CZ">República Checa</option>
+                                        <option value="SK">Eslovaquia</option>
+                                        <option value="RO">Rumania</option>
+                                        <option value="RU">Rusia</option>
+                                        <option value="SM">San Marino</option>
+                                        <option value="SE">Suecia</option>
+                                        <option value="CH">Suiza</option>
+                                        <option value="UA">Ucrania</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <label id="nacimiento">Localidad</label><input class="form-control" type="text"
+                                        name="city" placeholder="*" required><br>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label>Correo electrónico</label><input class="form-control" type="text" name="street" placeholder="Dirección exacta" value="{{ old('email') }}" required>
+                                </div><br>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button id="btn-signup" class="bg-success btn mb-2 text-light text-center mt-3"
+                                    type="submit">Confirmar</button>
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </span>
