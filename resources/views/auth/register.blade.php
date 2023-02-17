@@ -93,7 +93,6 @@
                 <div class="col-md-6 col-sm-12">
                     <label id="nacimiento" for="password-confirm">{{ __('Confirm Password') }}</label>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-
                 </div>
             </div>
             @if ($errors->any())

@@ -10,9 +10,9 @@ class Product extends Model
     use HasFactory;
 
     // Obtener carritos en los que está el producto
-    public function shopping_carts()
+    public function carts()
     {
-        return $this->belongsToMany(Shopping_cart::class)->withTimestamps();
+        return $this->belongsToMany(Cart::class)->withTimestamps();
     }
     // Obtener lista de favorito en las que se encuentra el producto
     public function favorites()

@@ -63,8 +63,9 @@ Route::get('/shoppingCart', function () {
 
 //Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
 
-Route::get('/category/{id?}' ,[CategoryController::class, "category"])->name('category');
+Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');
 
-//!no funciona
-Route::post('/category/1', [CartController::class, 'add'])->name('add');
-// Route::post('notas', [NotasController::class, 'crear'])->name('notas.crear');
+//La función de añadir al carrito no puede ser la misma que lleve al carrito en sí: se añade el producto cada vez que recargas
+Route::post('/category/{id?}', [CartController::class, 'add'])->name('add');
+//TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
+Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');

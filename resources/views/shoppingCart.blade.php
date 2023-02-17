@@ -2,75 +2,35 @@
 
 @section('shoppingCart')
     <!--Mostramos los productos añadidos al carrito-->
-    <div class="d-grid bg4">
-        <div class="row m-0">
-            <div class="col-lg-6 py-5 px-5">
-                <h5 class=" display-5 text-center mb-3">Carrito</h5>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
-                                <div>
-                                    <!--imagen del paquete de viaje-->
-                                    <img src="" class="img-fluid rounded-3" alt="Shopping item">
-                                </div>
-                                <div class="p-2">
-                                    <h5 class="m-2">Paquete de viaje</h5>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row align-items-center justify-content-center gap-3">
-                                <div class="col-4">
-                                    <!--ESTABLECER LA CANTIDAD Y QUE MODIFIQUE EL PRECIO-->
-                                    <form action="">
-                                        <input type="number" class="form-control" name="cantidad" id="cantidad"
-                                            placeholder="">
-                                    </form>
-                                </div>
-                                <div>
-                                    <p class="fw-normal">PRECIO</p>
-                                </div>
-                            </div>
+    <div class="container d-grid p-4">
+        <div class="row gap-3">
+            <div class="col-md-8 bg5 p-4">
+                <h2>Cesta de la compra</h2>
+                @foreach ($products as $product)
+                    <div class="row p-3 border-top border-bottom text-start gap-2">
+                        <div class="col-md-2 d-flex align-items-center flex-column gap-3">
+                            <img class="img-fluid" src="{{ URL::asset("img/$product->img") }}" alt="">
+                            <p class="fw-bold text-success">{{ $product->price }}€</p>
+                        </div>
+                        <div class="col">
+                            <h4>{{ $product->name }}</h4>
+                            <p>{{ $product->description }}</p>
+                        </div>
+                        <div class="col-md-2 d-flex flex-row justify-content-center gap-3 align-items-center">
+                            <form action="">
+                                @csrf
+                                <input class="form-control" type="number" name="quantity" value={{-- QUANTITY --}}>
+                            </form>
+                            <a href="{{-- ELIMINAR DEL CARRITO --}}"><i class="bi bi-trash-fill text-danger"></i></a>
                         </div>
                     </div>
-                   
-                </div>
+                @endforeach
             </div>
-            <div class="col-lg-6 py-5 px-3">
-                <h5 class="display-5 text-center mb-3">Datos personales</h5>
-                <!--Este formulario debería cargar los datos del usuario registrado-->
-                <form class="row g-3 needs-validation">
-                    <div class="col-md-4">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="col-md-8">
-                        <label for="apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" name="apellidos" required>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="direccion" class="form-label">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" name="direccion" required>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="poblacion" class="form-label">Población</label>
-                        <input type="text" class="form-control" id="poblacion" name="poblacion" required>
-                    </div>
-                    <div class="col-md-5">
-                        <label for="ciudad" class="form-label">Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad" name="ciudad" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="cp" class="form-label">Código Postal</label>
-                        <input type="text" class="form-control" id="cp" name="cp" required>
-                    </div>
-
-                    <!--PAGO???-->
-                    <div class="col-12">
-                        <button class="btn btn-success" type="submit">Comprar</button>
-                    </div>
-                </form>
+            <div class="col bg5 p-4">
+                <h2>Datos personales</h2>
             </div>
         </div>
+
+
     </div>
 @endsection

@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deliveries', function (Blueprint $table) {
+        Schema::create('cart_product', function (Blueprint $table) {
             $table->id();
-            $table->boolean('state');
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('adress_id')->references('id')->on('adresses');
-            // $table->foreignId('shopping_cart_product_id')->references('id')->on('shopping_cart_product');
+            $table->foreignId('cart_id')->references('id')->on('carts');
+            $table->foreignId('product_id')->references('id')->on('products');
+            $table->integer('amount')->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deliveries');
+        Schema::dropIfExists('cart_product');
     }
 };

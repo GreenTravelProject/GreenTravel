@@ -13,8 +13,8 @@ class User extends Authenticatable
 {
 
     // Obtener el carrito de compra asociado al usuario
-    public function shopping_cart(){
-        return $this->hasOne(Shopping_cart::class);
+    public function cart(){
+        return $this->hasOne(Cart::class);
     }
     // Obtener lista favoritos asociada al usuario
     public function favorite(){
