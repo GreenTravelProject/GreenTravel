@@ -12,7 +12,7 @@
             <div class="row m-3">
                 <div class="col-md-6 col-sm-12">
                     <label for="name">{{ __('Nombre') }}</label>
-                    <input id="name" class="form-control" type="text" @error('name') is-invalid @enderror"
+                    <input id="name" class="form-control" type="text" @error('name') is-invalid @enderror
                         name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -36,8 +36,6 @@
                 <div class="col-md-6 col-sm-12">
                     <label for="phone">{{ __('Teléfono') }}</label>
                     <input  id="phone" class="form-control" type="tel"  @error('phone') is-invalid @enderror name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
-                    <input id="phone" class="form-control" type="tel" @error('phone') is-invalid @enderror"
-                        name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                     @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -56,9 +54,6 @@
                 <div class="col-sm-12">
                     <label id="nacimiento" for="birth_date">{{ __('Fecha de nacimiento') }}</label>
                     <input id="birth_date" class="form-control" type="date" @error('birth_date') is-invalid @enderror name="birth_date" value="{{ old('birth_date') }}" required autocomplete="birth_date" autofocus>
-                    <label for="birth_date">{{ __('Fecha de nacimiento') }}</label>
-                    <input id="birth_date" class="form-control" type="date" @error('birth_date') is-invalid @enderror"
-                        name="birth_date" value="{{ old('birth_date') }}" required autocomplete="birth_date" autofocus>
                     @error('birth_date')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -98,9 +93,6 @@
                 <div class="col-md-6 col-sm-12">
                     <label id="nacimiento" for="password-confirm">{{ __('Confirm Password') }}</label>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                    <label for="password-confirm">{{ __('Confirm Password') }}</label>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-                        autocomplete="new-password">
 
                 </div>
             </div>

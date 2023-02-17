@@ -126,8 +126,7 @@
                                 </div>
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button id="btn-signup" class="bg-success btn mb-5 text-light text-center"
-                                type="submit">Cambiar</button>
+                            <button id="btn-signup" class="bg-success btn mb-5 text-light text-center" type="submit">Cambiar</button>
                         </div>
                         </form>
                     </div>
