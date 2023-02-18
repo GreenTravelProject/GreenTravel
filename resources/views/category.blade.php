@@ -31,11 +31,14 @@
                         </div>
                         <p class="lead">{{ $product->description }}</p>
                         <div class="d-flex gap-3 justify-content-end">
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi bi-heart-fill"></i>
-                            </button>
-                            {{-- No funciona --}}
-                            <form action="{{ route('add') }}" method="post">
+                            <form action="{{ route('fav_add') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="product" value="{{ $product->id}}">
+                                <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
+                                    <i class="bi bi-heart-fill"></i>
+                                </button>
+                            </form>
+                            <form action="{{ route('cart_add') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{ $product }}">
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
