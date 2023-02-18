@@ -71,6 +71,4 @@ Route::post('/category/fav_add', [FavoriteController::class, 'add'])->name('fav_
 Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_add');
 //TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
-
 Route::get('/cart/deleteProduct/{id?}', [CartController::class, 'delete_product'])->name('deleteProduct');
-
