@@ -6,6 +6,16 @@
         <div class="row gap-3">
             <div class="col-md-8 bg5 p-4">
                 <h2>Cesta de la compra</h2>
+                @if (session('mensaje'))
+                    <div class="alert alert-success">
+                        {{ session('mensaje') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 @foreach ($cart->products as $product)
                     <div class="row p-3 border-top border-bottom text-start gap-2">
                         <div class="col-md-2 d-flex align-items-center flex-column gap-3">
@@ -17,10 +27,13 @@
                             <p>{{ $product->description }}</p>
                         </div>
                         <div class="col-md-2 d-flex flex-row justify-content-center gap-3 align-items-center">
-                            <a href=""><i class="bi bi-dash-circle-fill"></i></a>
+                            <a href="{{ route('change', ['id' => $product->id, 'type' => 'decrement']) }}"><i
+                                    class="bi bi-dash-circle-fill"></i></a>
                             <p class="fw-bold">{{ $product->pivot->amount }}</p>
-                            <a href=""><i class="bi bi-plus-circle-fill"></i></a>
-                            <a href="cart/deleteProduct/{{ $product->id }}"><i class="bi bi-trash-fill text-danger"></i></a>
+                            <a href="{{ route('change', ['id' => $product->id, 'type' => 'increment']) }}"><i
+                                    class="bi bi-plus-circle-fill"></i></a>
+                            <a href="cart/deleteProduct/{{ $product->id }}"><i
+                                    class="bi bi-trash-fill text-danger"></i></a>
                         </div>
                     </div>
                 @endforeach
