@@ -123,11 +123,12 @@ class ProductController extends Controller
         }
     }
 
+
     public function eliminar_producto($id)
     {
         $producto = Product::findOrFail($id);
         $producto->delete();
-        return back()->with('mensaje', 'El usuario ha sido eliminado.');
+        return back()->with('mensaje', 'El producto ha sido eliminado.');
     }
 
 }

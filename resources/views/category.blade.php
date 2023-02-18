@@ -41,7 +41,6 @@
                             <form action="{{ route('cart_add') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{ $product->id }}">
-
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
                                     <i class="bi-cart-fill me-1"></i>
                                     Añadir al carrito
