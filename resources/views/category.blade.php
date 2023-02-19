@@ -14,6 +14,11 @@
             {{ session('mensaje') }}
         </div>
     @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
     <!-- Product section-->
     <section>
         <div class="container px-4 px-lg-5 my-5 products">
