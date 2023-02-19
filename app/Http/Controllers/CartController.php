@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Category;
 use App\Models\Product;
-
-use App\Models\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,19 +23,29 @@ class CartController extends Controller
         $product = Product::findOrFail($request->product);
         $cart = Cart::where('user_id', Auth::id())->first();
 
-        //TODO: Controlar que exista el producto para añadirlo al carrito: (amount, status)
-        if ($cart->products->contains($product->id)) {
-
-            $cart->products()::where('product_id', $product->id)->increment('amount');
-            return back()->with('mensaje', 'Ya existe el producto en el carrito. Se ha añadido otra unidad');
-        } else {
-            if ($product->stock >= 1) {
-                $cart->products()->attach($product->id, ['amount' => '1', 'status' => '1']);
-                return back()->with('mensaje', 'El producto ha sido añadido al carrito');
-            } else {
-                return back()->with('mensaje', "No hay stock disponible");
+        if (isset($cart->products)) {
+            //TODO: Controlar que exista el producto para añadirlo al carrito: (amount, status)
+            if ($cart->products->contains($product->id)) {
+                if ($cart->products()->where('product_id', $product->id)->pluck('amount')[0] + 1 > $product->stock) {
+                    return back()->with('error', 'No hay suficiente stock');
+                } else {
+                    $cart->products()->where('product_id', $product->id)->increment('amount');
+                    return back()->with('Ya existe ese artículo en el carrito. Se ha añadido otra unidad');
+                }
             }
         }
+
+        if ($product->stock >= 1) {
+            //TODO: status??
+            $cart->products()->attach($product->id, ['amount' => '1', 'status' => '1']);
+            //TODO: calcular el total???? no creo que sea así: 
+            // $cart->total += $product->price;
+            // $cart->save();
+            return back()->with('mensaje', 'El producto ha sido añadido al carrito');
+        } else {
+            return back()->with('mensaje', "No hay stock disponible");
+        }
+
     }
 
     //Subir o bajar la cantidad del producto en el carrito: 
@@ -56,9 +62,18 @@ class CartController extends Controller
                 $cart->products()->where('product_id', $id)->$type('amount');
                 return back();
             }
+
+        } else {
+            //TODO: Si hay 1 unidad seleccionada y pulsa -: borramos del carrito (lanzamos un estás seguro de que quieres???)
+            if ($cart->products()->where('product_id', $id)->pluck('amount')[0] == 1) {
+                $cart->products()->where('product_id', $id)->detach($id);
+
+                return back();
+            } else {
+                $cart->products()->where('product_id', $id)->$type('amount');
+                return back();
+            }
         }
-        $cart->products()->where('product_id', $id)->$type('amount');
-        return back();
 
 
     }
@@ -67,7 +82,6 @@ class CartController extends Controller
     {
         $cart = Cart::where('user_id', Auth::id())->first();
         $cart->products()->where('product_id', $product)->detach($product);
-
         return back();
     }
 }
