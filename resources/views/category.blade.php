@@ -40,8 +40,16 @@
                                 @csrf
                                 <input type="hidden" name="product" value="{{ $product->id}}">
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
-                                    <i class="bi bi-heart-fill"></i>
-                                </button>
+                                        {{-- TODO AÑADIR RESTRICCION con id de carro también. --}}
+                                    @if(DB::table('favorite_product')->where('product_id', $product->id)->doesntExist())
+                                        <i class="bi bi-heart"></i>
+
+
+                                    @else
+                                        <i class="bi bi-heart-fill"></i>
+
+                                    @endif
+                                    </button>
                             </form>
                             <form action="{{ route('cart_add') }}" method="post">
                                 @csrf
