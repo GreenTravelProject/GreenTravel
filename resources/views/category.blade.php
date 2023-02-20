@@ -39,7 +39,7 @@
                             <form action="{{ route('fav_add') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{ $product->id}}">
-                                <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
+                                <button type="submit" class="btn btn-outline-danger flex-shrink-0" type="button">
                                     <i class="bi bi-heart-fill"></i>
                                 </button>
                             </form>
