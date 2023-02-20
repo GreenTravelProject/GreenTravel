@@ -11671,9 +11671,12 @@ fieldset:disabled .btn {
     }
 }
 
+/* PLANTILLA SHOPPING-CART*/
+
 .containerShopping {
     margin: auto;
-    width: 80%;
+    width: 90%;
+    position: absolute;
 }
 
 .badge {
@@ -11693,7 +11696,7 @@ fieldset:disabled .btn {
     margin: 20px 0;
     float: right;
     background: white;
-    width: 320px;
+    width: 400px;
     position: relative;
     border-radius: 3px;
     padding: 20px;
