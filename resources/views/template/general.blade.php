@@ -76,6 +76,9 @@
             </div>
         </div>
     </nav>
+    @guest 
+
+    @else
     <div class="containerShopping">
         <div id="shoppingCart" class="shopping-cart d-none">
             <div class="shopping-cart-header text-end">
@@ -111,6 +114,7 @@
             <a href="{{ Route('cart') }}" class="button">Ver carrito</a>
         </div>
     </div>
+    @endguest
 @endsection
 
 @section('footer')

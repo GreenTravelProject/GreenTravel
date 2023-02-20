@@ -11700,6 +11700,7 @@ fieldset:disabled .btn {
     position: relative;
     border-radius: 3px;
     padding: 20px;
+    z-index: 10; 
 
     .shopping-cart-header {
         border-bottom: 1px solid #e8e8e8;
