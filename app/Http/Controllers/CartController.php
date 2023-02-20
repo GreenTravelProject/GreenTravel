@@ -30,7 +30,9 @@ class CartController extends Controller
                     return back()->with('error', 'No hay suficiente stock');
                 } else {
                     $cart->products()->where('product_id', $product->id)->increment('amount');
-                    return back()->with('Ya existe ese artículo en el carrito. Se ha añadido otra unidad');
+                    $cart->total += $product->price;
+                    $cart->save();
+                    return back()->with('mensaje', 'Ya existe ese artículo en el carrito. Se ha añadido otra unidad');
                 }
             }
         }
@@ -38,9 +40,8 @@ class CartController extends Controller
         if ($product->stock >= 1) {
             //TODO: status??
             $cart->products()->attach($product->id, ['amount' => '1', 'status' => '1']);
-            //TODO: calcular el total???? no creo que sea así: 
-            // $cart->total += $product->price;
-            // $cart->save();
+            $cart->total += $product->price;
+            $cart->save();
             return back()->with('mensaje', 'El producto ha sido añadido al carrito');
         } else {
             return back()->with('mensaje', "No hay stock disponible");
@@ -49,39 +50,46 @@ class CartController extends Controller
     }
 
     //Subir o bajar la cantidad del producto en el carrito: 
-    public function change_amount($id, $type)
+    public function plus_amount($id)
     {
         $product = Product::findOrFail($id);
         $cart = Cart::where('user_id', Auth::id())->first();
-        if ($type == "increment") {
-            //Increment/decrement suma/resta uno a amount (del producto seleccionado)
-            //TODO: preguntar xq get no va. Pluck devuelve un array con todos los valores de la clave dada
-            if ($cart->products()->where('product_id', $id)->pluck('amount')[0] + 1 > $product->stock) {
-                return back()->with('error', 'No hay suficiente stock');
-            } else {
-                $cart->products()->where('product_id', $id)->$type('amount');
-                return back();
-            }
-
+        //TODO: preguntar xq get no va. Pluck devuelve un array con todos los valores de la clave dada
+        if ($cart->products()->where('product_id', $id)->pluck('amount')[0] + 1 > $product->stock) {
+            return back()->with('error', 'No hay suficiente stock');
         } else {
-            //TODO: Si hay 1 unidad seleccionada y pulsa -: borramos del carrito (lanzamos un estás seguro de que quieres???)
-            if ($cart->products()->where('product_id', $id)->pluck('amount')[0] == 1) {
-                $cart->products()->where('product_id', $id)->detach($id);
-
-                return back();
-            } else {
-                $cart->products()->where('product_id', $id)->$type('amount');
-                return back();
-            }
+            $cart->products()->where('product_id', $id)->increment('amount');
+            $cart->total += $product->price;
+            $cart->save();
+            return back();
         }
-
-
     }
 
-    public function delete_product($product)
+    public function minus_amount($id)
     {
         $cart = Cart::where('user_id', Auth::id())->first();
-        $cart->products()->where('product_id', $product)->detach($product);
+        $product = Product::findOrFail($id);
+        //TODO: lanzamos un estás seguro de que quieres borrar el artículo??
+        if ($cart->products()->where('product_id', $id)->pluck('amount')[0] == 1) {
+            $cart->total -= $product->price;
+            $cart->save();
+            $cart->products()->detach($id);
+            return back();
+        } else {
+            $cart->products()->where('product_id', $id)->decrement('amount');
+            $cart->total -= $product->price;
+            $cart->save();
+            return back();
+        }
+    }
+
+    public function delete_product($id)
+    {
+        $cart = Cart::where('user_id', Auth::id())->first();
+        $product = Product::findOrFail($id);
+        $cart->total -= ($product->price * $cart->products()->where('product_id', $id)->pluck('amount')[0]);
+        $cart->products()->detach($id);
+        $cart->save();
         return back();
     }
 }
