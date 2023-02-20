@@ -12,7 +12,7 @@
             <div class="row m-3">
                 <div class="col-md-6 col-sm-12">
                     <label for="name">{{ __('Nombre') }}</label>
-                    <input id="name" class="form-control" type="text" @error('name') is-invalid @enderror"
+                    <input id="name" class="form-control" type="text" @error('name') is-invalid @enderror
                         name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
