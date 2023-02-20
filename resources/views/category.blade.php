@@ -36,13 +36,31 @@
                         </div>
                         <p class="lead">{{ $product->description }}</p>
                         <div class="d-flex gap-3 justify-content-end">
+                            {{-- Si el usuario no inicia sesión verá @guest, cuando tenga sesión verá @else --}}
+                            @guest
+
+                            <button type="button" class="btn btn-outline-dark flex-shrink-0" disabled>
+                                <i class="bi-cart-fill me-1"></i>
+                                Debes iniciar sesión
+                            </button>
+
+                            @else
                             <form action="{{ route('fav_add') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{ $product->id}}">
                                 <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
-                                    <i class="bi bi-heart-fill"></i>
-                                </button>
+                                    @php
+                                    $favorite = DB::table('favorites')->where('user_id', Auth::id())->first();
+                                    @endphp
+                                    @if(DB::table('favorite_product')->where('product_id', $product->id)->where('favorite_id', $favorite->id)->doesntExist())
+                                        <i class="bi bi-heart"></i>
+                                    @else
+                                        <i class="bi bi-heart-fill text-danger"></i>
+                                    @endif
+
+                                    </button>
                             </form>
+
                             <form action="{{ route('cart_add') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{ $product->id }}">
@@ -51,6 +69,7 @@
                                     Añadir al carrito
                                 </button>
                             </form>
+                            @endguest
                         </div>
                     </div>
                 </div>

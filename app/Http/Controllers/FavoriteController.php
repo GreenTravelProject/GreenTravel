@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FavoriteController extends Controller
 {
@@ -14,26 +15,19 @@ class FavoriteController extends Controller
         $products = $favorite->products;
         return view('', @compact("products"));
     }
-    // TODO: Termina consulta en tabla pivote favorite_product
+
     public function add(Request $request)
     {
         $favorite = Favorite::where('user_id', Auth::id())->first();
-        if($favorite::wherePivot('product_id', $request->product)->first() === null){
-            $favorite->products()->attach($request->product);
-            return back()->with('mensaje', 'Producto agregado a favoritos');
-        }else{
-            return back()->with('mensaje', 'Este producto ya está en favoritos');
-        }
-    }
-    public function delete(Request $request)
-    {
-        $favorite = Favorite::where('user_id', Auth::id())->first();
 
-        if($favorite::wherePivot('product_id', $request->product)->first() === null){
-            return back()->with('mensaje', 'Producto no se encuentra en favoritos');
-        }else{
+        if(DB::table('favorite_product')->where('product_id', $request->product)->where('favorite_id', $favorite->id)->doesntExist()){
+            $favorite->products()->attach($request->product);
+            return back()->with('mensaje', 'El producto se ha añadido a favoritos');
+
+        }if(DB::table('favorite_product')->where('product_id', $request->product)->where('favorite_id', $favorite->id)->exists()){
             $favorite->products()->detach($request->product);
-            return back()->with('mensaje', 'El producto se borró de favoritos');
+            return back()->with('mensaje', 'El producto se ha eliminado de favoritos');
         }
     }
+
 }
