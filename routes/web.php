@@ -58,6 +58,7 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
 });
 
 Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
+//Route::get('/user', [AddressController::class, "mostrar_direccion"])->name('user')->middleware('auth');
 
 
 Route::get('/shoppingCart', function () {

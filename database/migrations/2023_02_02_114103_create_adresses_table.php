@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('street');
+            $table->integer('number');
+            $table->integer('block')->nullable();
+            $table->integer('floor')->nullable();
+            $table->string('door')->nullable();
+            $table->boolean('status')->default(1);
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
