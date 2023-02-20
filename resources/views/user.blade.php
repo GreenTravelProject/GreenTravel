@@ -18,7 +18,10 @@
                         <hr class="m-0">
                         <h4 class="p-4" onclick="reveal('user-info3');">Cambio contraseña</h4>
                         <hr class="m-0">
-                        <h4 class="p-4" onclick="reveal('user-info4');">Dirección</h4>
+                        <h4 class="p-4" onclick="reveal('user-info4');">Dirección</h4><hr class="m-0">
+                        <a class ="text-decoration-none text-black" href="{{route('cart')}}">
+                            <h4 class="p-4">Carrito</h4>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -31,7 +34,8 @@
                                 @csrf
                                 <div class="row m-3">
                                     <div class="col-md-6 col-sm-12">
-                                        <label>Nombre</label><input class="form-control" type="text" name="name" placeholder="Mínimo 3 caracteres" value="{{ $usuario->name }}" required><br>
+                                        <label>Nombre</label><input class="form-control" type="text" name="name"
+                                            placeholder="Mínimo 3 caracteres" value="{{ $usuario->name }}" required><br>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <label>Apellidos</label><input class="form-control" type="text" name="surname"
@@ -52,15 +56,16 @@
                                     <div class="col-md-6 col-sm-12">
                                         <label id="nacimiento">Correo electrónico</label>
                                         <div class="input-group">
-                                            <div class="input-group-text">@</div><input class="form-control" type="email" name="email" placeholder="*" value="{{ $usuario->email }}" required>
+                                            <div class="input-group-text">@</div><input class="form-control" type="email"
+                                                name="email" placeholder="*" value="{{ $usuario->email }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <label id="nacimiento">Fecha de nacimiento*</label><input class="form-control"
-                                            type="date" name="birth_date" required value="{{ $usuario->birth_date }}"><br>
+                                            type="date" name="birth_date" required
+                                            value="{{ $usuario->birth_date }}"><br>
                                     </div>
                                 </div>
-                            
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button id="btn-signup" class="bg-success btn mb-5 text-light text-center" type="submit">Cambiar</button>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\UserController;
@@ -18,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CategoryController::class, 'categorias_index'])->name('index');
+Route::get('/', function () {
+    return view('index');
+})->name('index');
 
 Route::get('/category', function () {
     return view('category');
@@ -65,7 +68,11 @@ Route::get('/shoppingCart', function () {
 
 Route::get('/category/{id?}', [CategoryController::class, "category"])->name('category');
 
+Route::post('/category/fav_add', [FavoriteController::class, 'add'])->name('fav_add');
 //La función de añadir al carrito no puede ser la misma que lleve al carrito en sí: se añade el producto cada vez que recargas
-Route::post('/category/{id?}', [CartController::class, 'add'])->name('add');
+Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_add');
 //TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
+//Para cambiar la cantidad de productos en el carrito, pasamos por parámetro id y decrement o increment: 
+Route::get('/change/{id}/{type}', [CartController::class, 'change_amount'])->name('change');
+Route::get('/cart/deleteProduct/{id?}', [CartController::class, 'delete_product'])->name('deleteProduct');

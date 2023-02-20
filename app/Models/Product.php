@@ -27,8 +27,20 @@ class Product extends Model
     }
 
     // Obtener los pedidos en los que se encuentra el producto
-    public function daliveries()
+    public function deliveries()
     {
         return $this->belongsToMany(Delivery::class)->withTimestamps();
+    }
+
+    //TODO: para COMPRAR. Actualizamos el stock. Le pasamos por parámetro true: para aumentar. False para reducir. 
+    public function actualizar_stock($id, $type)
+    {
+        $producto = Product::findOrFail($id);
+        if ($type) {
+            $producto->stock++;
+        } else {
+            $producto->stock--;
+        }
+        return back();
     }
 }

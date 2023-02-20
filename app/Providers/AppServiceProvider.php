@@ -28,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         // TODO: PREGUNTAR A OLGA SI ESTO ESTÁ BIEN 
        view()->share('categories', Category::all()); 
+        //TODO: DOCUMENTACIÓN. controlar que las categorías de la base de datos existen:
+        view()->share('categories', Category::all());
     }
 }
