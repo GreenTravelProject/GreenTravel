@@ -46,7 +46,7 @@
                     @else
                         <div class="dropdown d-flex flex-lg-row flex-column gap-2">
                             <a class="btn btn-success" href="{{ Route('cart') }}"><i class="bi bi-cart4"></i></a>
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </button>

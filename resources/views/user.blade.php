@@ -1,6 +1,11 @@
 @extends('template.general')
-
 @section('user')
+
+    {{-- TODO: SEPARAR LAS SECCIONES EN VISTAS DISTINTAS --}}
+    {{-- Solo se puede mandar un controlador a una ruta --}}
+    {{-- ! Actualmente no se puede ver los productos en favoritos, no se podrá actualizar la dirección del usuario --}}
+    {{-- ! Tampoco cambiar la contraseña  --}}
+
     <section id="user-cont">
         <div class="row m-0 w-100" id="full-page">
             <div class="col-md-2 col-sm-2 p-0 bg-light">
@@ -31,7 +36,8 @@
                     <div class="container">
                         <h1>DATOS PERSONALES</h1>
                         <div class="container p-4">
-                            <form method="post">
+                            <form action="{{ route('user-profile-information.update') }}" method="POST">
+                                @method('PUT')
                                 @csrf
                                 <div class="row m-3">
                                     <div class="col-md-6 col-sm-12">
@@ -50,9 +56,9 @@
                                         <label>Género</label><select class="form-control" type="text" name="genre"
                                             value="{{ $usuario->genre }}">
                                             <option disabled>-</option>
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
-                                            <option value="O">Otro</option>
+                                            <option @if ($usuario->genre == 'M') selected @endif value="M">Masculino</option>
+                                            <option @if ($usuario->genre == 'F') selected @endif value="F">Femenino</option>
+                                            <option @if ($usuario->genre == 'O') selected @endif value="O">Otro</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
@@ -69,6 +75,16 @@
                                     </div>
                                 </div>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                {!! implode('', $errors->all('<li>:message</li>')) !!}
+                            </div>
+                        @endif
+                        @if (session('mensaje'))
+                            <div class="alert alert-success">
+                                {{ session('mensaje') }}
+                            </div>
+                        @endif
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button id="btn-signup" class="bg-success btn mb-5 text-light text-center"
                                 type="submit">Cambiar</button>
@@ -79,6 +95,7 @@
                 <span class="user-info" id="user-info2">
                     <div class="container">
                         <h1>PRODUCTOS FAVORITOS</h1>
+                        {{-- @foreach ($products as $product) --}}
                         <div class="container p-4">
                             <div class="col-md-3 mb-3">
                                 <div class="card">
@@ -92,6 +109,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- @endforeach --}}
                     </div>
                 </span>
                 <span class="user-info" id="user-info3">
