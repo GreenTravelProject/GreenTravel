@@ -18,8 +18,9 @@
                         <hr class="m-0">
                         <h4 class="p-4" onclick="reveal('user-info3');">Cambio contraseña</h4>
                         <hr class="m-0">
-                        <h4 class="p-4" onclick="reveal('user-info4');">Dirección</h4><hr class="m-0">
-                        <a class ="text-decoration-none text-black" href="{{route('cart')}}">
+                        <h4 class="p-4" onclick="reveal('user-info4');">Dirección</h4>
+                        <hr class="m-0">
+                        <a class="text-decoration-none text-black" href="{{ route('cart') }}">
                             <h4 class="p-4">Carrito</h4>
                         </a>
                     </div>
@@ -46,7 +47,8 @@
                                             name="phone" placeholder="*" value="{{ $usuario->phone }}" required><br>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <label>Género</label><select class="form-control" type="text" name="genre" value="{{ $usuario->genre }}">
+                                        <label>Género</label><select class="form-control" type="text" name="genre"
+                                            value="{{ $usuario->genre }}">
                                             <option disabled>-</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
@@ -68,7 +70,8 @@
                                 </div>
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button id="btn-signup" class="bg-success btn mb-5 text-light text-center" type="submit">Cambiar</button>
+                            <button id="btn-signup" class="bg-success btn mb-5 text-light text-center"
+                                type="submit">Cambiar</button>
                         </div>
                         </form>
                     </div>
@@ -98,8 +101,8 @@
                             <form method="post">
                                 @csrf
                                 <label id="pass-start">Nueva contraseña</label><input id="input-user-reppass"
-                                    class="form-control" type="password" name="password"
-                                    placeholder="Mínimo 8 caracteres" required><br>
+                                    class="form-control" type="password" name="password" placeholder="Mínimo 8 caracteres"
+                                    required><br>
                                 <label id="pass-start">Repetir nueva contraseña</label><input id="input-user-reppass"
                                     class="form-control" type="password" name="password" placeholder="*" required>
                                 <div class="mt-2">
@@ -126,70 +129,58 @@
                         <div class="container p-4">
                             <form method="post">
                                 @csrf
-                            <div class="row m-3">
-                                <div class="col-md-6 col-sm-12">
-                                    <label>País</label><select class="form-control" type="text" name="country" required><br>
-                                        <option selected disabled> - </option>
-                                        <option value="DE">Alemania</option>
-                                        <option value="AD">Andorra</option>
-                                        <option value="AM">Armenia</option>
-                                        <option value="AT">Austria</option>
-                                        <option value="BE">Bélgica</option>
-                                        <option value="BY">Bielorrusia</option>
-                                        <option value="BA">Bosnia</option>
-                                        <option value="BG">Bulgaria</option>
-                                        <option value="CY">Chipre</option>
-                                        <option value="HR">Croacia</option>
-                                        <option value="DK">Dinamarca</option>
-                                        <option value="SI">Eslovenia</option>
-                                        <option value="ES">España</option>
-                                        <option value="EE">Estonia</option>
-                                        <option value="FI">Finlandia</option>
-                                        <option value="FR">Francia</option>
-                                        <option value="GE">Georgia</option>
-                                        <option value="GI">Gibraltar</option>
-                                        <option value="GR">Grecia</option>
-                                        <option value="HU">Hungría</option>
-                                        <option value="IE">Irlanda</option>
-                                        <option value="IS">Islandia</option>
-                                        <option value="FO">Islas Feroe</option>
-                                        <option value="IT">Italia</option>
-                                        <option value="LV">Letonia</option>
-                                        <option value="LI">Liechtenstein</option>
-                                        <option value="LT">Lituania</option>
-                                        <option value="LU">Luxemburgo</option>
-                                        <option value="MK">Macedonia</option>
-                                        <option value="MT">Malta</option>
-                                        <option value="MD">Moldavia</option>
-                                        <option value="MC">Mónaco</option>
-                                        <option value="NO">Noruega</option>
-                                        <option value="NL">Países Bajos</option>
-                                        <option value="PL">Polonia</option>
-                                        <option value="PT">Portugal</option>
-                                        <option value="UK">Reino Unido</option>
-                                        <option value="CZ">República Checa</option>
-                                        <option value="SK">Eslovaquia</option>
-                                        <option value="RO">Rumania</option>
-                                        <option value="RU">Rusia</option>
-                                        <option value="SM">San Marino</option>
-                                        <option value="SE">Suecia</option>
-                                        <option value="CH">Suiza</option>
-                                        <option value="UA">Ucrania</option>
-                                    </select>
+                                <div class="row m-3">
+                                    <div class="col-md-6 col-sm-12">
+                                        <label>País</label><select class="form-control" type="text" name="country"
+                                            required><br>
+                                            <?php
+                                                $countries = [' * ', 'Alemania', 'Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaiyán', 'Bélgica', 'Bielorrusia',
+                                                    'Bosnia y Herzegovina', 'Bulgaria', 'Chipre', 'Croacia', 'Dinamarca', 'Eslovaquia', 'Eslovenia', 'España', 'Estonia', 'Finlandia', 'Francia', 'Georgia', 'Grecia',
+                                                    'Hungría', 'Irlanda', 'Islandia', 'Italia', 'Kosovo', 'Letonia', 'Liechtenstein', 'Lituania', 'Luxemburgo', 'Macedonia', 'Malta', 'Moldavia',
+                                                    'Mónaco', 'Montenegro', 'Noruega', 'Países Bajos', 'Polonia', 'Portugal', 'Reino Unido', 'República Checa', 'Rumanía', 'Rusia',
+                                                    'San Marino', 'Suecia', 'Suiza', 'Turquía', 'Ucrania', 'Serbia'];
+
+                                                foreach ($countries as $value) {
+                                                    if($value == ' - '){
+                                                        echo("<option value='.$value.' selected='selected' disabled>".$value.'</option>');
+                                                    }else{
+                                                        echo('<option value='.$value.'>'.$value.'</option>');
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <label id="nacimiento">Localidad</label><input class="form-control"
+                                            type="text" name="city" placeholder="*" required><br>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <label>Calle</label><input class="form-control" type="text"
+                                            name="street" placeholder="Dirección exacta" value="{{ old('email') }}"
+                                            required>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <label>Número</label><input class="form-control" type="text"
+                                            name="number" placeholder="*" value="{{ old('email') }}" required>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <label>Bloque</label><input class="form-control" type="text"
+                                            name="block" value="{{ old('email') }}">
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <label>Planta</label><input class="form-control" type="text"
+                                            name="floor" value="{{ old('email') }}">
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <label>Puerta</label><input class="form-control" type="text"
+                                            name="door" value="{{ old('email') }}">
+                                    </div><br>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <label id="nacimiento">Localidad</label><input class="form-control" type="text"
-                                        name="city" placeholder="*" required><br>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button id="btn-signup" class="bg-success btn mb-2 text-light text-center mt-3"
+                                        type="submit">Confirmar</button>
                                 </div>
-                                <div class="col-sm-12">
-                                    <label>Correo electrónico</label><input class="form-control" type="text" name="street" placeholder="Dirección exacta" value="{{ old('email') }}" required>
-                                </div><br>
-                            </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button id="btn-signup" class="bg-success btn mb-2 text-light text-center mt-3"
-                                    type="submit">Confirmar</button>
-                            </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </span>
