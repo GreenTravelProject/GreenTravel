@@ -74,7 +74,9 @@ Route::post('/category/fav_add', [FavoriteController::class, 'add'])->name('fav_
 Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_add');
 //TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
+
 //Para cambiar la cantidad de productos en el carrito:
 Route::get('/plus/{id}', [CartController::class, 'plus_amount'])->name('plus');
 Route::get('/minus/{id}', [CartController::class, 'minus_amount'])->name('minus');
 Route::get('/cart/deleteProduct/{id?}', [CartController::class, 'delete_product'])->name('deleteProduct');
+

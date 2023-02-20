@@ -13,7 +13,7 @@ class FavoriteController extends Controller
     {
         $favorite = Favorite::where('user_id', Auth::id())->first();
         $products = $favorite->products;
-        return view('', @compact("products"));
+        return view('user', @compact("favorite"));
     }
 
     public function add(Request $request)
