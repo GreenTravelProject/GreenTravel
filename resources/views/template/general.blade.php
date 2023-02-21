@@ -13,7 +13,7 @@
 @endsection
 @section('nav')
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
+        <div class="container contenidoNav px-4 px-lg-5">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
@@ -44,13 +44,14 @@
                             </li>
                         @endif
                     @else
-                          <div class="dropdown d-flex flex-lg-row flex-column gap-2">
+                        <div class="dropdown d-flex flex-lg-row flex-column gap-2">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </button>
                             <a href="#" onclick="showCart()" id="cart" class="btn btn-success"><i
-                                    class="bi bi-cart4"></i> <span class="badge">3</span></a>
+                                    class="bi bi-cart4"></i> <span
+                                    class="badge bg-danger">{{ count(Auth::user()->cart->products) }}</span></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
                                     @if (Auth::user()->admin)
@@ -76,44 +77,51 @@
             </div>
         </div>
     </nav>
-    @guest 
-
+    @guest
     @else
-    <div class="containerShopping">
-        <div id="shoppingCart" class="shopping-cart d-none">
-            <div class="shopping-cart-header text-end">
+        <div class="containerShopping">
+            <div id="shoppingCart" class="shopping-cart d-none">
+                <div class="shopping-cart-header text-end">
                     <span class="lighter-text">Total:</span>
-                    <span class="text-success">{{Auth::user()->cart->total}}€</span>
-            </div>
-            <!--end shopping-cart-header -->
-
-            <div class="shopping-cart-items">
-                @foreach (Auth::user()->cart->products as $product)
-                    <div class="clearfix d-flex align-items-center">
-                        <img src="{{ URL::asset("img/$product->img") }}" class="img-fluid w-25"
-                            alt="{{ $product->name }}" />
-                        <div class="flex-column text-start">
-                            <span class="item-name">{{ $product->name }}</span>
-                            <span class="item-price">{{ $product->price }}€</span>
-                            <div class="d-flex flex-row gap-2">
-                                <a href="{{ route('minus', $product->id) }}"><i class="bi bi-dash-circle-fill"></i></a>
-                                <p class="fw-bold m-0">{{ $product->pivot->amount }}</p>
-                                <a href="{{ route('plus', $product->id) }}"><i class="bi bi-plus-circle-fill"></i></a>
-                            </div>
-
-                        </div>
-                        <div class="d-flex flex-column">
-                            <a href="cart/deleteProduct/{{ $product->id }}"><i
-                                    class="bi bi-trash-fill text-danger"></i></a>
-                            <p class="fw-bold m-0">{{ $product->pivot->amount * $product->price }}€</p>
-                        </div>
-                    </div>
-                    @endforeach
+                    <span class="text-success">{{ Auth::user()->cart->total }}€</span>
                 </div>
-        
-            <a href="{{ Route('cart') }}" class="button">Ver carrito</a>
+                <!--end shopping-cart-header -->
+
+                <div class="shopping-cart-items">
+                    @if (isset(Auth::user()->cart->products[0]))
+                        @foreach (Auth::user()->cart->products as $product)
+                            <div class="clearfix d-flex align-items-center">
+                                <img src="{{ URL::asset("img/$product->img") }}" class="img-fluid w-25"
+                                    alt="{{ $product->name }}" />
+                                <div class="flex-column text-start">
+                                    <span class="item-name">{{ $product->name }}</span>
+                                    <span class="item-price">{{ $product->price }}€</span>
+                                    <div class="d-flex flex-row gap-2">
+                                        <a href="{{ route('minus', $product->id) }}"><i
+                                                class="bi bi-dash-circle-fill text-black"></i></a>
+                                        <p class="fw-bold m-0">{{ $product->pivot->amount }}</p>
+                                        <a href="{{ route('plus', $product->id) }}"><i
+                                                class="bi bi-plus-circle-fill text-black"></i></a>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <a href="{{ route('deleteProduct', $product->id) }}"><i
+                                            class="bi bi-trash-fill text-danger"></i></a>
+                                    <p class="fw-bold m-0">{{ $product->pivot->amount * $product->price }}€</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="clearfix d-flex align-items-center">
+                            <p class="p-5 text-secondary">No hay artículos en el carrito, {{ Auth::user()->name }}</p>
+                        </div>
+                    @endif
+                </div>
+
+                <a href="{{ Route('cart') }}" class="button">Ver carrito</a>
+            </div>
         </div>
-    </div>
     @endguest
 @endsection
 

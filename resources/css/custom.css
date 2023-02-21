@@ -373,9 +373,15 @@ article {
     width: 100%;
 }
 
+.contenidoNav{
+    max-width: 2100px;
+}
+
 /*SHOPPING_CART */
 
-
+#containerCarrito{
+    padding-bottom: 25rem;
+}
 
 /* RESPONSIVE */
 
