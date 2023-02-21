@@ -2,9 +2,9 @@
 @section('admin')
     <header class="bg-success py-3">
         <div class="container">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">ADMINISTRACIÓN</h1>
-            </div>
+            <a id="title" href="{{ route('index') }}">
+                <h1 class="display-4 fw-bolder text-white">ADMINISTRACIÓN</h1>
+            </a>
         </div>
     </header>
     <div class="container">

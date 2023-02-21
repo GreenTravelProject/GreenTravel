@@ -30,13 +30,11 @@
                                     <div class="col-md-3 mb-3">
                                         <div class="card">
                                             <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute"
-                                                style="top: 0.5rem; right: 0.5rem">
+                                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
                                                 <i class="bi bi-person-fill">{{ $products[$i]->stock}}</i>
                                             </div>
                                             <!-- Product image-->
-                                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                                alt="..." />
+                                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                                             <!-- Product details-->
                                             <div class="card-body p-4">
                                                 <div class="text-center">
