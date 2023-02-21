@@ -72,7 +72,7 @@
                     </div>
                 @endif
                 <button class="btn btn-success m-2" type="submit">Guardar cambios</button>
-
+            </div>
         </form>
     </section>
 @endsection
