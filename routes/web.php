@@ -57,7 +57,21 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     );
 });
 
-Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
+//Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
+Route::prefix('/user')->middleware('auth')->group(
+    function(){
+        Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
+        Route::get('/cambiar', function(){
+            return view('/userpanel.cambioPassword');
+        })->name("cambiarPassword");
+        Route::get('/direccion', function(){
+            return view('/userpanel.direccion');
+        })->name("direccion");
+        Route::get('/favoritos', function(){
+            return view('/userpanel.favoritos');
+        })->name("favoritos");
+    }
+);
 //Route::get('/user', [AddressController::class, "mostrar_direccion"])->name('user')->middleware('auth');
 
 
