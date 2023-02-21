@@ -115,7 +115,7 @@
                 <span class="user-info" id="user-info3">
                     <div class="container">
                         <h1>CAMBIAR</h1>
-                        <div class="container p-4">
+                        <div class="container p-4 justify-content-center">
                             <form method="post">
                                 @csrf
                                 <label id="pass-start">Nueva contraseña</label><input id="input-user-reppass"
