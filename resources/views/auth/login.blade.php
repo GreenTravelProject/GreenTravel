@@ -1,7 +1,6 @@
 @extends('template.general3')
 @section('login')
     <div id="login">
-
         <form method="POST" action="{{ route('login') }}" class="text-center">
             @csrf
             <h1>INICIAR SESIÓN</h1><br>
@@ -74,5 +73,5 @@
             </div>
         </form>
     </div>
-    <p id="p-login" class="text-center">Si no estás registrado pulsa <a href="{{ route('register') }}">aquí</a></p>
+    <p id="p-login" class="p-4 text-center">Si no estás registrado pulsa <a href="{{ route('register') }}">aquí</a></p>
 @endsection

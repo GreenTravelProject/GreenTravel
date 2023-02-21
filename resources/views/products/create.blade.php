@@ -56,7 +56,7 @@
                             @foreach ($categories as $category)
                                 <label class="d-flex py-1 px-3 gap-2" for="{{ $category->name }}">{{ $category->name }}
                                     <input type="checkbox" id="{{ $category->name }}" name="category[]"
-                                        value="{{ $category->id }}"></input></label>
+                                        value="{{ $category->id }}"></label>
                             @endforeach
                         </div>
                     </div>

@@ -19,11 +19,10 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
-                    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
+                    <a id="icono" class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
                     <ul class="navbar-nav">
                         @foreach ($categories as $category)
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                            <h4 class="m-0 nav-item"><a class="nav-link" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></h4>
                         @endforeach
                     </ul>
                 </ul>
@@ -33,15 +32,15 @@
                 <ul class="navbar-nav">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item">
+                        <h5 class="nav-item m-0">
                             <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill"></i>
                                 {{ __('Login') }}</a>
-                        </li>
+                        </h5>
                         @if (Route::has('register'))
-                            <li class="nav-item">
+                            <h5 class="m-0 nav-item">
                                 <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add"></i>
                                     {{ __('Register') }}</a>
-                            </li>
+                            </h5>
                         @endif
                     @else
                         <div class="dropdown d-flex flex-lg-row flex-column gap-2">

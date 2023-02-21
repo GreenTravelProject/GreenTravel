@@ -37,6 +37,12 @@ body {
     background-color: var(--greymenu);
 }
 
+/*Logo nav-var*/
+
+#icono{
+    margin-right: 1em;
+}
+
 /*Grid de categorías (index)*/
 
 .gridCategory {
@@ -164,6 +170,7 @@ body {
 .lineaProducto:hover {
     padding-top: 8rem;
     padding-bottom: 8rem;
+    transition-duration: 1s;
 }
 
 /*ADMIN*/
@@ -295,6 +302,9 @@ body {
     justify-content: center;
     align-items: center;
     padding: 7% 0 2em;
+    border-radius: 3em;
+    margin: 3em 20% 0;
+    background-color: #ececec;
 }
 
 #p-login {
@@ -396,6 +406,11 @@ article {
 
 @media (max-width: 768px) {
     /* INDEX */
+
+    #icono{
+        margin: 0;
+    }
+
     .categorias p {
         font-size: 3em;
     }
