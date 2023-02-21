@@ -57,9 +57,22 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     );
 });
 
-Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
+//Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
+Route::prefix('/user')->middleware('auth')->group(
+    function(){
+        Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
+        Route::get('/cambiar', function(){
+            return view('/userpanel.cambioPassword');
+        })->name("cambiarPassword");
+        Route::get('/direccion', function(){
+            return view('/userpanel.direccion');
+        })->name("direccion");
+        Route::get('/favoritos', function(){
+            return view('/userpanel.favoritos');
+        })->name("favoritos");
+    }
+);
 //Route::get('/user', [AddressController::class, "mostrar_direccion"])->name('user')->middleware('auth');
-
 
 //Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
 
@@ -69,7 +82,8 @@ Route::post('/category/fav_add', [FavoriteController::class, 'add'])->name('fav_
 //La función de añadir al carrito no puede ser la misma que lleve al carrito en sí: se añade el producto cada vez que recargas
 Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_add');
 
-Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
+Route::get('/cart', [CartController::class, 'show_cart'])->name('cart')->middleware('auth');
+
 
 //Para cambiar la cantidad de productos en el carrito:
 Route::get('/plus/{id}', [CartController::class, 'plus_amount'])->name('plus');

@@ -41,7 +41,7 @@
                                             <div class="card-body p-4">
                                                 <div class="text-center">
                                                     <!-- Product name-->
-                                                    <h5 class="fw-bolder">{{ $products[$i]->name}}</h5>
+                                                    <h5 class="fw-bolder">{{ mb_strimwidth($products[$i]->name, 0, 18, '...')}}</h5>
                                                     <!-- Product reviews-->
                                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                                         <div class="bi-star-fill"></div>

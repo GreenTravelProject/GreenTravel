@@ -256,6 +256,14 @@ body {
     cursor: pointer;
 }
 
+#pass-change{
+    text-align: initial;
+}
+
+#menu-user{
+    text-decoration: none;
+}
+
 /*----- INFORMACIÓN -----*/
 
 #user-data {
