@@ -23,17 +23,18 @@ class UserController extends Controller
     {
         $users = User::all();
         $users = User::paginate(10);
-        return view('users.adminUsers', @compact('users'));
+        return view('admin.users.adminUsers', @compact('users'));
     }
 
     public function editar_usuario($id)
     {
         $usuario = User::findOrFail($id);
-        return view('users.edit', @compact('usuario'));
+        return view('admin.users.edit', @compact('usuario'));
     }
 
     public function actualizar_usuario(Request $request, $user_ID)
     {
+        //TODO: ESTO DEBERÍA HACERLO FORTIFY???
         $usuario = User::findOrFail($user_ID);
 
         if ($usuario->email == $request->email) {
