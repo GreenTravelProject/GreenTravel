@@ -164,6 +164,7 @@ body {
 .lineaProducto:hover {
     padding-top: 8rem;
     padding-bottom: 8rem;
+    transition-duration: 1s;
 }
 
 /*ADMIN*/
