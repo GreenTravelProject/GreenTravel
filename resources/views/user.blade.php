@@ -1,4 +1,4 @@
-@extends('template.general')
+@extends('template.templateUser')
 @section('user')
 
     {{-- TODO: SEPARAR LAS SECCIONES EN VISTAS DISTINTAS --}}
@@ -6,33 +6,6 @@
     {{-- ! Actualmente no se puede ver los productos en favoritos, no se podrá actualizar la dirección del usuario --}}
     {{-- ! Tampoco cambiar la contraseña  --}}
 
-    <section id="user-cont">
-        <div class="row m-0 w-100" id="full-page">
-            <div class="col-md-2 col-sm-2 p-0 bg-light">
-                <div class="profile-sidebar">
-                    <div class="profile-user">
-                        <div class="profile-name text-center">
-                            <h1 class="p-4">MENÚ</h1>
-                            <hr class="m-0">
-                        </div>
-                    </div>
-                    <div class="profile-menu mt-0">
-                        <h4 class="p-4" onclick="reveal('user-info1');">Cuenta</h4>
-                        <hr class="m-0">
-                        <h4 class="p-4" onclick="reveal('user-info2');">Favoritos</h4>
-                        <hr class="m-0">
-                        <h4 class="p-4" onclick="reveal('user-info3');">Cambio contraseña</h4>
-                        <hr class="m-0">
-                        <h4 class="p-4" onclick="reveal('user-info4');">Dirección</h4>
-                        <hr class="m-0">
-                        <a class="text-decoration-none text-black" href="{{ route('cart') }}">
-                            <h4 class="p-4">Carrito</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div id="user-data" class="col-md-10 col-sm-2 pb-0">
-                <span class="user-info" id="user-info1">
                     <div class="container">
                         <h1>DATOS PERSONALES</h1>
                         <div class="container p-4">
@@ -91,8 +64,7 @@
                         </div>
                         </form>
                     </div>
-                </span>
-                <span class="user-info" id="user-info2">
+
                     <div class="container">
                         <h1>PRODUCTOS FAVORITOS</h1>
                         {{-- @foreach ($products as $product) --}}
@@ -111,37 +83,9 @@
                         </div>
                         {{-- @endforeach --}}
                     </div>
-                </span>
-                <span class="user-info" id="user-info3">
-                    <div class="container">
-                        <h1>CAMBIAR</h1>
-                        <div class="container p-4">
-                            <form method="post">
-                                @csrf
-                                <label id="pass-start">Nueva contraseña</label><input id="input-user-reppass"
-                                    class="form-control" type="password" name="password" placeholder="Mínimo 8 caracteres"
-                                    required><br>
-                                <label id="pass-start">Repetir nueva contraseña</label><input id="input-user-reppass"
-                                    class="form-control" type="password" name="password" placeholder="*" required>
-                                <div class="mt-2">
-                                    @error('password')
-                                        <div class="alert alert-danger">
-                                            Las contraseñas no son iguales
-                                        </div>
-                                    @enderror
-                                    @if (session('mensaje'))
-                                        <div class="alert alert-success">{{ session('mensaje') }}</div>
-                                    @endif
-                                </div>
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button id="btn-signup" class="bg-success btn mb-5 text-light text-center mt-5"
-                                        type="submit">Confirmar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </span>
-                <span class="user-info" id="user-info4">
+
+                    @yield('cambioPassword')
+
                     <div class="container">
                         <h1>DIRECCIÓN</h1>
                         <div class="container p-4">
@@ -201,9 +145,4 @@
                             </form>
                         </div>
                     </div>
-                </span>
-            </div>
-        </div>
-        </div>
-    </section>
 @endsection

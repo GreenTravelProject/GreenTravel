@@ -22,7 +22,7 @@
             @yield('index')
             @yield('category')
             @yield('shoppingCart')
-            @yield('user')
+            @yield('templateUser')
             @yield('login')
             @yield('admin')
             @yield('footer')
