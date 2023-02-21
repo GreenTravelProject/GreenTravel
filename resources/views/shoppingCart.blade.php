@@ -2,7 +2,7 @@
 
 @section('shoppingCart')
     <!--Mostramos los productos añadidos al carrito-->
-    <div class="container d-grid py-5">
+    <div class="container d-grid py-4">
         <div class="row gap-3">
             @if (isset($cart->products[0]))
                 <div class="col-md-8 bg5">
@@ -52,7 +52,16 @@
         </div>
         <div class="col bg5 p-4">
             <h2>Datos de compra</h2>
+            <div class="text-start pt-2">
+                <p>Nombre: {{ Auth::user()->name }} {{ Auth::user()->surname }}</p>
+                <p>Teléfono: {{ Auth::user()->phone }}</p>
+                <p>DIRECCIÓN</p>
+                {{-- CUANDO TENGAMOS LAS DIRECCIONES :D --}}
+                <a href="{{ route('user') }}" class = "btn btn-danger">Cambiar datos</a>
+                <a href="{{ route('user') }}" class = "btn btn-success">Comprar</a>
+            </div>
         </div>
+        
     </div>
 
     </div>
