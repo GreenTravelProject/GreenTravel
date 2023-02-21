@@ -63,7 +63,7 @@ Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->m
 
 Route::get('/shoppingCart', function () {
     return view('/shoppingCart');
-})->name('shoppingCart');
+})->name('shoppingCart')->middleware('auth');
 
 //Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
 
@@ -73,7 +73,7 @@ Route::post('/category/fav_add', [FavoriteController::class, 'add'])->name('fav_
 //La función de añadir al carrito no puede ser la misma que lleve al carrito en sí: se añade el producto cada vez que recargas
 Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_add');
 //TODO: Mejor que acceda al usuario al clicar en carrito: CONTROLAR QUE ESTÉ REGISTRADO
-Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
+Route::get('/cart', [CartController::class, 'show_cart'])->name('cart')->middleware('auth');
 
 //Para cambiar la cantidad de productos en el carrito:
 Route::get('/plus/{id}', [CartController::class, 'plus_amount'])->name('plus');
