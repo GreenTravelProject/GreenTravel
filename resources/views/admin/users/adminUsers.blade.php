@@ -4,8 +4,8 @@
 
     <div class="px-5 mt-4">
         <div class="pb-3">
-            <button class="btn btn-success"><a class="text-decoration-none text-white" href="{{ route('users.create') }}">Crear
-                    usuario</a></button>
+            {{-- <button class="btn btn-success"><a class="text-decoration-none text-white" href="">Crear
+                    usuario</a></button> --}}
         </div>
         <table class="table table-responsive table-bordered text-center bg5">
             <thead>

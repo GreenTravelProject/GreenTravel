@@ -52,16 +52,22 @@
         </div>
         <div class="col bg5 p-4">
             <h2>Datos de compra</h2>
-            <div class="text-start pt-2">
+            <div class="text-start pt-2 mt-3">
                 <p>Nombre: {{ Auth::user()->name }} {{ Auth::user()->surname }}</p>
                 <p>Teléfono: {{ Auth::user()->phone }}</p>
                 <p>DIRECCIÓN</p>
                 {{-- CUANDO TENGAMOS LAS DIRECCIONES :D --}}
-                <a href="{{ route('user') }}" class = "btn btn-danger">Cambiar datos</a>
-                <a href="{{ route('user') }}" class = "btn btn-success">Comprar</a>
+                <div class="d-flex gap-2 justify-content-end">
+                    <a href="{{ route('user') }}" class="btn btn-danger">Cambiar datos</a>
+                    @if (isset($cart->products[0]))
+                    <a href="{{ route('buy') }}" class="btn btn-success">Comprar</a>
+                    @else
+                    <a href="{{ route('buy') }}" class="btn btn-success" disabled>Comprar</a>
+                    @endif
+                </div>
             </div>
         </div>
-        
+
     </div>
 
     </div>
