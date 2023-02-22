@@ -135,8 +135,7 @@
                         <div class="row text-center justify-content-center">
                             <div class="col-auto">
                                 <div class="input-group-lg input-group">
-                                    <input type="text" class="form-control" placeholder="Email"
-                                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <button class="btn btn-dark" type="button" id="button-addon2"><b>Enviar</b></button>
                                 </div>
                             </div>
@@ -147,23 +146,21 @@
         </div>
         <hr>
         <div class="row justify-content-around">
-            <div class="col-11">
+            <div class="col-12">
                 <div class="row justify-content-center">
-                    <div class="col-md-3 col-12 font-italic align-items-center mt-md-3 mt-3">
-                        <h5><span><img src="" class="img-fluid mb-1 "></span><b class="text-white">GREEN <span
-                                    class="text-white"> TRAVEL</span></b></h5>
+                    <div class="col-md-2 col-12 font-italic align-items-center mt-md-3 mt-3">
+                        <h5><span><img src="" class="img-fluid mb-1 "></span><b class="text-white">GREEN <span class="text-white"> TRAVEL</span></b></h5>
                         <small class="copy-rights cursor-pointer">&#9400;2023 Ilerna Daw</small><br>
                         <small>Copyright. All Rights Reserved.</small>
                     </div>
-                    <div class="col-md-3 col-12 my-sm-0 mt-5">
+                    <div class="col-md-2 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)
-                                <li class="mt-md-1"><a class="text-white"
-                                        href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                                <li class="mt-md-1"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
-                    <div class="col-md-3 col-12 my-sm-0 mt-5">
+                    <div class="col-md-2 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             <li class="mt-md-3 mt-4"></li>
                             <li><a class="text-white" href="https://github.com/lauravcruz" target=_blank>Laura</a></li>
@@ -171,13 +168,13 @@
                             <li><a class="text-white" href="https://github.com/jgTrue" target=_blank>Jairo</a></li>
                         </ul>
                     </div>
-                    <div class="col-xl-auto col-md-3 col-12 my-sm-0 mt-5">
+                    <div class="col-md-2 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
-                            <li class="mt-md-3 mt-4">Offer</li>
-                            <li>Intergrated Security Platform</li>
-                            <li>Core Features</li>
-                            <li>Product Features</li>
-                            <li>Pricing</li>
+                            <li class="mt-md-3 mt-4">¿Qúe necesitas</li>
+                            <li>Licencia y seguridad</li>
+                            <li>Nuestra empresa</li>
+                            <li>Nuestros productos</li>
+                            <li>Precios</li>
                         </ul>
                     </div>
                 </div>
@@ -185,3 +182,4 @@
         </div>
     </div>
 @endsection
+
