@@ -3,7 +3,7 @@
 <div class="container">
     <h1>DIRECCIÓN</h1>
     <div class="container p-4">
-        <form method="post">
+        <form action="{{ route('direccion') }}" method="post">
             @csrf
             <div class="row m-3">
                 <div class="col-md-6 col-sm-12">
@@ -26,7 +26,7 @@
                     </select>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label id="nacimiento">Localidad</label><input class="form-control" type="text" name="city" placeholder="*" required><br>
+                    <label id="nacimiento">Localidad</label><input class="form-control" type="text" value="{{ $usuario_direccion->country }}" name="city" placeholder="*" required><br>
                 </div>
                 <div class="col-md-4 col-sm-12">
                     <label>Calle</label><input class="form-control" type="text" name="street" placeholder="Dirección exacta" value="{{ old('email') }}" required>

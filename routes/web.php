@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryController;
@@ -82,6 +83,10 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
 Route::prefix('/user')->middleware('auth')->group(
     function () {
         Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
+        Route::get('/cambiar', [UserController::class, ""])->name("cambiarPassword");
+        Route::get('/direccion', [UserController::class, "/userpanel.direccion"])->name("direccion");
+        Route::get('/favoritos', [UserController::class, "/userpanel.favoritos"])->name("favoritos");
+        Route::post('/direccion', [AddressController::class, 'actualizar_direccion'])->name('direccion');
         Route::get(
             '/cambiar',
             function () {

@@ -16,7 +16,7 @@ class AddressController extends Controller
 
         $usuario_direccion = User::findOrFail(Auth::id());
         $user_adress = Adress::all();
-        return view('user', @compact('$user_adress'));
+        return view('user/direccion', @compact('user_adress'));
     }
 
     public function actualizar_direccion(Request $request)
