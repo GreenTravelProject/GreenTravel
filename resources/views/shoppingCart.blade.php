@@ -59,10 +59,10 @@
                 {{-- CUANDO TENGAMOS LAS DIRECCIONES :D --}}
                 <div class="d-flex gap-2 justify-content-end">
                     <a href="{{ route('user') }}" class="btn btn-danger">Cambiar datos</a>
-                    @if (isset($cart->products[0]))
-                    <a href="{{ route('buy') }}" class="btn btn-success">Comprar</a>
+                    @if (isset(Auth::user()->cart->products[0]))
+                        <a href="{{ route('buy') }}" class="btn btn-success">Comprar</a>
                     @else
-                    <a href="{{ route('buy') }}" class="btn btn-success" disabled>Comprar</a>
+                        <button href="{{ route('buy') }}" type="button" class="btn btn-success" disabled>Comprar</button>
                     @endif
                 </div>
             </div>

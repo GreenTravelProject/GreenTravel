@@ -47,6 +47,18 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    {!! implode('', $errors->all('<li>:message</li>')) !!}
+                </div>
+            @endif
+            @if (session('mensaje'))
+                <div class="alert alert-success">
+                    {{ session('mensaje') }}
+                </div>
+            @endif
+        </div>
         <div>{{ $users->links() }}</div>
     </div>
 

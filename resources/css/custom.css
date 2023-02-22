@@ -213,7 +213,7 @@ body {
 }
 
 .menuAdmin *:hover {
-    color: rgb(0, 0, 0);
+    color: white; 
     text-decoration: none;
 }
 
@@ -301,7 +301,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7% 0 2em;
+    padding: 3rem;
     border-radius: 3em;
     margin: 3em 20% 0;
     background-color: #ececec;
