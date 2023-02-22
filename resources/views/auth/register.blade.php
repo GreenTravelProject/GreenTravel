@@ -69,7 +69,7 @@
                     <label for="email">{{ __('E-mail') }}</label>
                     <div class="input-group">
                         <div class="input-group-text">@</div>
-                        <input id="email" class="form-control" type="email" @error('email') is-invalid @enderror"
+                        <input id="email" class="form-control" type="email" @error('email') is-invalid @enderror
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label for="password">{{ __('Contraseña') }}</label>
-                    <input id="password" class="form-control" type="password" @error('password') is-invalid @enderror"
+                    <input id="password" class="form-control" type="password" @error('password') is-invalid @enderror
                         name="password" required autocomplete="new-password" autofocus>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
