@@ -39,12 +39,53 @@ body {
 
 /*Logo nav-var*/
 
-#icono{
+#icono {
     margin-right: 1em;
 }
 
 /*Grid de categorías (index)*/
 
+.bgindex {
+    background: linear-gradient(270deg, #ddffbc, #f8f9fa);
+    background-size: 600% 600%;
+    -webkit-animation: backgroundGradient 12s ease infinite;
+    -moz-animation: backgroundGradient 12s ease infinite;
+    animation: backgroundGradient 12s ease infinite;
+}
+
+@-webkit-keyframes backgroundGradient {
+    0% {
+        background-position: 0% 23%;
+    }
+    50% {
+        background-position: 100% 78%;
+    }
+    100% {
+        background-position: 0% 23%;
+    }
+}
+@-moz-keyframes backgroundGradient {
+    0% {
+        background-position: 0% 23%;
+    }
+    50% {
+        background-position: 100% 78%;
+    }
+    100% {
+        background-position: 0% 23%;
+    }
+}
+@keyframes backgroundGradient {
+    0% {
+        background-position: 0% 23%;
+    }
+    50% {
+        background-position: 100% 78%;
+    }
+    100% {
+        background-position: 0% 23%;
+    }
+}
 .gridCategory {
     grid-template-columns: 1fr 1fr;
 }
@@ -213,7 +254,7 @@ body {
 }
 
 .menuAdmin *:hover {
-    color: white; 
+    color: white;
     text-decoration: none;
 }
 
@@ -263,11 +304,11 @@ body {
     cursor: pointer;
 }
 
-#pass-change{
+#pass-change {
     text-align: initial;
 }
 
-#menu-user{
+#menu-user {
     text-decoration: none;
 }
 
@@ -401,13 +442,12 @@ article {
     padding-bottom: 25rem;
 }
 
-
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
     /* INDEX */
 
-    #icono{
+    #icono {
         margin: 0;
     }
 

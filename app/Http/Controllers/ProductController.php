@@ -126,6 +126,7 @@ class ProductController extends Controller
     public function eliminar_producto($id)
     {
         $producto = Product::findOrFail($id);
+        $producto->categories()->detach; //se le quita la relación con las categorías para evitar que falle la FK
         $producto->delete();
         return back()->with('mensaje', 'El producto ha sido eliminado.');
     }
