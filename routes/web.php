@@ -85,7 +85,8 @@ Route::prefix('/user')->middleware('auth')->group(
     function () {
         Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
         Route::get('/cambiar',function () {return view('/userpanel.cambioPassword');})->name("cambiarPassword");
-        Route::get('/direccion',function () {return view('/userpanel.direccion');})->name("direccion");
+        Route::get('/direccion',[AddressController::class, 'mostrar_direccion'])->name("direccion");
+        Route::post('/direccion',[AddressController::class, 'actualizar_direccion'])->name("actualizar_direccion");
         Route::get('/favoritos',[FavoriteController::class, 'show_favorites'])->name("favoritos");
 
     }

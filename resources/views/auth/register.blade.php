@@ -44,7 +44,8 @@
                     <br>
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label>Género</label><select class="form-control" type="text" name="genre" value>
+                    <label>Género</label>
+                    <select class="form-control" type="text" name="genre" required>
                         <option selected="selected" disabled>-</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>

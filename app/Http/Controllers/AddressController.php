@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Adress;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,8 @@ class AddressController extends Controller
     public function mostrar_direccion()
     {
 
-        $usuario_direccion = User::findOrFail(Auth::id());
-        $user_adress = Adress::all();
-        return view('user/direccion', @compact('user_adress'));
+        $usuario_direccion = Adress::where('user_id', Auth::id())->first();
+        return view('userPanel.direccion', @compact('usuario_direccion'));
     }
 
     public function actualizar_direccion(Request $request)
@@ -33,13 +33,13 @@ class AddressController extends Controller
 
         if ($usuario_direccion->id == $request->id) {
             $request->validate([
-                'country' => 'required|arrayPaises',
+                'country' => ['required|', Rule::in($arrayPaises)],
                 'city' => 'required|min:2|max:40',
                 'street' => 'required|min:3|max:100',
-                'number' => 'required|min:3|max:100',
-                'block' => 'nullable',
-                'floor' => 'nullable',
-                'door' => 'nullable'
+                'number' => 'required|min:3|max:100|numeric',
+                'block' => 'nullable|alphanumeric',
+                'floor' => 'nullable|alphanumeric',
+                'door' => 'nullable|alphanumeric'
             ]);
 
             $usuario_direccion->country = $request->country;
@@ -49,18 +49,18 @@ class AddressController extends Controller
             $usuario_direccion->block = $request->block;
             $usuario_direccion->floor = $request->floor;
             $usuario_direccion->door = $request->door;
-            
+
             Adress::where('user_id', $usuario_direccion->id)->update($usuario_direccion);
             return back()->with('mensaje', "Dirección actualizada");
         } else {
             $request->validate([
-                'country' => 'required|arrayPaises',
+                'country' => ['required|', Rule::in($arrayPaises)],
                 'city' => 'required|min:2|max:40',
                 'street' => 'required|min:3|max:100',
-                'number' => 'required|min:3|max:100',
-                'block' => 'nullable',
-                'floor' => 'nullable',
-                'door' => 'nullable'
+                'number' => 'required|min:3|max:100|numeric',
+                'block' => 'nullable|alphanumeric',
+                'floor' => 'nullable|alphanumeric',
+                'door' => 'nullable|alphanumeric'
             ]);
 
             $usuario_direccion->country = $request->country;
