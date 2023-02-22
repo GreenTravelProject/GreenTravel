@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(class: ScriptSeeder::class);
         $name = ['Deportes', 'Camping', 'Extranjero', 'Acuático', 'Animales'];
         $description = [
             'Actividades deportivas para activar el cuerpo y darlo todo',
@@ -32,6 +33,5 @@ class DatabaseSeeder extends Seeder
                 'img' => $img[$i]
             ]);
         }
-
     }
 }
