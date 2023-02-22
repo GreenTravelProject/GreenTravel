@@ -40,7 +40,7 @@
                         <td>{{ $product->date }}</td>
                         <td>{{ $product->state }}</td>
                         <td>{{ $product->stock }}</td>
-                        <td class="td-img"><img class="img-admin" src="{{ URL::asset("img/$product->img") }}"></td>
+                        <td class="td-img"><img class="img-admin" src="{{ URL::asset("img/products/$product->img") }}"></td>
                         <td class=" text-center"><a href="{{ route('products.edit', $product->id) }}"
                                 class="text-success"><i class="bi bi-pencil-fill"></i></a></td>
                         <td class=" text-center">

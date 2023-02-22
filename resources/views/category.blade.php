@@ -27,7 +27,7 @@
             @foreach ($products as $product)
                 <div class="row gx-4 gx-lg-5 align-items-center lineaProducto">
                     <div class="col-md-6 py-5"> <img
-                            class="card-img-top mb-5 mb-md-0"src="{{ URL::asset("img/$product->img") }}" alt="" />
+                            class="card-img-top mb-5 mb-md-0"src="{{ URL::asset("img/products/$product->img") }}" alt="" />
                     </div>
                     <div class="col-md-6">
                         <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>

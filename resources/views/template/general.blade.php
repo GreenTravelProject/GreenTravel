@@ -90,7 +90,7 @@
                     @if (isset(Auth::user()->cart->products[0]))
                         @foreach (Auth::user()->cart->products as $product)
                             <div class="clearfix d-flex align-items-center">
-                                <img src="{{ URL::asset("img/$product->img") }}" class="img-fluid w-25"
+                                <img src="{{ URL::asset("img/products/$product->img") }}" class="img-fluid w-25"
                                     alt="{{ $product->name }}" />
                                 <div class="flex-column text-start">
                                     <span class="item-name">{{ $product->name }}</span>
