@@ -12,10 +12,9 @@ class FavoriteController extends Controller
     public function show_favorites()
     {
         $favorite = Favorite::where('user_id', Auth::id())->first();
-        $products = $favorite->products;
-        return view('user', @compact("favorite"));
+        $favorites = $favorite->products;
+        return view('userpanel.favoritos', @compact('favorites'));
     }
-
     public function add(Request $request)
     {
         $favorite = Favorite::where('user_id', Auth::id())->first();

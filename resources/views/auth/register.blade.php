@@ -82,7 +82,7 @@
                 <div class="col-md-6 col-sm-12">
                     <label for="password">{{ __('Contraseña') }}</label>
                     <input id="password" class="form-control" type="password" @error('password') is-invalid @enderror
-                        name="password" required autocomplete="new-password" autofocus>
+                        name="password" required autofocus>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -91,8 +91,8 @@
 
                 </div>
                 <div class="col-md-6 col-sm-12">
-                    <label id="nacimiento" for="password-confirm">{{ __('Confirm Password') }}</label>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <label id="nacimiento" for="password-confirm">{{ __('Confirmar contraseña') }}</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                 </div>
             </div>
             @if ($errors->any())
