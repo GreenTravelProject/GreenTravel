@@ -50,7 +50,7 @@
                                                     </div>
                                                     <!-- Product price-->
                                                     <span class="text-muted text-decoration-line-through">{{ $products[$i]->price * 1.5}}€</span>
-                                                    {{ $products[$i]->price}}€
+                                                    {{ $products[$i]->price }}€
                                                 </div>
                                             </div>
                                             <!-- Product actions-->
