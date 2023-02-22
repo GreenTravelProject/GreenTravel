@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-        //TODO: DOCUMENTACIÓN. controlar que las categorías de la base de datos existen:
+        //TODO: DOCUMENTACIÓN. controlar que las categorías de la base de datos existen: (necesitamos un seeder con las categorías)
         view()->share('categories', Category::all());
     }
 }

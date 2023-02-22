@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,13 +13,13 @@ class ProductController extends Controller
     public function crear_producto()
     {
         $categories = Category::all();
-        return view('products.create', @compact('categories'));
+        return view('admin.products.create', @compact('categories'));
     }
     public function mostrar_productos()
     {
         $productos = Product::all();
         $productos = Product::paginate(10);
-        return view('products.adminProducts', @compact('productos'));
+        return view('admin.products.adminProducts', @compact('productos'));
     }
     public function insertar_producto(Request $request)
     {
@@ -67,7 +66,7 @@ class ProductController extends Controller
     {
         $producto = Product::findOrFail($id);
         $categories = Category::all();
-        return view('products.edit', @compact('producto', 'categories'));
+        return view('admin.products.edit', @compact('producto', 'categories'));
     }
 
     public function actualizar_producto(Request $request, $id)

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogInController;
@@ -36,6 +37,16 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
             return view('admin');
         }
     )->name('admin');
+    Route::prefix('/categories')->group(
+        function () {
+            Route::get('/', [CategoryController::class, 'mostrar_categorias'])->name('admin.categories');
+            Route::get('/edit/{id}', [CategoryController::class, 'editar_categoria'])->name('categories.edit');
+            Route::put('/update/{id}', [CategoryController::class, 'actualizar_categoria'])->name('categories.update');
+            Route::get('/create', [CategoryController::class, 'crear_categoria'])->name('categories.create');
+            Route::post('/insert', [CategoryController::class, 'insertar_categoria'])->name('categories.insert');
+            Route::delete('delete/{id}', [CategoryController::class, 'eliminar_categoria'])->name('categories.delete');
+        }
+    );
     Route::prefix('/products')->group(
         function () {
             Route::get('/', [ProductController::class, 'mostrar_productos'])->name('admin.products');
@@ -51,21 +62,49 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
             Route::get('/', [UserController::class, 'mostrar_usuarios'])->name('admin.users');
             Route::get('/edit/{id}', [UserController::class, 'editar_usuario'])->name('users.edit');
             Route::put('/update/{id}', [UserController::class, 'actualizar_usuario'])->name('users.update');
-            Route::get('/create', [UserController::class, 'crear_usuario'])->name('users.create');
-            Route::post('/insert', [UserController::class, 'insertar_usuario'])->name('users.insert');
+            // Route::get('/create', [UserController::class, 'crear_usuario'])->name('users.create');
+            // Route::post('/insert', [UserController::class, 'insertar_usuario'])->name('users.insert');
             Route::delete('delete/{id}', [UserController::class, 'eliminar_usuario'])->name('users.delete');
+        }
+    );
+    Route::prefix('/deliveries')->group(
+        function () {
+            Route::get('/', [DeliveryController::class, 'mostrar_pedidos'])->name('admin.deliveries');
+            Route::get('/edit/{id}', [DeliveryController::class, 'editar_pedido'])->name('deliveries.edit');
+            Route::put('/update/{id}', [DeliveryController::class, 'actualizar_pedido'])->name('deliveries.update');
+            // Route::get('/create', [UserController::class, 'crear_usuario'])->name('users.create');
+            // Route::post('/insert', [UserController::class, 'insertar_usuario'])->name('users.insert');
+            Route::delete('delete/{id}', [DeliveryController::class, 'eliminar_pedido'])->name('deliveries.delete');
         }
     );
 });
 
 //Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
 Route::prefix('/user')->middleware('auth')->group(
-    function(){
+    function () {
         Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
         Route::get('/cambiar', [UserController::class, ""])->name("cambiarPassword");
         Route::get('/direccion', [UserController::class, "/userpanel.direccion"])->name("direccion");
         Route::get('/favoritos', [UserController::class, "/userpanel.favoritos"])->name("favoritos");
         Route::post('/direccion', [AddressController::class, 'actualizar_direccion'])->name('direccion');
+        Route::get(
+            '/cambiar',
+            function () {
+                    return view('/userpanel.cambioPassword');
+                }
+        )->name("cambiarPassword");
+        Route::get(
+            '/direccion',
+            function () {
+                    return view('/userpanel.direccion');
+                }
+        )->name("direccion");
+        Route::get(
+            '/favoritos',
+            function () {
+                    return view('/userpanel.favoritos');
+                }
+        )->name("favoritos");
     }
 );
 //Route::get('/user', [AddressController::class, "mostrar_direccion"])->name('user')->middleware('auth');
@@ -85,3 +124,4 @@ Route::get('/cart', [CartController::class, 'show_cart'])->name('cart')->middlew
 Route::get('/plus/{id}', [CartController::class, 'plus_amount'])->name('plus');
 Route::get('/minus/{id}', [CartController::class, 'minus_amount'])->name('minus');
 Route::get('/cart/deleteProduct/{id?}', [CartController::class, 'delete_product'])->name('deleteProduct');
+Route::get('/delivery', [DeliveryController::class, 'buy_products'])->name('buy');
