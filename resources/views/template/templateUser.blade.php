@@ -5,7 +5,7 @@
 
     <section id="user-cont">
         <div class="row m-0 w-100" id="full-page">
-            <div class="col-md-2 col-sm-2 p-0 bg-light">
+            <div class="col-md-4 col-lg-2 col-sm-2 p-0 bg-light">
                 <div class="profile-sidebar">
                     <div class="profile-user">
                         <div class="profile-name text-center">
@@ -23,12 +23,12 @@
                     </div>
                 </div>
             </div>
-            <div id="user-data" class="col-md-10 col-sm-2 pb-0">
+            <div id="user-data" class="col-md-8 col-lg-10 col-sm-2 pb-0">
                 @yield('cambioPassword')
                 @yield('datosPersonales')
                 @yield('direccion')
                 @yield('favoritos')
-            </div> 
+            </div>
         </div>
         </div>
     </section>

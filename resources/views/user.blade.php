@@ -1,11 +1,6 @@
 @extends('template.templateUser')
 @section('user')
 
-    {{-- TODO: SEPARAR LAS SECCIONES EN VISTAS DISTINTAS --}}
-    {{-- Solo se puede mandar un controlador a una ruta --}}
-    {{-- ! Actualmente no se puede ver los productos en favoritos, no se podrá actualizar la dirección del usuario --}}
-    {{-- ! Tampoco cambiar la contraseña  --}}
-
                     <div class="container">
                         <h1>DATOS PERSONALES</h1>
                         <div class="container p-4">

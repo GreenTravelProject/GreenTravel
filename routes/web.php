@@ -7,6 +7,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,31 +69,15 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     );
 });
 
-//Route::get('/user', [UserController::class, "mostrar_usuario"])->name('user')->middleware('auth');
+
 Route::prefix('/user')->middleware('auth')->group(
     function () {
         Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
-        Route::get(
-            '/cambiar',
-            function () {
-                    return view('/userpanel.cambioPassword');
-                }
-        )->name("cambiarPassword");
-        Route::get(
-            '/direccion',
-            function () {
-                    return view('/userpanel.direccion');
-                }
-        )->name("direccion");
-        Route::get(
-            '/favoritos',
-            function () {
-                    return view('/userpanel.favoritos');
-                }
-        )->name("favoritos");
+        Route::get('/cambiar',function () {return view('/userpanel.cambioPassword');})->name("cambiarPassword");
+        Route::get('/direccion',function () {return view('/userpanel.direccion');})->name("direccion");
+        Route::get('/favoritos',[FavoriteController::class, 'show_favorites'])->name("favoritos");
     }
 );
-//Route::get('/user', [AddressController::class, "mostrar_direccion"])->name('user')->middleware('auth');
 
 //Para cargar las categorías usamos una sola vista. El controlador carga los datos de la seleccionada por url
 
