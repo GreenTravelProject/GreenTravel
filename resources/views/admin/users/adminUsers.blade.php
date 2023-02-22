@@ -4,8 +4,8 @@
 
     <div class="px-5 mt-4">
         <div class="pb-3">
-            <button class="btn btn-success"><a class="text-decoration-none text-white" href="{{ route('users.create') }}">Crear
-                    usuario</a></button>
+            {{-- <button class="btn btn-success"><a class="text-decoration-none text-white" href="">Crear
+                    usuario</a></button> --}}
         </div>
         <table class="table table-responsive table-bordered text-center bg5">
             <thead>
@@ -47,6 +47,18 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    {!! implode('', $errors->all('<li>:message</li>')) !!}
+                </div>
+            @endif
+            @if (session('mensaje'))
+                <div class="alert alert-success">
+                    {{ session('mensaje') }}
+                </div>
+            @endif
+        </div>
         <div>{{ $users->links() }}</div>
     </div>
 
