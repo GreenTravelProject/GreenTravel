@@ -1,7 +1,5 @@
 @extends('template.general')
 @section('templateUser')
-    {{-- ! Actualmente no se puede ver los productos en favoritos, no se podrá actualizar la dirección del usuario --}}
-    {{-- ! Tampoco cambiar la contraseña  --}}
 
     <section id="user-cont">
         <div class="row m-0 w-100" id="full-page">

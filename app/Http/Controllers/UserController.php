@@ -18,11 +18,6 @@ class UserController extends Controller
         $usuario = User::findOrFail(Auth::id()); //Recoge el usuario mediante el ID del usuario con sesión
         return view('userpanel.datosPersonales', @compact('usuario'));
     }
-    public function usuario()
-    {
-        $usuario = User::findOrFail(Auth::id());
-        return view('userpanel.cambioPassword', @compact('usuario'));
-    }
 
     public function mostrar_usuarios()
     {
