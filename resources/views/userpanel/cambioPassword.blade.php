@@ -3,19 +3,25 @@
 <div class="container">
     <h1>CAMBIAR</h1>
     <div class="container p-4">
-        <form method="post" id="pass-change">
+        <form action={{ route('user-password.update')}} method="POST" id="pass-change">
+            @method('PUT')
             @csrf
-            <label id="pass-start">Nueva contraseña</label><input id="input-user-reppass"
-                class="form-control" type="password" name="password" placeholder="Mínimo 8 caracteres"
-                required><br>
-            <label id="pass-start">Repetir nueva contraseña</label><input id="input-user-reppass"
-                class="form-control" type="password" name="password" placeholder="*" required>
+            <label id="pass-start">Contraseña actual</label>
+            <input id="input-user-reppass" class="form-control" type="password" name="current_password" placeholder="*"required>
+
+            <label class="mt-4" id="pass-start">Nueva contraseña</label>
+            <input id="input-user-reppass" class="form-control" type="password" name="password" placeholder="Mínimo 8 caracteres"required>
+
+            {{-- <label class="mt-2" id="pass-start">Repetir nueva contraseña</label>
+            <input id="input-user-reppass" class="form-control" type="password" name="repeat_password" placeholder="*" required> --}}
+
             <div class="mt-2">
-                @error('password')
+
+                @if ($errors->any())
                     <div class="alert alert-danger">
-                        Las contraseñas no son iguales
+                        {!! implode('', $errors->all('<li>:message</li>')) !!}
                     </div>
-                @enderror
+                @endif
                 @if (session('mensaje'))
                     <div class="alert alert-success">{{ session('mensaje') }}</div>
                 @endif
