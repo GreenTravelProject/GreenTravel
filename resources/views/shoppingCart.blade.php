@@ -24,7 +24,7 @@
                 @foreach ($cart->products as $product)
                     <div class="row p-3 border-top border-bottom text-start gap-2">
                         <div class="col-md-2 d-flex align-items-center flex-column gap-3">
-                            <img class="img-fluid" src="{{ URL::asset("img/$product->img") }}" alt="">
+                            <img class="img-fluid" src="{{ URL::asset("img/products/$product->img") }}" alt="">
                             <p class="fw-bold text-success">{{ $product->price }}€</p>
                         </div>
                         <div class="col">

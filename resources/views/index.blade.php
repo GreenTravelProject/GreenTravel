@@ -15,93 +15,99 @@
                         <div class="carousel-inner">
 
                             @foreach ($categories as $category)
-                            {{-- La primera categoría será la que esté activa --}}
+                                {{-- La primera categoría será la que esté activa --}}
                                 @if ($category == $categories[0])
                                     <div class="carousel-item active">
-                                @else
-                                    <div class="carousel-item">
+                                    @else
+                                        <div class="carousel-item">
                                 @endif
-                                    <div class="row">
-                            @php
-                                $products = $category->products
-                            @endphp
-                            {{-- Saldran 4 tarjetas por categoría --}}
-                                @for ($i = 0; $i <= 3; $i++)
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card">
-                                            <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                                <i class="bi bi-person-fill">{{ $products[$i]->stock}}</i>
-                                            </div>
-                                            <!-- Product image-->
-                                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">{{ mb_strimwidth($products[$i]->name, 0, 18, '...')}}</h5>
-                                                    <!-- Product reviews-->
-                                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                    </div>
-                                                    <!-- Product price-->
-                                                    <span class="text-muted text-decoration-line-through">{{ $products[$i]->price * 1.5}}€</span>
-                                                    {{ $products[$i]->price }}€
+                                <div class="row">
+                                    @php
+                                        $products = $category->products;
+                                    @endphp
+                                    {{-- Saldran 4 tarjetas por categoría --}}
+                                    @for ($i = 0; $i <= 3; $i++)
+                                        <div class="col-md-3 mb-3">
+                                            <div class="card">
+                                                <!-- Sale badge-->
+                                                <div class="badge bg-dark text-white position-absolute"
+                                                    style="top: 0.5rem; right: 0.5rem">
+                                                    <i class="bi bi-person-fill">{{ $products[$i]->stock }}</i>
                                                 </div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center">
-                                                    @guest
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="{{ URL::asset('img/products/' . $products[$i]->img) }}"
+                                                    alt="{{ $products[$i]->name }}" />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">
+                                                            {{ mb_strimwidth($products[$i]->name, 0, 18, '...') }}</h5>
+                                                        <!-- Product reviews-->
+                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                        </div>
+                                                        <!-- Product price-->
+                                                        <span
+                                                            class="text-muted text-decoration-line-through">{{ $products[$i]->price * 1.5 }}€</span>
+                                                        {{ $products[$i]->price }}€
+                                                    </div>
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center">
+                                                        @guest
 
-                                                    <button type="button" class="btn btn-outline-dark flex-shrink-0" disabled>
-                                                        <i class="bi-cart-fill me-1"></i>
-                                                        Debes iniciar sesión
-                                                    </button>
+                                                            <button type="button" class="btn btn-outline-dark flex-shrink-0"
+                                                                disabled>
+                                                                <i class="bi-cart-fill me-1"></i>
+                                                                Debes iniciar sesión
+                                                            </button>
+                                                        @else
+                                                            <form action="{{ route('cart_add') }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="product"
+                                                                    value="{{ $products[$i]->id }}">
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-dark flex-shrink-0" type="button">
+                                                                    <i class="bi-cart-fill me-1"></i>
+                                                                    Añadir al carrito
+                                                                </button>
+                                                            </form>
 
-                                                @else
-                                                    <form action="{{ route('cart_add') }}" method="post">
-                                                        @csrf
-                                                        <input type="hidden" name="product" value="{{ $products[$i]->id }}">
-                                                        <button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">
-                                                            <i class="bi-cart-fill me-1"></i>
-                                                            Añadir al carrito
-                                                        </button>
-                                                    </form>
-
-                                                @endguest
+                                                        @endguest
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endfor
+                                    @endfor
                                 </div>
-                            </div>
-                            @endforeach
                         </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-1 d-flex justify-content-center align-items-center">
-                    <a id="btn-carrousel" class="btn btn-success" href="#destacados" role="button"
-                        data-bs-slide="next">
-                        <i class="bi-caret-right-fill"></i>
-                    </a>
-                </div>
+            </div>
+            <div class="col-1 d-flex justify-content-center align-items-center">
+                <a id="btn-carrousel" class="btn btn-success" href="#destacados" role="button" data-bs-slide="next">
+                    <i class="bi-caret-right-fill"></i>
+                </a>
             </div>
         </div>
+        </div>
         @if (session('mensaje'))
-        <div class="alert alert-success">
-            {{ session('mensaje') }}
-        </div>
+            <div class="alert alert-success">
+                {{ session('mensaje') }}
+            </div>
         @endif
-        @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
         @endif
     </section>
     <section class="container-fluid p-5 bg-success">
@@ -119,7 +125,7 @@
                 <div class="p-0 m-0 position-relative casilla"><a href="{{ route('category', $category->id) }}">
                         <p class="position-absolute text-category">{{ $category->name }}</p>
                         <div class="overlay {{ strtolower($category->name) }}"></div>
-                        <img src="{{ URL::asset('img/' . $category->name . '.jpg') }}" class="img-fluid p-0 m-0"
+                        <img src="{{ URL::asset('img/' . $category->img) }}" class="img-fluid p-0 m-0"
                             alt="{{ $category->name }}">
                     </a>
                 </div>

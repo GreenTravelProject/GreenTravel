@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $name = ['Deportes', 'Camping', 'Extranjero', 'Acuático', 'Animales'];
+        $description = [
+            'Actividades deportivas para activar el cuerpo y darlo todo',
+            'Disfruta de la naturaleza de la forma más natural posible. Convive con más personas',
+            'Aunque estés en otro país aún puedes seguir contando con nosotros',
+            'Realiza actividades dentro del agua. Te resultará refrescante',
+            'Observa y trata con los animales. No tengas miedo, ellos no te temen a tí'
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $img = ['deportes.jpg', 'camping.jpg', 'extranjero.jpg', 'acuático.jpg', 'animales.jpg'];
+
+        for ($i = 0; $i < count($name); $i++) {
+            DB::table('categories')->insert([
+                'name' => $name[$i],
+                'description' => $description[$i],
+                'img' => $img[$i]
+            ]);
+        }
+
     }
 }
