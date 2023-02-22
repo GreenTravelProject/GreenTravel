@@ -33,12 +33,12 @@
                     <!-- Authentication Links -->
                     @guest
                         <h5 class="nav-item m-0">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill"></i>
+                            <a class="nav-link" href="{{ route('login') }}"><i class="bi bi-person-fill fs-3"></i>
                                 {{ __('Login') }}</a>
                         </h5>
                         @if (Route::has('register'))
                             <h5 class="m-0 nav-item">
-                                <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add"></i>
+                                <a class="nav-link" href="{{ route('register') }}"><i class="bi bi-person-fill-add fs-3"></i>
                                     {{ __('Register') }}</a>
                             </h5>
                         @endif
@@ -49,7 +49,7 @@
                                 {{ Auth::user()->name }}
                             </button>
                             <a href="#" onclick="showCart()" id="cart" class="btn btn-success"><i
-                                    class="bi bi-cart4"></i> <span
+                                    class="bi bi-cart4 fs-4"></i> <span
                                     class="badge bg-danger">{{ count(Auth::user()->cart->products) }}</span></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
