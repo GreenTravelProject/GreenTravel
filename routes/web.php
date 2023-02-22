@@ -36,6 +36,16 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
             return view('admin');
         }
     )->name('admin');
+    Route::prefix('/categories')->group(
+        function () {
+            Route::get('/', [CategoryController::class, 'mostrar_categorias'])->name('admin.categories');
+            Route::get('/edit/{id}', [CategoryController::class, 'editar_categoria'])->name('categories.edit');
+            Route::put('/update/{id}', [CategoryController::class, 'actualizar_categoria'])->name('categories.update');
+            Route::get('/create', [CategoryController::class, 'crear_categoria'])->name('categories.create');
+            Route::post('/insert', [CategoryController::class, 'insertar_categoria'])->name('categories.insert');
+            Route::delete('delete/{id}', [CategoryController::class, 'eliminar_categoria'])->name('categories.delete');
+        }
+    );
     Route::prefix('/products')->group(
         function () {
             Route::get('/', [ProductController::class, 'mostrar_productos'])->name('admin.products');

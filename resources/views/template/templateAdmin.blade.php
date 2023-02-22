@@ -1,6 +1,6 @@
 @extends('template.template')
 @section('admin')
-    <header class="bg-success py-3">
+    <header class="bg-success py-5">
         <div class="container">
             <a id="title" href="{{ route('index') }}">
                 <h1 class="display-4 fw-bolder text-white">ADMINISTRACIÓN</h1>
@@ -8,12 +8,11 @@
         </div>
     </header>
     <div class="container">
-        <div class="row bg-secondary text-center p-3 text-white menuAdmin">
-            <div class="col border-end"><a href="#">Categorías</a></div>
+        <div class="row bg-secondary text-center py-3 text-white menuAdmin">
+            <div class="col border-end"><a href="{{ route('admin.categories') }}">Categorías</a></div>
             <div class="col border-end"><a href="{{ route('admin.products') }}">Productos</a></div>
             <div class="col border-end"><a href="{{ route('admin.users') }}">Usuarios</a></div>
-            <div class="col border-end"><a href="{{ route('admin.deliveries') }}">Usuarios</a></div>
-            <div class="col">col</div>
+            <div class="col"><a href="{{ route('admin.deliveries') }}">Pedidos</a></div>
         </div>
     </div>
     @yield('welcomeAdmin')

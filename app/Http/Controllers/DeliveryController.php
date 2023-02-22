@@ -31,6 +31,7 @@ class DeliveryController extends Controller
     public function mostrar_pedidos()
     {
         $deliveries = Delivery::all();
+        $deliveries = Delivery::paginate(10);
         return view('admin.deliveries.adminDeliveries', @compact('deliveries'));
     }
 
