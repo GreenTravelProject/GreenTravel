@@ -118,7 +118,7 @@
                 Desarrollo Sostenibles relativos a Seguridad y Salud (ODS 3), Agua (ODS 6) y Energía (ODS 7).</h4>
         </div>
     </section>
-    <section class="categorias pt-5 pb-5">
+    <section class="categorias pt-5 pb-5 bgindex">
         <h1 class="display-4 text-center">CATEGORÍAS</h1>
         <div class="p-5 gridCategory d-grid">
             @foreach ($categories as $category)
