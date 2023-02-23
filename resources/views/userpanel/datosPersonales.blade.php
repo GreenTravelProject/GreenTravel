@@ -1,9 +1,9 @@
 @extends('template.templateUser')
 @section('datosPersonales')
 
-<div class="container">
-    <h1>DATOS PERSONALES</h1>
-    <div class="container p-4">
+<div class="container p-0">
+    <h1 class="mt-3">DATOS PERSONALES</h1>
+    <div class="container p-2">
         <form action="{{ route('user-profile-information.update') }}" method="POST">
             @method('PUT')
             @csrf
