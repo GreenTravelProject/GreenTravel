@@ -1,7 +1,7 @@
 @extends('template.templateUser')
 @section('cambioPassword')
 <div class="container">
-    <h1>CAMBIAR</h1>
+    <h1 class="mt-3">CAMBIAR</h1>
     <div class="container p-4">
         <form action={{ route('user-password.update')}} method="POST" id="pass-change">
             @method('PUT')

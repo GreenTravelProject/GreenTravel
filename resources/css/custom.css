@@ -13,6 +13,7 @@
 body {
     font-family: var(--font);
     font-weight: 400;
+    font-size: 15px;
 }
 
 /*Fondos para usar la paleta:*/
@@ -222,6 +223,11 @@ body {
     transition-duration: 0.6s;
 }
 
+#catpic{
+    border: 1px black solid;
+    border-radius: 1em;
+}
+
 /*ADMIN*/
 
 .img-admin {
@@ -321,10 +327,6 @@ body {
 }
 
 /*----- INFORMACIÓN -----*/
-
-#user-data {
-    padding: 3%;
-}
 
 #input-user-reppass {
     width: 30%;
@@ -512,11 +514,11 @@ article {
 }
 
 @media (min-width: 1080px) {
-    .bgCuenta{
-        padding: 50rem 0; 
+    .bgCuenta {
+        padding: 50rem 0;
     }
 
-    .bgProducts{
-        padding:7rem 0;
+    .bgProducts {
+        padding: 9rem 0;
     }
 }

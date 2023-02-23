@@ -100,7 +100,6 @@ class ProductController extends Controller
                 $producto->state = 1;
             }
             $producto->stock = $request->stock;
-            $producto->img = $request->img;
 
             $producto->categories()->detach();
 
@@ -115,6 +114,13 @@ class ProductController extends Controller
                 }
             }
             $producto->save();
+
+            $imgName = "product" . $producto->id . ".jpg";
+            $request->img->move(public_path('img/products'), $imgName);
+            $producto->img = $imgName;
+
+            $producto->save();
+
             return back()->with('mensaje', 'El producto ha sido modificado' . $request);
         } else {
             return back()->with('errors');
@@ -126,7 +132,7 @@ class ProductController extends Controller
     public function eliminar_producto($id)
     {
         $producto = Product::findOrFail($id);
-        $producto->categories()->detach; //se le quita la relación con las categorías para evitar que falle la FK
+        $producto->categories()->detach(); //se le quita la relación con las categorías para evitar que falle la FK
         $producto->delete();
         return back()->with('mensaje', 'El producto ha sido eliminado.');
     }

@@ -26,7 +26,7 @@
             <!--Desde la BBDD hay que imprimir los datos de cada producto-->
             @foreach ($products as $product)
                 <div class="row gx-4 gx-lg-5 align-items-center lineaProducto">
-                    <div class="col-md-6 py-5"> <img
+                    <div class="col-md-6 py-5"> <img id="catpic"
                             class="card-img-top mb-5 mb-md-0"src="{{ URL::asset("img/products/$product->img") }}"
                             alt="" />
                     </div>
@@ -115,9 +115,7 @@
                                                     {{ $products[$i]->stock }}
                                                 </div>
                                                 <!-- Product image-->
-                                                <img class="card-img-top"
-                                                    src="{{ URL::asset('img/products/' . $products[$i]->img) }}"
-                                                    alt="{{ $products[$i]->name }}" />
+                                                <img class="card-img-top" src="{{ URL::asset('img/products/' . $products[$i]->img) }}" alt="{{ $products[$i]->name }}" />
                                                 <!-- Product details-->
                                                 <div class="card-body p-4">
                                                     <div class="text-center">
