@@ -74,7 +74,7 @@ class CartController extends Controller
     {
         $cart = Cart::where('user_id', Auth::id())->first();
         $product = Product::findOrFail($id);
-        
+
         if ($cart->products()->where('product_id', $id)->pluck('amount')[0] == 1) {
             $cart->total -= $product->price;
             $cart->save();

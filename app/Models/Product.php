@@ -33,14 +33,13 @@ class Product extends Model
     }
 
     //TODO: para COMPRAR. Actualizamos el stock. Le pasamos por parámetro true: para aumentar. False para reducir. 
-    public function actualizar_stock($id, $type)
+    public function actualizar_stock($type)
     {
-        $producto = Product::findOrFail($id);
         if ($type) {
-            $producto->stock++;
+            $this->stock++;
         } else {
-            $producto->stock--;
+            $this->stock--;
         }
-        return back();
+        $this->save();
     }
 }

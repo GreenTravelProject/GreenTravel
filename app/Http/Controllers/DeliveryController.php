@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Delivery;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,7 @@ class DeliveryController extends Controller
 
         foreach (Auth::user()->cart->products as $product) {
             $delivery->products()->attach($product->id, ['amount' => $product->pivot->amount]);
+            Product::findOrFail($product->id)->actualizar_stock(0); //actualizamos stock
         }
         $delivery->total = Auth::user()->cart->total;
         $delivery->save();

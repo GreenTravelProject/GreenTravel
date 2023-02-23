@@ -19,10 +19,12 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 align-items-center">
-                    <a id="icono" class="navbar-brand" href="{{ route('index') }}"><img src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
+                    <a id="icono" class="navbar-brand" href="{{ route('index') }}"><img
+                            src="{{ URL::asset('img/LOGO_NAV.png') }}"></a>
                     <ul class="navbar-nav">
                         @foreach ($categories as $category)
-                            <h4 class="m-0 nav-item"><a class="nav-link" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></h4>
+                            <h4 class="m-0 nav-item"><a class="nav-link"
+                                    href="{{ route('category', $category->id) }}">{{ $category->name }}</a></h4>
                         @endforeach
                     </ul>
                 </ul>
@@ -86,28 +88,31 @@
                 </div>
                 <!--end shopping-cart-header -->
 
-                <div class="shopping-cart-items">
+                <div class="shopping-cart-items d-grid">
                     @if (isset(Auth::user()->cart->products[0]))
                         @foreach (Auth::user()->cart->products as $product)
-                            <div class="clearfix d-flex align-items-center">
-                                <img src="{{ URL::asset("img/products/$product->img") }}" class="img-fluid w-25"
-                                    alt="{{ $product->name }}" />
-                                <div class="flex-column text-start">
+                            <div class="clearfix row justify-content-center align-items-center">
+                                <div class="col-sm-3">
+                                    <img src="{{ URL::asset("img/products/$product->img") }}" class="img-fluid w-100"
+                                        alt="{{ $product->name }}" />
+                                </div>
+                                <div class="col-sm-4 d-flex flex-column justify-content-center text-start">
                                     <span class="item-name">{{ $product->name }}</span>
                                     <span class="item-price">{{ $product->price }}€</span>
-                                    <div class="d-flex flex-row gap-2">
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="d-flex flex-row gap-2 align-items-center justify-content-center">
                                         <a href="{{ route('minus', $product->id) }}"><i
                                                 class="bi bi-dash-circle-fill text-black"></i></a>
                                         <p class="fw-bold m-0">{{ $product->pivot->amount }}</p>
                                         <a href="{{ route('plus', $product->id) }}"><i
                                                 class="bi bi-plus-circle-fill text-black"></i></a>
                                     </div>
-
+                                    <p class="fw-bold m-0">{{ $product->pivot->amount * $product->price }}€</p>
                                 </div>
-                                <div class="d-flex flex-column">
+                                <div class="col-sm-1 align-items-center">
                                     <a href="{{ route('deleteProduct', $product->id) }}"><i
                                             class="bi bi-trash-fill text-danger"></i></a>
-                                    <p class="fw-bold m-0">{{ $product->pivot->amount * $product->price }}€</p>
                                 </div>
                             </div>
                         @endforeach
@@ -136,7 +141,8 @@
                             <div class="col-auto">
                                 <form action="guillermoanv25@gmail.com" method="post" name="form1">
                                     <div class="input-group-lg input-group">
-                                        <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control" placeholder="Email"
+                                            aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <input class="btn btn-dark" value="Enviar" type="button" id="button-addon2">
                                     </div>
                                 </form>
@@ -151,14 +157,16 @@
             <div class="col-12">
                 <div class="row justify-content-center">
                     <div class="col-md-2 col-12 font-italic align-items-center mt-md-3 mt-3">
-                        <h5><span><img src="" class="img-fluid mb-1 "></span><b class="text-white">GREEN <span class="text-white"> TRAVEL</span></b></h5>
+                        <h5><span><img src="" class="img-fluid mb-1 "></span><b class="text-white">GREEN <span
+                                    class="text-white"> TRAVEL</span></b></h5>
                         <small class="copy-rights cursor-pointer">&#9400;2023 Ilerna Daw</small><br>
                         <small>Copyright. All Rights Reserved.</small>
                     </div>
                     <div class="col-md-2 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)
-                                <li class="mt-md-1"><a class="text-white" href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
+                                <li class="mt-md-1"><a class="text-white"
+                                        href="{{ route('category', $category->id) }}">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -184,4 +192,3 @@
         </div>
     </div>
 @endsection
-
