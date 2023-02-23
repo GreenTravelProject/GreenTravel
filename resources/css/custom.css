@@ -507,11 +507,11 @@ article {
 }
 
 @media (min-width: 1080px) {
-    .bgCuenta{
-        padding: 50rem 0; 
+    .bgCuenta {
+        padding: 50rem 0;
     }
 
-    .bgProducts{
-        padding:7rem 0;
+    .bgProducts {
+        padding: 8rem 0;
     }
 }
