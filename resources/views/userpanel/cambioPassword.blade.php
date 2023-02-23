@@ -12,7 +12,7 @@
             <label class="mt-4" id="pass-start" for="password">{{ __('Nueva contraseña') }}</label>
             <input id="input-user-reppass" class="form-control" type="password" name="password" placeholder="Mínimo 8 caracteres" required>
 
-            <label class="mt-2" id="nacimiento" for="password-confirm">{{ __('Confirmar contraseña') }}</label>
+            <label class="mt-4" id="nacimiento" for="password-confirm">{{ __('Confirmar contraseña') }}</label>
             <input id="input-user-reppass" type="password" class="form-control" name="password_confirmation" required">
 
             <div class="mt-2">

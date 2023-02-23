@@ -214,14 +214,12 @@ body {
 
 .lineaProducto {
     border-top: 1px solid black;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    transition: padding 1s;
+    padding: 3rem 0;
+    transition: padding 0.6s;
 }
 .lineaProducto:hover {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    transition-duration: 1s;
+    padding: 5em 0;
+    transition-duration: 0.6s;
 }
 
 /*ADMIN*/
@@ -332,20 +330,6 @@ body {
     width: 30%;
 }
 
-@media (max-width: 768px) {
-    #input-user-reppass {
-        width: 100%;
-    }
-
-    #user-cont {
-        width: 100%;
-    }
-
-    #nacimiento {
-        margin-top: 1.5em;
-    }
-}
-
 /*LOG-IN*/
 
 #login {
@@ -356,7 +340,6 @@ body {
     border-radius: 3em;
     background-color: #ececec;
     margin: 3em 20% 0;
-    margin-top: 0;
 }
 
 .register {
@@ -480,6 +463,15 @@ article {
         padding: 6px 7px;
     }
 
+    /* LOGIN */
+    #login{
+        display: flex;
+        align-items: center;
+        border-radius: 3em;
+        background-color: #ececec;
+        margin: 1em 0 0;
+    }
+
     /* SIGN UP */
 
     #btn-signup {
@@ -498,6 +490,19 @@ article {
         grid-template-areas:
             "aside aside"
             "article";
+        width: 100%;
+    }
+
+    #nacimiento {
+        margin-top: 1.5em;
+    }
+
+    /* INFORMACION */
+    #input-user-reppass {
+        width: 100%;
+    }
+
+    #user-cont {
         width: 100%;
     }
 
