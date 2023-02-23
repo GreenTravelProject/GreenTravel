@@ -18,4 +18,22 @@ class Adress extends Model
     // public function deliveries(){
     //     return $this->hasMany(Delivery::class);
     // }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'country',
+        'city',
+        'street',
+        'number',
+        'building',
+        'floor',
+        'door',
+        'status',
+        'user_id',
+    ];
+
 }
