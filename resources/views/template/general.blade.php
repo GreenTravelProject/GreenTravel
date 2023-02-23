@@ -170,7 +170,7 @@
                     </div>
                     <div class="col-md-2 col-12 my-sm-0 mt-5">
                         <ul class="list-unstyled">
-                            <li class="mt-md-3 mt-4">¿Qúe necesitas</li>
+                            <li class="mt-md-3 mt-4">¿Qúe necesitas?</li>
                             <li>Licencia y seguridad</li>
                             <li>Nuestra empresa</li>
                             <li>Nuestros productos</li>
