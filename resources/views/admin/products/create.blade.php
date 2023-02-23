@@ -27,24 +27,22 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-10">
                         <label for="description">Descripción: </label>
-                        <textarea name="description" class="form-control" required
-                            placeholder="Descripción del producto value="{{ old('description') }}""></textarea>
+                        <textarea name="description" class="form-control" required placeholder="Descripción del producto">{{ old('description') }}</textarea>
                     </div>
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="state" class="p-3">Estado:</label>
-                        <input type="checkbox" name="state" id="state" {{ old('state') == '1' ? 'checked' : '' }}
-                            value="1">
+                        <input type="checkbox" name="state" id="state" {{ old('state') == '1' ? 'checked' : '' }}>
                     </div>
                 </div>
                 <div class="row p-2 py-md-3">
                     <div class="col-md-3">
                         <label for="stock">Stock: </label>
-                        <input type="number" name="stock" class="form-control" required placeholder="1" autofocus
+                        <input type="number" name="stock" class="form-control" required autofocus
                             value="{{ old('stock') }}">
                     </div>
                     <div class="col-md-6">
                         <label for="img">Imagen: </label>
-                        <input type="file" name="img" class="form-control" autofocus multiple required>
+                        <input type="file" name="img" class="form-control" autofocus required>
                     </div>
                     <div class="col-md-3">
                         <label for="select">Categorías:</label>
