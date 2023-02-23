@@ -134,10 +134,12 @@
                         <p class="mb-3">Escribe tu correo electrónico para estar atento</p>
                         <div class="row text-center justify-content-center">
                             <div class="col-auto">
-                                <div class="input-group-lg input-group">
-                                    <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <button class="btn btn-dark" type="button" id="button-addon2"><b>Enviar</b></button>
-                                </div>
+                                <form action="guillermoanv25@gmail.com" method="post" name="form1">
+                                    <div class="input-group-lg input-group">
+                                        <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <input class="btn btn-dark" value="Enviar" type="button" id="button-addon2">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

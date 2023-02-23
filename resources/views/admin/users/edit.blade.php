@@ -46,11 +46,6 @@
                         <input id="email" class="form-control" type="email" name="email"
                             value="{{ $usuario->email }}" required autocomplete="email" autofocus>
                     </div>
-                    <div class="col-md-6">
-                        <label for="password">Contraseña: </label>
-                        <input id="password" class="form-control" type="password" name="password" required
-                            autocomplete="password" autofocus value="{{ $usuario->password }}">
-                    </div>
                     <div class="col-md-2 d-flex align-items-center gap-3 justify-content-center">
                         <label for="admin">Admin:</label>
                         <input type="checkbox" name="admin" id="admin" {{ $usuario->admin == 1 ? 'checked' : '' }}

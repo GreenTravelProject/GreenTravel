@@ -112,10 +112,10 @@
     </section>
     <section class="container-fluid p-5 bg-success">
         <div class="container">
-            <h4 class="m-0 p-4 text-center text-white">En Green Travel estamos comprometidos con facilitar las experiencias
+            <h5 class="m-0 p-3 text-center text-white">En Green Travel estamos comprometidos con facilitar las experiencias
                 divertidas y saludables a todos nuestros usuarios, integrando para ello la sostenibilidad en su actividad
                 diaria, habiendo obtenido el Certificado “S” de Turismo Sostenible, por su contribución a los Objetivos de
-                Desarrollo Sostenibles relativos a Seguridad y Salud (ODS 3), Agua (ODS 6) y Energía (ODS 7).</h4>
+                Desarrollo Sostenibles relativos a Seguridad y Salud (ODS 3), Agua (ODS 6) y Energía (ODS 7).</h5>
         </div>
     </section>
     <section class="categorias pt-5 pb-5 bgindex">

@@ -12,11 +12,11 @@
                     </div>
                     <div class="profile-menu mt-0">
                         <a id="menu-user" href="{{ route('user') }}">
-                            <h4 class="text-dark p-4">Cuenta</h4>
+                            <h5 class="text-success p-4 m-1"><i class="bi bi-person-fill text-dark"></i> Cuenta</h5>
                         </a>
                         <hr class="m-0">
                         <a id="menu-user" href="{{ route('favoritos') }}">
-                            <h4 class="text-dark p-4">Favoritos</h4>
+                            <h5 class="text-success p-4 m-1"><i class="bi bi-heart-fill text-danger"></i> Favoritos</h5>
                         </a>
                         <hr class="m-0">
                         <a id="menu-user" href="{{ route('myDeliveries') }}">
@@ -24,15 +24,15 @@
                         </a>
                         <hr class="m-0">
                         <a id="menu-user" href="{{ route('cambiarPassword') }}">
-                            <h4 class="text-dark p-4">Cambio contraseña</h4>
+                            <h5 class="text-success p-4 m-1"><i class="bi bi-shield-lock-fill text-warning"></i> Contraseña</h5>
                         </a>
                         <hr class="m-0">
                         <a id="menu-user" href="{{ route('direccion') }}">
-                            <h4 class="text-dark p-4">Dirección</h4>
+                            <h5 class="text-success p-4 m-1"><i class="bi bi-house-fill text-dark"></i> Dirección</h5>
                         </a>
                         <hr class="m-0">
-                        <a class="text-decoration-none text-black" href="{{ route('cart') }}">
-                            <h4 class="p-4">Carrito</h4>
+                        <a class="text-decoration-none text-success" href="{{ route('cart') }}">
+                            <h5 class="p-4 m-1"><i class="bi bi-cart4 text-dark"></i> Carrito</h5>
                         </a>
                     </div>
                 </div>

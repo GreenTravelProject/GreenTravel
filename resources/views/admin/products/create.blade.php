@@ -44,8 +44,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="img">Imagen: </label>
-                        <input type="text" name="img" class="form-control" autofocus required
-                            placeholder="producto1.jpg">
+                        <input type="file" name="img" class="form-control" autofocus multiple required>
                     </div>
                     <div class="col-md-3">
                         <label for="select">Categorías:</label>

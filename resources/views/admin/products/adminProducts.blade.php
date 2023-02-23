@@ -36,7 +36,7 @@
                             @endforeach
                         </td>
                         <td>{{ substr($product->description, 0, 50) }}...</td>
-                        <td class = "d-flex justify-content-center align-items-center">{{ $product->price }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>{{ $product->date }}</td>
                         <td>{{ $product->state }}</td>
                         <td>{{ $product->stock }}</td>
