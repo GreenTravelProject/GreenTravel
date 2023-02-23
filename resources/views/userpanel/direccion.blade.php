@@ -1,7 +1,7 @@
 @extends('template.templateUser')
 @section('direccion')
 <div class="container">
-    <h1>DIRECCIÓN</h1>
+    <h1 class="mt-3">DIRECCIÓN</h1>
     <div class="container p-4">
         <form action="{{ route('direccion') }}" method="post">
             @csrf

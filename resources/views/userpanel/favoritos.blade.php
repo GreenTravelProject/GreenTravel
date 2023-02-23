@@ -1,7 +1,7 @@
 @extends('template.templateUser')
 @section('favoritos')
 <div class="container">
-    <h1>PRODUCTOS FAVORITOS</h1>
+    <h1 class="mt-3">PRODUCTOS FAVORITOS</h1>
     {{-- @foreach ($products as $product) --}}
     <div class="container p-4">
         <div class="row">
