@@ -39,12 +39,53 @@ body {
 
 /*Logo nav-var*/
 
-#icono{
+#icono {
     margin-right: 1em;
 }
 
 /*Grid de categorías (index)*/
 
+.bgindex {
+    background: linear-gradient(270deg, #ddffbc, #f8f9fa);
+    background-size: 600% 600%;
+    -webkit-animation: backgroundGradient 12s ease infinite;
+    -moz-animation: backgroundGradient 12s ease infinite;
+    animation: backgroundGradient 12s ease infinite;
+}
+
+@-webkit-keyframes backgroundGradient {
+    0% {
+        background-position: 0% 23%;
+    }
+    50% {
+        background-position: 100% 78%;
+    }
+    100% {
+        background-position: 0% 23%;
+    }
+}
+@-moz-keyframes backgroundGradient {
+    0% {
+        background-position: 0% 23%;
+    }
+    50% {
+        background-position: 100% 78%;
+    }
+    100% {
+        background-position: 0% 23%;
+    }
+}
+@keyframes backgroundGradient {
+    0% {
+        background-position: 0% 23%;
+    }
+    50% {
+        background-position: 100% 78%;
+    }
+    100% {
+        background-position: 0% 23%;
+    }
+}
 .gridCategory {
     grid-template-columns: 1fr 1fr;
 }
@@ -155,9 +196,18 @@ body {
 }
 
 .products {
-    background-color: var(--greymenu);
-    border: 1px solid;
+    background-color: #f8f9fadf;
+    border: 1px solid black;
     border-radius: 10px;
+}
+
+.bgProducts {
+    background-image: linear-gradient(10deg, var(--green2) 50%, transparent 50%),
+        linear-gradient(-60deg, var(--green3) 30%, var(--green4) 30%);
+}
+.bgCuenta {
+    background-image: linear-gradient(10deg, var(--green4) 50%, transparent 50%),
+        linear-gradient(-60deg, var(--green3) 30%, var(--green2) 30%);
 }
 
 /*CATEGORY: mostrando productos*/
@@ -166,6 +216,7 @@ body {
     border-top: 1px solid black;
     padding-top: 3rem;
     padding-bottom: 3rem;
+    transition: padding 1s;
 }
 .lineaProducto:hover {
     padding-top: 8rem;
@@ -213,7 +264,7 @@ body {
 }
 
 .menuAdmin *:hover {
-    color: white; 
+    color: white;
     text-decoration: none;
 }
 
@@ -263,11 +314,11 @@ body {
     cursor: pointer;
 }
 
-#pass-change{
+#pass-change {
     text-align: initial;
 }
 
-#menu-user{
+#menu-user {
     text-decoration: none;
 }
 
@@ -303,7 +354,14 @@ body {
     align-items: center;
     padding: 3rem;
     border-radius: 3em;
+    background-color: #ececec;
     margin: 3em 20% 0;
+    margin-top: 0;
+}
+
+.register {
+    padding: 3rem;
+    border-radius: 3em;
     background-color: #ececec;
 }
 
@@ -401,13 +459,12 @@ article {
     padding-bottom: 25rem;
 }
 
-
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
     /* INDEX */
 
-    #icono{
+    #icono {
         margin: 0;
     }
 

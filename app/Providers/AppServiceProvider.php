@@ -30,7 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         //TODO: DOCUMENTACIÓN. controlar que las categorías de la base de datos existen: (necesitamos un seeder con las categorías)
 
-       
+        // Artisan::call('migrate');
+        // Artisan::call('db:seed');
+
         view()->share('categories', Category::all());
     }
 }

@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\LogInController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,7 +85,6 @@ Route::prefix('/user')->middleware('auth')->group(
         Route::get('/direccion',[AddressController::class, 'mostrar_direccion'])->name("direccion");
         Route::post('/direccion',[AddressController::class, 'actualizar_direccion'])->name("actualizar_direccion");
         Route::get('/favoritos',[FavoriteController::class, 'show_favorites'])->name("favoritos");
-
     }
 );
 
