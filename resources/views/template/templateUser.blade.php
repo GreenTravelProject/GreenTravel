@@ -20,7 +20,7 @@
                         </a>
                         <hr class="m-0">
                         <a id="menu-user" href="{{ route('myDeliveries') }}">
-                            <h4 class="text-dark p-4">Pedidos</h4>
+                            <h5 class="text-success p-4 m-1"><i class="bi bi-box-seam text-dark"></i> Pedidos</h5>
                         </a>
                         <hr class="m-0">
                         <a id="menu-user" href="{{ route('cambiarPassword') }}">

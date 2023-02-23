@@ -29,10 +29,10 @@
                             {{-- Si el usuario no inicia sesión verá @guest, cuando tenga sesión verá @else --}}
                             @guest
 
-                                <button type="button" class="btn btn-outline-dark flex-shrink-0" disabled>
+                                <a href="{{ route('login') }}" type="button" class="btn btn-outline-dark flex-shrink-0" disabled>
                                     <i class="bi-cart-fill me-1"></i>
                                     Debes iniciar sesión
-                                </button>
+                                </a>
                             @else
                                 <form action="{{ route('fav_add') }}" method="post">
                                     @csrf
@@ -130,11 +130,11 @@
                                                     <div class="text-center">
                                                         @guest
 
-                                                            <button type="button" class="btn btn-outline-dark flex-shrink-0"
+                                                            <a href="{{ route('login') }}" type="button" class="btn btn-outline-dark flex-shrink-0"
                                                                 disabled>
                                                                 <i class="bi-cart-fill me-1"></i>
                                                                 Debes iniciar sesión
-                                                            </button>
+                                                            </a>
                                                         @else
                                                             <form action="{{ route('cart_add') }}" method="post">
                                                                 @csrf

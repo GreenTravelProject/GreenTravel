@@ -63,11 +63,11 @@
                                                     <div class="text-center">
                                                         @guest
 
-                                                            <button type="button" class="btn btn-outline-dark flex-shrink-0"
+                                                            <a type="button" href="{{ route('login') }}" class="btn btn-outline-dark flex-shrink-0"
                                                                 disabled>
                                                                 <i class="bi-cart-fill me-1"></i>
                                                                 Debes iniciar sesión
-                                                            </button>
+                                                            </a>
                                                         @else
                                                             <form action="{{ route('cart_add') }}" method="post">
                                                                 @csrf

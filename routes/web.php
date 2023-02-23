@@ -33,7 +33,7 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get(
         '/',
         function () {
-            return redirect('admin/deliveries'); //la primera página de admin tiene que ser pedidos 
+            return redirect('admin/deliveries'); //la primera página de admin tiene que ser pedidos
         }
     )->name('admin');
     Route::prefix('/categories')->group(
@@ -84,12 +84,9 @@ Route::prefix('/user')->middleware('auth')->group(
                     return view('/userpanel.cambioPassword');
                 }
         )->name("cambiarPassword");
-        Route::get(
-            '/direccion',
-            function () {
-                    return view('/userpanel.direccion');
-                }
-        )->name("direccion");
+        Route::get('/direccion',[AddressController::class, 'mostrar_direccion'])->name("direccion");
+        Route::put('/direccion',[AddressController::class, 'cambiar_direccion'])->name("cambiar_direccion");
+        Route::post('/direccion',[AddressController::class, 'crear_direccion'])->name("crear_direccion");
         Route::get('/favoritos', [FavoriteController::class, 'show_favorites'])->name("favoritos");
         Route::get('/myDeliveries', [DeliveryController::class, 'mostrar_mipedido'])->name("myDeliveries");
 

@@ -1,12 +1,15 @@
 @extends('template.templateUser')
 @section('deliveries')
+@php
+    use App\Models\Adress;
+@endphp
     <table class="table table-responsive table-bordered text-center bg5">
         <thead>
             <tr class="text-center bg-dark text-white">
                 <th scope="col">REF</th>
-                <th scope="col">products</th>
-                <th scope="col">total</th>
-                <th scope="col">address_id</th>
+                <th scope="col">Productos</th>
+                <th scope="col">Precio total</th>
+                <th scope="col">Dirección</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -23,7 +26,12 @@
                         </ul>
                     </td>
                     <td>{{ $delivery->total }}€</td>
-                    <td>{{ $delivery->address_id }}</td>
+                    @php
+                        $address = Adress::where('id', $delivery->adress_id)->first()
+                    @endphp
+                    <td>{{$address->country.', '.$address->city.', '.$address->street.', nº '.$address->number.', Edificio '.$address->building.
+                        ', '.$address->floor.'  '.$address->door}}</td>
+
                     </td>
                 </tr>
             @endforeach
