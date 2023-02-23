@@ -505,3 +505,13 @@ article {
         margin-top: 1.5em;
     }
 }
+
+@media (min-width: 1080px) {
+    .bgCuenta{
+        padding: 50rem 0; 
+    }
+
+    .bgProducts{
+        padding:7rem 0;
+    }
+}
