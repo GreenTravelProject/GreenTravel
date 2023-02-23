@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Favorite;
 use App\Models\Adress;
 use App\Models\Shopping_cart;
@@ -100,11 +101,22 @@ class UserController extends Controller
 
         if ($user->admin === 1) { // Borra la cuenta (ADMIN)
             $usuario = User::findOrFail($user_ID);
-            // $usuario->adress->delete();
-            // $usuario->cart->delete();
-            // $usuario->favorite->delete();
+            //$usuario->adress->delete();
+
+            //Para borrar usuarios, comprobamos si tienen productos en carrito o favoritos para quitarles la relación
+            if (isset($usuario->cart->products[0])) {
+                $usuario->cart->products()->detach();
+            }
+            if (isset($usuario->favorite->products[0])) {
+                $usuario->favorite->products()->detach();
+            }
+            //Borramos carrito y favoritos: 
+            $usuario->cart()->delete();
+            $usuario->favorite()->delete();
+            //Eliminamos usuario
             $usuario->delete();
             return back()->with('mensaje', 'El usuario ha sido eliminado.');
+
         } else { //Deshabilita la cuenta (Usuario)
             $user->state = 0;
             $user->save();
