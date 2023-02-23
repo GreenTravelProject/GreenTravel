@@ -4,7 +4,7 @@
 
     <section class="container p-5 my-3 adminForm">
         <h2>Crear nuevo producto</h2>
-        <form action="{{ route('products.insert') }}" method="POST">
+        <form action="{{ route('products.insert') }}" method="POST" enctype="multipart/form-data">
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
             <div class="d-grid">
                 <div class="row p-2 py-md-3">
