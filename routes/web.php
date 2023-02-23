@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,20 +82,11 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
 Route::prefix('/user')->middleware('auth')->group(
     function () {
         Route::get('/', [UserController::class, "mostrar_usuario"])->name('user');
-        Route::get(
-            '/cambiar',
-            function () {
-                    return view('/userpanel.cambioPassword');
-                }
-        )->name("cambiarPassword");
-        Route::get(
-            '/direccion',
-            function () {
-                    return view('/userpanel.direccion');
-                }
-        )->name("direccion");
-        Route::get('/favoritos', [FavoriteController::class, 'show_favorites'])->name("favoritos");
-
+        Route::get('/cambiar',function () {return view('/userpanel.cambioPassword');})->name("cambiarPassword");
+        Route::get('/direccion',[AddressController::class, 'mostrar_direccion'])->name("direccion");
+        Route::put('/direccion',[AddressController::class, 'actualizar_direccion'])->name("actualizar_direccion");
+        Route::post('/direccion',[AddressController::class, 'crear_direccion'])->name("crear_direccion");
+        Route::get('/favoritos',[FavoriteController::class, 'show_favorites'])->name("favoritos");
     }
 );
 

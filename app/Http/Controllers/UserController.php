@@ -100,6 +100,9 @@ class UserController extends Controller
 
         if ($user->admin === 1) { // Borra la cuenta (ADMIN)
             $usuario = User::findOrFail($user_ID);
+            // $usuario->adress->delete();
+            // $usuario->cart->delete();
+            // $usuario->favorite->delete();
             $usuario->delete();
         } else { //Deshabilita la cuenta (Usuario)
             $user->state = 0;
