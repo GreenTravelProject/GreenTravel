@@ -110,7 +110,7 @@ class UserController extends Controller
             if (isset($usuario->favorite->products[0])) {
                 $usuario->favorite->products()->detach();
             }
-            //Borramos carrito y favoritos: 
+            //Borramos carrito y favoritos:
             $usuario->cart()->delete();
             $usuario->favorite()->delete();
             //Eliminamos usuario
