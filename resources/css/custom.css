@@ -47,7 +47,7 @@ body {
 /*Grid de categorías (index)*/
 
 .bgindex {
-    background: linear-gradient(270deg, #ddffbc, #f8f9fa);
+    background: linear-gradient(270deg, #ffffff, #f8f9fa);
     background-size: 600% 600%;
     -webkit-animation: backgroundGradient 12s ease infinite;
     -moz-animation: backgroundGradient 12s ease infinite;
@@ -206,6 +206,11 @@ body {
     background-image: linear-gradient(10deg, var(--green2) 50%, transparent 50%),
         linear-gradient(-60deg, var(--green3) 30%, var(--green4) 30%);
 }
+
+.bgLogin {
+    background-image: linear-gradient(10deg, var(--green2) 50%, transparent 50%),
+        linear-gradient(-60deg, var(--green3) 30%, var(--green4) 30%);
+}
 .bgCuenta {
     background-image: linear-gradient(10deg, var(--green4) 50%, transparent 50%),
         linear-gradient(-60deg, var(--green3) 30%, var(--green2) 30%);
@@ -338,16 +343,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
+    padding: 5rem 0;
+    border: 1px solid black;
     border-radius: 3em;
-    background-color: #ececec;
+    background-color: #ecececcf;
     margin: 3em 20% 0;
 }
 
 .register {
     padding: 3rem;
+    border: 1px solid black;
     border-radius: 3em;
-    background-color: #ececec;
+    background-color: #ecececcf;
 }
 
 #p-login {
@@ -466,7 +473,7 @@ article {
     }
 
     /* LOGIN */
-    #login{
+    #login {
         display: flex;
         align-items: center;
         border-radius: 3em;
@@ -515,10 +522,10 @@ article {
 
 @media (min-width: 1080px) {
     .bgCuenta {
-        padding: 50rem 0;
+        padding: 5rem 0;
     }
 
-    .bgProducts {
-        padding: 9rem 0;
+    .bgLogin {
+        padding: 30rem 0;
     }
 }

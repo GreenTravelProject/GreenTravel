@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favorite;
+use App\Models\Adress;
 use App\Models\Shopping_cart;
 use App\Models\User;
 use Illuminate\Http\Request;

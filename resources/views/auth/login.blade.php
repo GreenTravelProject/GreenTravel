@@ -1,6 +1,6 @@
 @extends('template.general3')
 @section('login')
-    <div class="bgProducts pt-5">
+    <div class="bgLogin pt-5">
         <div id="login">
             <form method="POST" action="{{ route('login') }}" class="text-center">
                 @csrf

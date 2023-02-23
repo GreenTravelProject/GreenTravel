@@ -54,7 +54,6 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($id);
         $cart = Cart::where('user_id', Auth::id())->first();
-        //TODO: preguntar xq get no va. Pluck devuelve un array con todos los valores de la clave dada
         if ($cart->products()->where('product_id', $id)->pluck('amount')[0] + 1 > $product->stock) {
             return back()->with('error', 'No hay suficiente stock');
         } else {

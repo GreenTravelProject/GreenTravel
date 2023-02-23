@@ -2,7 +2,7 @@
 @section('admin')
     <header class="bg-success py-5">
         <div class="container">
-            <a id="title" href="{{ route('index') }}">
+            <a id="title" href="{{ route('admin') }}">
                 <h1 class="display-4 fw-bolder text-white">ADMINISTRACIÓN</h1>
             </a>
         </div>
@@ -15,7 +15,6 @@
             <div class="col"><a href="{{ route('admin.deliveries') }}">Pedidos</a></div>
         </div>
     </div>
-    @yield('welcomeAdmin')
     @yield('products')
     @yield('users')
     @yield('deliveries')

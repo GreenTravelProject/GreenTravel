@@ -11,25 +11,26 @@ class Delivery extends Model
 
 
     // Obtener usuario del pedido
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     // Obtener productos
-    public function products(){
-        return $this->belongsToMany(Product::class)->withTimestamps();
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withTimestamps()->withPivot('amount');
     }
 
     // Obtener el carro al que pertenece el pedido
-    public function shopping_cart(){
+    public function shopping_cart()
+    {
         return $this->belongsTo(Shopping_cart::class);
     }
 
-    // Obtener dirección del producto
-    // public function adress(){
-    //     return $this->belongsTo(Adress::class);
-    // }
-
-
+// Obtener dirección del producto
+// public function adress(){
+//     return $this->belongsTo(Adress::class);
+// }
 
 }
