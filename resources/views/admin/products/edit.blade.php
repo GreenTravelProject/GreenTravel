@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="img">Imagen: </label>
-                        <input type="text" name="img" class="form-control" value="{{ $producto->img }}"
+                        <input type="file" name="img" class="form-control" value="{{ $producto->img }}"
                             placeholder="producto1.jpg" autofocus>
                     </div>
                     <div class="col-md-3">
