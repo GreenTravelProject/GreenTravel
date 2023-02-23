@@ -11,28 +11,7 @@
 @endsection
 
 @section('footer')
-    <div class="container-fluid justify-content-center bg-success text-light">
-        <div class="row py-5">
-            <div class="col">
-                <div class="card border-0">
-                    <div class="card-body text-center bg-success">
-                        <h2><b>Suscríbete</b></h2>
-                        <p class="mb-3">Escribe tu correo electrónico para estar atento</p>
-                        <div class="row text-center justify-content-center">
-                            <div class="col-auto">
-                                <form action="guillermoanv25@gmail.com" method="post" name="form1">
-                                    <div class="input-group-lg input-group">
-                                        <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <input class="btn btn-dark" value="Enviar" type="button" id="button-addon2">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
+    <div class="container-fluid justify-content-center pt-5 pb-5 bg-success text-light">
         <div class="row justify-content-around">
             <div class="col-12">
                 <div class="row justify-content-center">

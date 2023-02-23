@@ -111,13 +111,22 @@ class ProductController extends Controller
                     }
                 }
             }
+
+            if($request->hasFile("img")){
+                $file = $request->file("img");
+                $destinationPath = "img/products";
+                $fileName = "product" . $producto->id . ".jpg";
+                $uploadSuccess = $request->file("img")->move($destinationPath, $fileName);
+                $producto->img = $request->img;
+            }
+
             $producto->save();
 
-            $imgName = "product" . $producto->id . ".jpg";
-            $request->img->move(public_path('img/products'), $imgName);
-            $producto->img = $imgName;
+            // $imgName = "product" . $producto->id . ".jpg";
+            // $request->img->move(public_path('img/products'), $imgName);
+            // $producto->img = $imgName;
 
-            $producto->save();
+            // $producto->save();
 
             return back()->with('mensaje', 'El producto ha sido modificado');
         } else {
