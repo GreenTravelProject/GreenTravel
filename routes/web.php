@@ -32,7 +32,7 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get(
         '/',
         function () {
-            return view('admin');
+            return redirect('admin/deliveries'); //la primera página de admin tiene que ser pedidos 
         }
     )->name('admin');
     Route::prefix('/categories')->group(
@@ -68,10 +68,6 @@ Route::prefix('/admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::prefix('/deliveries')->group(
         function () {
             Route::get('/', [DeliveryController::class, 'mostrar_pedidos'])->name('admin.deliveries');
-            Route::get('/edit/{id}', [DeliveryController::class, 'editar_pedido'])->name('deliveries.edit');
-            Route::put('/update/{id}', [DeliveryController::class, 'actualizar_pedido'])->name('deliveries.update');
-            // Route::get('/create', [UserController::class, 'crear_usuario'])->name('users.create');
-            // Route::post('/insert', [UserController::class, 'insertar_usuario'])->name('users.insert');
             Route::delete('delete/{id}', [DeliveryController::class, 'eliminar_pedido'])->name('deliveries.delete');
         }
     );
@@ -94,6 +90,7 @@ Route::prefix('/user')->middleware('auth')->group(
                 }
         )->name("direccion");
         Route::get('/favoritos', [FavoriteController::class, 'show_favorites'])->name("favoritos");
+        Route::get('/myDeliveries', [DeliveryController::class, 'mostrar_mipedido'])->name("myDeliveries");
 
     }
 );
@@ -108,9 +105,8 @@ Route::post('/category/cart_add', [CartController::class, 'add'])->name('cart_ad
 
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart')->middleware('auth');
 
-
 //Para cambiar la cantidad de productos en el carrito:
 Route::get('/plus/{id}', [CartController::class, 'plus_amount'])->name('plus');
 Route::get('/minus/{id}', [CartController::class, 'minus_amount'])->name('minus');
 Route::get('/cart/deleteProduct/{id?}', [CartController::class, 'delete_product'])->name('deleteProduct');
-Route::get('/delivery', [DeliveryController::class, 'buy_products'])->name('buy');
+Route::get('/delivery', [DeliveryController::class, 'buy_products'])->middleware(['auth', 'hasProducts'])->name('buy'); //no deja hacer pedidos si no hay productos en el carrito

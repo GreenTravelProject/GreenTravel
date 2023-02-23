@@ -19,6 +19,10 @@
                             <h4 class="text-dark p-4">Favoritos</h4>
                         </a>
                         <hr class="m-0">
+                        <a id="menu-user" href="{{ route('myDeliveries') }}">
+                            <h4 class="text-dark p-4">Pedidos</h4>
+                        </a>
+                        <hr class="m-0">
                         <a id="menu-user" href="{{ route('cambiarPassword') }}">
                             <h4 class="text-dark p-4">Cambio contraseña</h4>
                         </a>
@@ -38,6 +42,7 @@
                 @yield('datosPersonales')
                 @yield('direccion')
                 @yield('favoritos')
+                @yield('deliveries')
             </div>
         </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favorite;
+use App\Models\Adress;
 use App\Models\Shopping_cart;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -100,7 +101,12 @@ class UserController extends Controller
 
         if ($user->admin === 1) { // Borra la cuenta (ADMIN)
             $usuario = User::findOrFail($user_ID);
-            $usuario->delete();
+            // $adress = Adress::where('user_id', $user->id);
+            // foreach ($adress as $a) {
+            //     $a->delete();
+            // }
+
+            // $usuario->delete();
         } else { //Deshabilita la cuenta (Usuario)
             $user->state = 0;
             $user->save();

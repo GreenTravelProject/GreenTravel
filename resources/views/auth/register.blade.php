@@ -1,6 +1,6 @@
 @extends('template.general3')
 @section('login')
-    <div class="bgCuenta py-5">
+    <div class="bgCuenta">
         <div class="container register">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -100,16 +100,17 @@
                             required>
                     </div>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        {!! implode('', $errors->all('<li>:message</li>')) !!}
-                    </div>
-                @endif
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="col-sm-12 d-flex justify-content-end p-4">
                     <button id="btn-signup" class="bg-success btn mb-5 text-light text-center"
                         type="submit">{{ __('Registrar') }}</button>
                 </div>
-            </form>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                {!! implode('', $errors->all('<li>:message</li>')) !!}
+            </div>
+        @endif
+        </form>
+    </div>
     </div>
 @endsection

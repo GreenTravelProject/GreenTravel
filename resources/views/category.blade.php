@@ -77,8 +77,8 @@
                 </div>
             @endforeach
         </div>
-        <div class="p-5 ">
-            <div>{{ $products->links() }}</div>
+        <div class="container py-5 d-flex justify-content-end">
+            {{ $products->links() }}
         </div>
     </section>
     <section class="pt-5 pb-5 bg4">

@@ -60,7 +60,7 @@
                                 <label class="d-flex py-1 px-3 gap-2" for="{{ $category->name }}">{{ $category->name }}
                                     <input type="checkbox" id="{{ $category->name }}" name="category[]"
                                         value="{{ $category->id }}"
-                                        {{ $producto->categories->contains($category->id) ? 'checked=true' : 'checked=false' }}></input></label>
+                                        {{ $producto->categories->contains($category->id) ? 'checked=true' : '' }}></label>
                             @endforeach
                         </div>
                     </div>

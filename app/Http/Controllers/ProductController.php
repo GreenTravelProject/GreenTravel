@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Delivery;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    //TODO:Pasar por parámetro la paginación:
-
     public function crear_producto()
     {
         $categories = Category::all();
@@ -17,7 +16,6 @@ class ProductController extends Controller
     }
     public function mostrar_productos()
     {
-        $productos = Product::all();
         $productos = Product::paginate(10);
         return view('admin.products.adminProducts', @compact('productos'));
     }
@@ -115,7 +113,7 @@ class ProductController extends Controller
                 }
             }
             $producto->save();
-            return back()->with('mensaje', 'El producto ha sido modificado' . $request);
+            return back()->with('mensaje', 'El producto ha sido modificado');
         } else {
             return back()->with('errors');
 
@@ -126,9 +124,19 @@ class ProductController extends Controller
     public function eliminar_producto($id)
     {
         $producto = Product::findOrFail($id);
-        $producto->categories()->detach; //se le quita la relación con las categorías para evitar que falle la FK
-        $producto->delete();
-        return back()->with('mensaje', 'El producto ha sido eliminado.');
+        $producto->categories()->detach(); //se le quita la relación con las categorías para evitar que falle la FK
+
+        //TODO: HAY QUE COMPROBAR QUE EL PRODUCTO NO ESTÁ EN NINGÚN PEDIDO
+        // $productoPedido; 
+
+        // if (isset($productoPedido)) {
+        //     $producto->state = 1;
+        //     $producto->save();
+        //     return back()->with('error', 'Hay pedidos con ese producto. Se marcará como deshabilitado');
+        // } else {
+        //     $producto->delete();
+        //     return back()->with('mensaje', 'El producto ha sido eliminado.');
+        // }
     }
 
 }
