@@ -9,7 +9,7 @@
         @foreach ($favorites as $favorite)
             <div class="col-md-10 col-mb-4 col-lg-4">
                 <div class="card mt-2">
-                    <img class="img-fluid" src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                    <img class="img-fluid" src="{{ URL::asset("img/products/$favorite->img") }}">
                     <div class="card-body">
                         <h4 class="card-title">{{$favorite->name}}</h4>
                         <p class="card-text">{{$favorite->price}}€</p>
@@ -17,10 +17,10 @@
                             {{-- Si el usuario no inicia sesión verá @guest, cuando tenga sesión verá @else --}}
                             @guest
 
-                            <button type="button" class="btn btn-outline-dark flex-shrink-0" disabled>
+                            <a href="{{ route('login') }}" type="button" class="btn btn-outline-dark flex-shrink-0" disabled>
                                 <i class="bi-cart-fill me-1"></i>
                                 Debes iniciar sesión
-                            </button>
+                            </a>
 
                             @else
                             <form action="{{ route('fav_add') }}" method="post">

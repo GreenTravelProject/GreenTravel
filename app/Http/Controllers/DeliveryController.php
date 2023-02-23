@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adress;
 use App\Models\Delivery;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -13,8 +14,8 @@ class DeliveryController extends Controller
     {
         $delivery = new Delivery;
         $delivery->user_id = Auth::user()->id;
-        $delivery->adress_id = 1; //ESTO NO SÉ, PORQUE SI TIENE + DE 1??? De momento le pongo 1 para probar
-        $delivery->state = 0; //TODO: status para qué sirve????
+        $delivery->adress_id = Adress::where('user_id', Auth::id())->where('status', true)->first()->id; //ESTO NO SÉ, PORQUE SI TIENE + DE 1??? De momento le pongo 1 para probar
+        $delivery->state = 0; //? Si el pedido se entrega será true
         $delivery->save();
 
         foreach (Auth::user()->cart->products as $product) {
