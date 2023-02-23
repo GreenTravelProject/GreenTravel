@@ -37,7 +37,7 @@ class AddressController extends Controller
                 'city' => 'required|min:2|max:40',
                 'street' => 'required|min:3|max:100',
                 'number' => 'required|min:3|max:100|numeric',
-                'block' => 'nullable|alphanumeric',
+                'building' => 'nullable|alphanumeric',
                 'floor' => 'nullable|alphanumeric',
                 'door' => 'nullable|alphanumeric'
             ]);
@@ -58,7 +58,7 @@ class AddressController extends Controller
                 'city' => 'required|min:2|max:40',
                 'street' => 'required|min:3|max:100',
                 'number' => 'required|min:3|max:100|numeric',
-                'block' => 'nullable|alphanumeric',
+                'building' => 'nullable|alphanumeric',
                 'floor' => 'nullable|alphanumeric',
                 'door' => 'nullable|alphanumeric'
             ]);

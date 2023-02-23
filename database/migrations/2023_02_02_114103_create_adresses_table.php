@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('street');
             $table->integer('number');
-            $table->integer('block')->nullable();
+            $table->integer('building')->nullable();
             $table->integer('floor')->nullable();
             $table->string('door')->nullable();
             $table->boolean('status')->default(1);

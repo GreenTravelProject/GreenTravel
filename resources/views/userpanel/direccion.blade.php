@@ -40,7 +40,7 @@
                     <input class="form-control" type="text" name="number" placeholder="*" value="{{ $usuario_direccion->number }}" required>
                 </div>
                 <div class="col-md-2 col-sm-12">
-                    <label>Bloque</label><input class="form-control" type="text" name="block" value="{{ $usuario_direccion->block }}">
+                    <label>Bloque</label><input class="form-control" type="text" name="block" value="{{ $usuario_direccion->building }}">
                 </div>
                 <div class="col-md-2 col-sm-12">
                     <label>Planta</label><input class="form-control" type="text" name="floor" value="{{ $usuario_direccion->floor }}">
