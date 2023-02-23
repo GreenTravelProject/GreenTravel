@@ -9,11 +9,13 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-6">
                         <label for="name">Nombre: </label>
-                        <input type="text" name="name" class="form-control" required autofocus>
+                        <input type="text" name="name" class="form-control" required value="{{ old('name') }}"
+                            autofocus>
                     </div>
                     <div class="col-md-6">
                         <label for="surname">Descripción: </label>
-                        <input type="text" name="description" class="form-control" required autofocus>
+                        <input type="text" name="description" class="form-control" value="{{ old('name') }}" required
+                            autofocus>
                     </div>
                 </div>
                 <div class="row p-2 py-md-3">

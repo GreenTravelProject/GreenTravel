@@ -35,7 +35,6 @@ class UserController extends Controller
 
     public function actualizar_usuario(Request $request, $user_ID)
     {
-        //TODO: ESTO DEBERÍA HACERLO FORTIFY???
         $usuario = User::findOrFail($user_ID);
 
         if ($usuario->email == $request->email) {
@@ -105,12 +104,13 @@ class UserController extends Controller
             // $usuario->cart->delete();
             // $usuario->favorite->delete();
             $usuario->delete();
+            return back()->with('mensaje', 'El usuario ha sido eliminado.');
         } else { //Deshabilita la cuenta (Usuario)
             $user->state = 0;
             $user->save();
+            return back()->with('mensaje', 'El usuario ha sido deshabilitado.');
         }
 
-        return back()->with('mensaje', 'El usuario ha sido eliminado.');
     }
 
 }

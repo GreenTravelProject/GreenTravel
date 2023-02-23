@@ -51,10 +51,9 @@ class CategoryController extends BaseController
             $category->img = $request->img;
 
             $category->save();
-            return back()->with('mensaje', 'La categoría ha sido creada');
+            return back()->with('mensaje', $category->name . ' ha sido añadid@ a la lista de categorías');
         } else {
             return back()->with('errors');
-
         }
     }
 

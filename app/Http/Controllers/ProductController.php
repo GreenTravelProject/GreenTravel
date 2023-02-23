@@ -57,7 +57,7 @@ class ProductController extends Controller
             }
         }
 
-        return back()->with('mensaje', 'El producto se ha añadido correctamente');
+        return back()->with('mensaje', 'El producto ' . $crearProducto->name . ' se ha añadido correctamente');
     }
 
     public function editar_producto($id)
@@ -119,7 +119,7 @@ class ProductController extends Controller
 
             $producto->save();
 
-            return back()->with('mensaje', 'El producto ha sido modificado' . $request);
+            return back()->with('mensaje', 'El producto ha sido modificado');
         } else {
             return back()->with('errors');
 

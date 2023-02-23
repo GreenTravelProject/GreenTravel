@@ -25,8 +25,7 @@ class DeliveryController extends Controller
         Auth::user()->cart->products()->detach(); //vaciamos el carrito al hacer el pedido
         Auth::user()->cart->total = 0;
         Auth::user()->cart->save();
-
-        return back()->with('mensaje', 'Pedido realizado :)'); //Todo: crear una vista para informar de pedido emitido
+        return back()->with('mensaje', 'Pedido realizado :)');
 
     }
 
@@ -51,6 +50,7 @@ class DeliveryController extends Controller
         $delivery = Delivery::findOrFail($id);
         $delivery->products()->detach(); //vaciamos los productos antes de eliminar el pedido porque si no peta (la FK!!!)
         $delivery->delete();
-        return back()->with('mensaje', 'El pedido ha sido eliminado.');
+        toastr('El pedido ha sido eliminado', "success", '¡Perfecto!');
+        return back();
     }
 }
