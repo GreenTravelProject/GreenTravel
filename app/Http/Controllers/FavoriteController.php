@@ -19,13 +19,16 @@ class FavoriteController extends Controller
     {
         $favorite = Favorite::where('user_id', Auth::id())->first();
 
-        if(DB::table('favorite_product')->where('product_id', $request->product)->where('favorite_id', $favorite->id)->doesntExist()){
+        if (DB::table('favorite_product')->where('product_id', $request->product)->where('favorite_id', $favorite->id)->doesntExist()) {
             $favorite->products()->attach($request->product);
-            return back()->with('mensaje', 'El producto se ha añadido a favoritos');
+            toastr('Se ha añadido a favoritos', "success", '¡Listo!');
+            return back();
 
-        }if(DB::table('favorite_product')->where('product_id', $request->product)->where('favorite_id', $favorite->id)->exists()){
+        }
+        if (DB::table('favorite_product')->where('product_id', $request->product)->where('favorite_id', $favorite->id)->exists()) {
             $favorite->products()->detach($request->product);
-            return back()->with('mensaje', 'El producto se ha eliminado de favoritos');
+            toastr('Se ha eliminado de favoritos', "success", '¡Listo!');
+            return back();
         }
     }
 

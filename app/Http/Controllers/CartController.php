@@ -27,12 +27,14 @@ class CartController extends Controller
             //TODO: Controlar que exista el producto para añadirlo al carrito: (amount, status)
             if ($cart->products->contains($product->id)) {
                 if ($cart->products()->where('product_id', $product->id)->pluck('amount')[0] + 1 > $product->stock) {
-                    return back()->with('error', 'No hay suficiente stock');
+                    toastr('No hay stock en este momento', "error", 'Ooops');
+                    return back();
                 } else {
                     $cart->products()->where('product_id', $product->id)->increment('amount');
                     $cart->total += $product->price;
                     $cart->save();
-                    return back()->with('mensaje', 'Ya existe ese artículo en el carrito. Se ha añadido otra unidad');
+                    toastr('Ya existe ese artículo en el carrito. Se ha añadido otra unidad', "success", '¡Perfecto!');
+                    return back();
                 }
             }
         }
@@ -42,9 +44,12 @@ class CartController extends Controller
             $cart->products()->attach($product->id, ['amount' => '1', 'status' => '1']);
             $cart->total += $product->price;
             $cart->save();
-            return back()->with('mensaje', 'El producto ha sido añadido al carrito');
+            toastr('El producto ha sido añadido al carrito', "success", '¡Perfecto!');
+            return back();
+
         } else {
-            return back()->with('mensaje', "No hay stock disponible");
+            toastr('No hay stock en este momento', "error", 'Ooops');
+            return back();
         }
 
     }
@@ -55,7 +60,8 @@ class CartController extends Controller
         $product = Product::findOrFail($id);
         $cart = Cart::where('user_id', Auth::id())->first();
         if ($cart->products()->where('product_id', $id)->pluck('amount')[0] + 1 > $product->stock) {
-            return back()->with('error', 'No hay suficiente stock');
+            toastr('No hay stock en este momento', "error", 'Ooops');
+            return back();
         } else {
             $cart->products()->where('product_id', $id)->increment('amount');
             $cart->total += $product->price;
@@ -68,7 +74,7 @@ class CartController extends Controller
     {
         $cart = Cart::where('user_id', Auth::id())->first();
         $product = Product::findOrFail($id);
-        //TODO: lanzamos un estás seguro de que quieres borrar el artículo??
+        
         if ($cart->products()->where('product_id', $id)->pluck('amount')[0] == 1) {
             $cart->total -= $product->price;
             $cart->save();

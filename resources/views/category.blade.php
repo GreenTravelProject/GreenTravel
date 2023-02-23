@@ -8,17 +8,6 @@
         <div class="overlay"></div>
     </div>
     </div>
-    {{-- TODO: MUESTRA EL PRODUCTO SE HA AÑADIDO AL CARRITO: HAY QUE CAMBIAR EL DISEÑO --}}
-    @if (session('mensaje'))
-        <div class="alert alert-success">
-            {{ session('mensaje') }}
-        </div>
-    @endif
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
     <!-- Product section-->
     <section class="bgProducts pt-5">
         <div class="container px-4 px-lg-5 products">
