@@ -45,7 +45,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
                 'genre' => $input['genre'],
             ])->save();
-            return back()->with('mensaje', 'Se actualizaron los datos correctamente.');
+            toastr('Se actualizaron los datos correctamente.','success','¡Completado!');
+            return back();
         }
     }
 

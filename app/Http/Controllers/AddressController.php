@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AddressController extends Controller
 {
@@ -18,6 +19,32 @@ class AddressController extends Controller
 
         $usuario_direccion = Adress::where('user_id', Auth::id())->first();
         return view('userPanel.direccion', @compact('usuario_direccion'));
+    }
+    public function cambiar_direccion(Request $request){
+
+        Validator::make($request->all(), [
+            'id' => ['required', 'numeric'],
+        ])->validate();
+        $errors = $request->has('errors');
+
+        if (!$errors) {
+        $usuario_direccion = Adress::where('user_id', Auth::id())->get();
+        foreach ($usuario_direccion as $value) {
+            if($value->id == $request->id){
+                $value->status = true;
+                $value->save();
+            }else{
+                $value->status = false;
+                $value->save();
+            }
+        }
+        toastr('Dirección configurada correctamente','success','¡Nueva dirección!');
+
+        return back();
+        }else {
+            return back()->with($errors);
+
+        }
     }
 
     public function crear_direccion(Request $request)
@@ -30,15 +57,15 @@ class AddressController extends Controller
             'Mónaco', 'Montenegro', 'Noruega', 'Países Bajos', 'Polonia', 'Portugal', 'Reino Unido', 'República Checa', 'Rumanía', 'Rusia',
             'San Marino', 'Suecia', 'Suiza', 'Turquía', 'Ucrania', 'Serbia'
         );
-        $usuario_direccion = Adress::where('user_id', Auth::id())->first();
+
 
         Validator::make($request->all(), [
             'country' => ['required', Rule::in($arrayPaises)],
             'city' => ['required', 'min:2', 'max:255'],
             'street' => ['required', 'min:3','max:255'],
             'number' => ['required', 'min:1', 'numeric'],
-            'building' => ['nullable', 'max:11'],
-            'floor' => ['nullable', 'numeric', 'max:11'],
+            'building' => ['nullable'],
+            'floor' => ['nullable', 'numeric'],
             'door' => ['nullable', 'max:255'],
 
         ])->validate();
@@ -54,13 +81,14 @@ class AddressController extends Controller
             $usuario_direccion->building = $request['building'];
             $usuario_direccion->floor = $request['floor'];
             $usuario_direccion->door = $request['door'];
-            $usuario_direccion->status = true;
+            $usuario_direccion->status = false;
             $usuario_direccion->user_id = Auth::id();
             $usuario_direccion->save();
 
-        return back()->with('mensaje', "Dirección actualizada");
+            toastr("Dirección actualizada", 'success', '¡Completado!');
+        return back();
         }else {
-            return back()->with('errors');
+            return back()->with($errors);
 
         }
 

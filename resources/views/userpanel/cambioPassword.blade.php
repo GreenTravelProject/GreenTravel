@@ -20,7 +20,7 @@
             @if ($errors->updatePassword->any())
                 <div class="alert alert-danger">
                     @foreach($errors->updatePassword->all() as $error)
-                    <li class="p-2">{{ $error }}</li>
+                        <li class="p-2">{{$error}}</li>
                     @endforeach
                 </div>
             @endif

@@ -1,5 +1,7 @@
 @extends('template.general')
-
+@php
+    use App\Models\Adress;
+@endphp
 @section('shoppingCart')
     <!--Mostramos los productos añadidos al carrito-->
     <div class="container d-grid py-4">
@@ -55,8 +57,16 @@
             <div class="text-start pt-2 mt-3">
                 <p>Nombre: {{ Auth::user()->name }} {{ Auth::user()->surname }}</p>
                 <p>Teléfono: {{ Auth::user()->phone }}</p>
-                <p>DIRECCIÓN</p>
+                @php
+                    $address = Adress::where('user_id', Auth::id())->where('status', true)->get()
+                @endphp
+                <p class="mb-5">DIRECCIÓN: {{$address[0]->country.', '.$address[0]->city.', '.$address[0]->street.', nº '.$address[0]->number.', Edificio '.$address[0]->building.
+                    ', '.$address[0]->floor.'  '.$address[0]->door}}</p>
+
+
+
                 {{-- CUANDO TENGAMOS LAS DIRECCIONES :D --}}
+
                 <div class="d-flex gap-2 justify-content-end">
                     <a href="{{ route('user') }}" class="btn btn-danger">Cambiar datos</a>
                     @if (isset(Auth::user()->cart->products[0]))
