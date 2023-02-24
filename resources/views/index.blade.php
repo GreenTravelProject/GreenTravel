@@ -23,7 +23,10 @@
                                 @endif
                                 <div class="row">
                                     @php
-                                        $products = $category->products;
+                                        //He añadido esta comprobación porque si la categoría no tiene productos peta
+                                        if (isset($category->products[0])) {
+                                            $products = $category->products;
+                                        }
                                     @endphp
                                     {{-- Saldran 4 tarjetas por categoría --}}
                                     @for ($i = 0; $i <= 3; $i++)
@@ -63,8 +66,8 @@
                                                     <div class="text-center">
                                                         @guest
 
-                                                            <a type="button" href="{{ route('login') }}" class="btn btn-outline-dark flex-shrink-0"
-                                                                disabled>
+                                                            <a type="button" href="{{ route('login') }}"
+                                                                class="btn btn-outline-dark flex-shrink-0" disabled>
                                                                 <i class="bi-cart-fill me-1"></i>
                                                                 Debes iniciar sesión
                                                             </a>

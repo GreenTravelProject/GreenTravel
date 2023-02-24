@@ -4,7 +4,7 @@
 
     <section class="container p-5 my-3 adminForm">
         <h2>Editando el producto {{ $producto->id }}</h2>
-        <form action="{{ route('products.update', $producto->id) }}" method="POST">
+        <form action="{{ route('products.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
             @method('PUT') {{-- Necesitamos cambiar al método PUT para editar --}}
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
             <div class="d-grid">
@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-2">
                         <label for="price">Precio: </label>
-                        <input type="number" step="0.01" name="price" id="price" class="form-control"
+                        <input type="number" min = "0" step="0.01" name="price" id="price" class="form-control"
                             value="{{ $producto->price }}" autofocus required onchange="priceInDecimal(this)">
                     </div>
                     <div class="col-md-5">
@@ -38,13 +38,12 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-3">
                         <label for="stock">Stock: </label>
-                        <input type="number" name="stock" class="form-control" required value="{{ $producto->stock }}"
+                        <input type="number" min = "0" name="stock" class="form-control" required value="{{ $producto->stock }}"
                             placeholder="1" autofocus>
                     </div>
                     <div class="col-md-6">
                         <label for="img">Imagen: </label>
-                        <input type="file" name="img" class="form-control" value="{{ $producto->img }}"
-                            placeholder="producto1.jpg" autofocus>
+                        <input type="file" name="img" class="form-control" autofocus required>
                     </div>
                     <div class="col-md-3">
                         <label for="select">Categorías:</label>

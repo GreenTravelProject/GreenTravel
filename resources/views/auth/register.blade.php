@@ -104,12 +104,12 @@
                     <button id="btn-signup" class="bg-success btn mb-5 text-light text-center"
                         type="submit">{{ __('Registrar') }}</button>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        {!! implode('', $errors->all('<li>:message</li>')) !!}
+                    </div>
+                @endif
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                {!! implode('', $errors->all('<li>:message</li>')) !!}
-            </div>
-        @endif
         </form>
     </div>
     </div>

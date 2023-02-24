@@ -37,10 +37,8 @@ class CategoryController extends BaseController
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
             'description' => 'required|string|min:3',
-            'img' => 'required|regex:/(?:jpe?g)/|min:3|max:255',
-        ], [
-                'img.regex' => "No lo dejes vacío"
-            ]);
+            'img' => 'required|mimes:jpg,png,jpg,webp|max:2048',
+        ]);
 
         $errors = $request->has('errors');
 
@@ -48,9 +46,15 @@ class CategoryController extends BaseController
             $category = new Category;
             $category->name = $request->name;
             $category->description = $request->description;
+            $category->save();
+
             $category->img = $request->img;
+            $imgName = $category->name . '.' . $request->img->extension();
+            $request->img->move(public_path('img'), $imgName);
+            $category->img = $imgName;
 
             $category->save();
+
             return back()->with('mensaje', $category->name . ' ha sido añadid@ a la lista de categorías');
         } else {
             return back()->with('errors');
@@ -76,10 +80,8 @@ class CategoryController extends BaseController
         $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:255',
             'description' => 'required|string|min:3',
-            'img' => 'required|regex:/(?:jpe?g)/|min:3|max:255',
-        ], [
-                'img.regex' => "No lo dejes vacío"
-            ]);
+            'img' => 'required|mimes:jpg,png,jpg,webp|max:2048',
+        ]);
 
         $errors = $request->has('errors');
 
@@ -88,7 +90,12 @@ class CategoryController extends BaseController
             $category->id = $request->id;
             $category->name = $request->name;
             $category->description = $request->description;
+            $category->save();
+
             $category->img = $request->img;
+            $imgName = $category->name . '.' . $request->img->extension();
+            $request->img->move(public_path('img'), $imgName);
+            $category->img = $imgName;
 
             $category->save();
             return back()->with('mensaje', 'La categoría ha sido modificada');

@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-md-2">
                         <label for="price">Precio: </label>
-                        <input type="number" step="0.01" name="price" placeholder="0.00" id="price"
+                        <input type="number" min = "0" step="0.01" name="price" placeholder="0.00" id="price"
                             value="{{ old('price') }}" required class="form-control" autofocus
                             onchange="priceInDecimal(this)">
                     </div>
@@ -37,7 +37,7 @@
                 <div class="row p-2 py-md-3">
                     <div class="col-md-3">
                         <label for="stock">Stock: </label>
-                        <input type="number" name="stock" class="form-control" required autofocus
+                        <input type="number" min = "0" name="stock" class="form-control" required autofocus
                             value="{{ old('stock') }}">
                     </div>
                     <div class="col-md-6">

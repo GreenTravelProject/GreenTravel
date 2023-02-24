@@ -28,7 +28,7 @@ class ProductController extends Controller
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
+            'img' => 'required|mimes:jpg,png,jpg,webp|max:2048',
             'category' => 'required'
         ]);
 
@@ -45,7 +45,13 @@ class ProductController extends Controller
             $crearProducto->state = 1;
         }
         $crearProducto->stock = $request->stock;
+        $crearProducto->save();
+
         $crearProducto->img = $request->img;
+        $imgName = 'product' . $crearProducto->id . '.' . $request->img->extension();
+        $request->img->move(public_path('img/products'), $imgName);
+        $crearProducto->img = $imgName;
+
         $crearProducto->save();
         //Si se selecciona 1 categoría, se añade directamente. Si no, se va insertando una por una con un for:
         if (count($request->category) == 1) {
@@ -77,11 +83,9 @@ class ProductController extends Controller
             'date' => 'required|date_format:Y-m-d',
             'state' => 'boolean',
             'stock' => 'required|integer',
-            'img' => 'required|regex:/(\d)+.(?:jpe?g)/|min:3|max:255',
+            'img' => 'required|mimes:jpg,png,jpg,webp|max:2048',
             'category' => 'required'
-        ], [
-                'img.regex' => "No lo dejes vacío"
-            ]);
+        ]);
 
         $errors = $request->has('errors');
 
@@ -112,21 +116,14 @@ class ProductController extends Controller
                 }
             }
 
-            if($request->hasFile("img")){
-                $file = $request->file("img");
-                $destinationPath = "img/products";
-                $fileName = "product" . $producto->id . ".jpg";
-                $uploadSuccess = $request->file("img")->move($destinationPath, $fileName);
-                $producto->img = $request->img;
-            }
-
             $producto->save();
 
-            // $imgName = "product" . $producto->id . ".jpg";
-            // $request->img->move(public_path('img/products'), $imgName);
-            // $producto->img = $imgName;
+            $producto->img = $request->img;
+            $imgName = 'product' . $producto->id . '.' . $request->img->extension();
+            $request->img->move(public_path('img/products'), $imgName);
+            $producto->img = $imgName;
 
-            // $producto->save();
+            $producto->save();
 
             return back()->with('mensaje', 'El producto ha sido modificado');
         } else {
@@ -142,16 +139,15 @@ class ProductController extends Controller
         $producto->categories()->detach(); //se le quita la relación con las categorías para evitar que falle la FK
 
         //TODO: HAY QUE COMPROBAR QUE EL PRODUCTO NO ESTÁ EN NINGÚN PEDIDO
-        // $productoPedido; 
 
-        // if (isset($productoPedido)) {
-        //     $producto->state = 1;
-        //     $producto->save();
-        //     return back()->with('error', 'Hay pedidos con ese producto. Se marcará como deshabilitado');
-        // } else {
-        //     $producto->delete();
-        //     return back()->with('mensaje', 'El producto ha sido eliminado.');
-        // }
+        if (isset($producto)) {
+            $producto->state = 1;
+            $producto->save();
+            return back()->with('error', 'Hay pedidos con ese producto. Se marcará como deshabilitado');
+        } else {
+            $producto->delete();
+            return back()->with('mensaje', 'El producto ha sido eliminado.');
+        }
     }
 
 }

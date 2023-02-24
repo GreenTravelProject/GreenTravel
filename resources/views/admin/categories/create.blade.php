@@ -3,7 +3,7 @@
     {{-- Vista para crear las categorías --}}
     <section class="container p-5 my-3 adminForm">
         <h2>Crear nueva categoría</h2>
-        <form action="{{ route('categories.insert') }}" method="POST">
+        <form action="{{ route('categories.insert') }}" method="POST" enctype="multipart/form-data">
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
             <div class="d-grid">
                 <div class="row p-2 py-md-3">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="row p-2 py-md-3">
                     <label for="img">Imagen: </label>
-                    <input type="text" name="img" class="form-control" placeholder="deportes.jpg" autofocus>
+                    <input type="file" name="img" class="form-control" autofocus required>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
