@@ -36,7 +36,7 @@
                         </td>
                         <td>{{ $delivery->total }}€</td>
                         <td>{{ $delivery->user_id }}</td>
-                        <td>{{ $delivery->address_id }}</td>
+                        <td>{{ $delivery->adress_id }}</td>
                         <td class=" text-center">
                             <form action="{{ route('deliveries.delete', $delivery) }}" method="POST" class="d-inline">
                                 @method('DELETE')

@@ -4,7 +4,7 @@
 
     <section class="container p-5 my-3 adminForm">
         <h2>Editando la categoría {{ $category->id }}</h2>
-        <form action="{{ route('categories.update', $category->id) }}" method="POST">
+        <form action="{{ route('categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
             @method('PUT') {{-- Necesitamos cambiar al método PUT para editar --}}
             @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
             <div class="d-grid">
@@ -22,8 +22,7 @@
                 </div>
                 <div class="row p-2 py-md-3">
                     <label for="img">Imagen: </label>
-                    <input type="text" name="img" class="form-control" value="{{ $category->img }}"
-                        placeholder="deportes.jpg" autofocus>
+                    <input type="file" name="img" class="form-control" autofocus required>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
