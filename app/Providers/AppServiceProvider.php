@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         // // Artisan::call('migrate');
         // // Artisan::call('db:seed');
  
-        view()->share('categories', Category::all());
+      //view()->share('categories', Category::all());
    
     }
 }
